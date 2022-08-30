@@ -6,8 +6,9 @@ import javax.persistence.*;
 public class Usuario {
     @Id
     private Long cedula;
+    //@Column(name = "tipoUsuario_id")
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "tipo_usuario_id")
     private TipoUsuario usuario;
 
     private  String grado;
