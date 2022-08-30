@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class servicioRealizado {
+public class ServicioRealizado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,10 +24,10 @@ public class servicioRealizado {
     private  String descripcion;
 
 
-    public servicioRealizado() {
+    public ServicioRealizado() {
     }
 
-    public servicioRealizado(TipoServicio tipoServicio, Vehiculo vehiculo, Date fechaInicioServicio, Date fechaTerminoServicio, Long kilometrajeInicio, Long kilometrajeTermino, String descripcion) {
+    public ServicioRealizado(TipoServicio tipoServicio, Vehiculo vehiculo, Date fechaInicioServicio, Date fechaTerminoServicio, Long kilometrajeInicio, Long kilometrajeTermino, String descripcion) {
         this.tipoServicio = tipoServicio;
         this.vehiculo = vehiculo;
         this.fechaInicioServicio = fechaInicioServicio;
