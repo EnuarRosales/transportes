@@ -22,7 +22,6 @@ public class Vehiculo implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "usuario_cedula")
-
     private  Usuario usuario;
 
     private  Integer modelo;
