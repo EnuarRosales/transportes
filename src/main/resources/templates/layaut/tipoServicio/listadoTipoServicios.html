@@ -7,15 +7,15 @@
 	<meta charset="UTF-8"/>
 </head>
 <body>
-<section th:fragment="listadoTipoVehiculos" id="tipoVehiculos">
+<section th:fragment="listadoTipoServicios" id="tipoServicios">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-						<h4>Listado Tipo Vehiculos</h4>
+						<h4>Listado Tipo Servicios</h4>
 					</div>
-					<div th:if="${tipoVehiculos!= null and !tipoVehiculos.empty}">
+					<div th:if="${tipoServicios!= null and !tipoServicios.empty}">
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
@@ -26,16 +26,16 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="tipoVehiculo:${tipoVehiculos}">
-								<td th:text="${tipoVehiculo.id}">Id</td>
-								<td th:text="${tipoVehiculo.descripcion}">Descripcion</td>
+							<tr th:each="tipoServicio:${tipoServicios}">
+								<td th:text="${tipoServicio.id}">Id</td>
+								<td th:text="${tipoServicio.descripcion}">Descripcion</td>
 								<td>
-									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoVehiculo/} + ${tipoVehiculo.id}"
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoServicio/} + ${tipoServicio.id}"
 									   class="btn btn-secondary">
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoVehiculo/}+ ${tipoVehiculo.id}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoServicio/}+ ${tipoServicio.id}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 
@@ -43,8 +43,8 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="text-center p-2" th:if="${tipoVehiculos== null or tipoVehiculos.empty}">
-							<span th:text="#{tipoVehiculo.lista-vacia}"> vacía</span>
+						<div class="text-center p-2" th:if="${tipoServicios== null or tipoServicios.empty}">
+							<span th:text="#{tipoServicio.lista-vacia}"> vacía</span>
 						</div>
 					</div>
 				</div>

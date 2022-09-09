@@ -10,7 +10,7 @@
 <section th:fragment="listadoTipoUsuarios" id="tipoUsuarios">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
 						<h4>Listado Tipo Usuarios</h4>
@@ -19,6 +19,7 @@
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
+								<th>ID</th>
 								<th>Descripcion</th>
 								<th></th>
 								<th></th>
@@ -26,6 +27,7 @@
 							</thead>
 							<tbody>
 							<tr th:each="tipoUsuario:${tipoUsuarios}">
+								<td th:text="${tipoUsuario.id}">ID</td>
 								<td th:text="${tipoUsuario.descripcion}">Descripcion</td>
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoUsuario/} + ${tipoUsuario.id}"
