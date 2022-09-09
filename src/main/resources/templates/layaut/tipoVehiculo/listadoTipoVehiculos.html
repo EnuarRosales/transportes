@@ -7,15 +7,15 @@
 	<meta charset="UTF-8"/>
 </head>
 <body>
-<section th:fragment="listadoTipoUsuarios" id="tipoUsuarios">
+<section th:fragment="listadoTipoVehiculos" id="tipoVehiculos">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5">
 				<div class="card">
 					<div class="card-header">
-						<h4>Listado Tipo Usuarios</h4>
+						<h4>Listado Tipo Vehiculos</h4>
 					</div>
-					<div th:if="${tipoUsuarios!= null and !tipoUsuarios.empty}">
+					<div th:if="${tipoVehiculos!= null and !tipoVehiculos.empty}">
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
@@ -25,15 +25,15 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="tipoUsuario:${tipoUsuarios}">
-								<td th:text="${tipoUsuario.descripcion}">Descripcion</td>
+							<tr th:each="tipoVehiculo:${tipoVehiculos}">
+								<td th:text="${tipoVehiculo.descripcion}">Descripcion</td>
 								<td>
-									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoUsuario/} + ${tipoUsuario.id}"
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoVehiculo/} + ${tipoVehiculo.id}"
 									   class="btn btn-secondary">
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoUsuario/}+ ${tipoUsuario.id}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoVehiculo/}+ ${tipoVehiculo.id}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 
@@ -41,8 +41,8 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="text-center p-2" th:if="${tipoUsuarios== null or tipoUsuarios.empty}">
-							<span th:text="#{tipoUsuario.lista-vacia}"> vacía</span>
+						<div class="text-center p-2" th:if="${tipoVehiculos== null or tipoVehiculos.empty}">
+							<span th:text="#{tipoVehiculo.lista-vacia}"> vacía</span>
 						</div>
 					</div>
 				</div>

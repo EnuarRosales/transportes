@@ -27,7 +27,7 @@ public class TipoUsuarioController {
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var tipoUsuarios= tipoUsuarioService.listarTipoUsuario();
         model.addAttribute("tipoUsuarios", tipoUsuarios);
-        return "TipoUsuario";
+        return "layaut/tipoUsuario/TipoUsuario";
 
     }
 
@@ -47,12 +47,11 @@ public class TipoUsuarioController {
 
 
 
-
     @GetMapping("/editarTipoUsuario/{id}")
     public String editar(TipoUsuario tipoUsuario, Model model) {
         tipoUsuario = tipoUsuarioService.encontrarTipoUsuario(tipoUsuario);
         model.addAttribute("tipoUsuario", tipoUsuario);
-        return "modificarTipoUsuario";
+        return "layaut/tipoUsuario/modificarTipoUsuario";
     }
 
 
