@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Empleados</title>
+	<meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoMovimientoDineros" id="movimientoDineros">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Movimientos De Dinero</h4>
+					</div>
+					<div th:if="${movimientoDineros!= null and !movimientoDineros.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Monto Movimiento </th>
+								<th>Concepto Movimiento</th>
+								<th>Empleado</th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="movimientoDinero:${movimientoDineros}">
+								<td th:text="${movimientoDinero.montoMovimiento}">Monto Movimiento </td>
+								<td th:text="${movimientoDinero.conceptoMovimiento}">Concepto Movimiento</td>
+								<td th:text="${movimientoDinero.enpleado.nombre}">Empleado</td>
+
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarMovimientoDinero/} + ${movimientoDinero.id}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarMovimientoDinero/}+ ${movimientoDinero.id}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${movimientoDineros== null or movimientoDineros.empty}">
+							<span > lista vacia</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>
