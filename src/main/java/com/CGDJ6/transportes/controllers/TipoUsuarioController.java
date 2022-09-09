@@ -1,7 +1,6 @@
 package com.CGDJ6.transportes.controllers;
 
 import com.CGDJ6.transportes.entities.TipoUsuario;
-import com.CGDJ6.transportes.services.TipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

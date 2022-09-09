@@ -1,30 +1,46 @@
 package com.CGDJ6.transportes.services;
 
 import com.CGDJ6.transportes.entities.TipoUsuario;
+import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.repositories.TipoUsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.CGDJ6.transportes.repositories.TipoVehiculoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class TipoUsuarioService {
+public class TipoUsuarioService implements ITipoUsuarioService{
 
-    @Autowired
-    private TipoUsuarioRepository tipoUsuarioRepo;
+    private TipoUsuarioRepository tipoUsuarioRepository;
 
-    public void create(TipoUsuario tipoUsuario){
-        tipoUsuarioRepo.save(tipoUsuario);
+
+    public TipoUsuarioService(TipoUsuarioRepository tipoUsuarioRepository) {
+        this.tipoUsuarioRepository = tipoUsuarioRepository;
     }
 
-    public List<TipoUsuario> getUsuarios(){
-        return tipoUsuarioRepo.findAll();
+    @Override
+    public List<TipoUsuario> listarTipoUsuario() {
+        return (List<TipoUsuario>) tipoUsuarioRepository.findAll();
     }
 
-    public Optional<TipoUsuario> getUsuarioById(Long id){
-        return tipoUsuarioRepo.findById(id);
+    @Override
+    public void guardarTipoUsuario(TipoUsuario tipoUsuario) {
+        tipoUsuarioRepository.save(tipoUsuario);
     }
+
+    @Override
+    @Transactional
+    public void eliminarTipoUsuario(TipoUsuario tipoUsuario) {
+        tipoUsuarioRepository.delete(tipoUsuario);
+    }
+
+    @Override
+    public TipoUsuario encontrarTipoUsuario(TipoUsuario tipoUsuario) {
+        return tipoUsuarioRepository.findById(tipoUsuario.getId()).orElse(null);
+    }
+
+
 
 
 }
