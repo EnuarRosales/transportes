@@ -13,7 +13,6 @@ public class TipoUsuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     private  String descripcion;
 
 

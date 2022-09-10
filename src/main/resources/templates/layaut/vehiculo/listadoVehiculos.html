@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Vehiculos</title>
+	<meta charset="UTF-8"/>
+</head>
+<body>
+<section th:fragment="listadoVehiculos" id="vehiculos">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Vehiculos</h4>
+					</div>
+					<div th:if="${vehiculos!= null and !vehiculos.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Placa</th>
+								<th>Tipo Vehiculo ID</th>
+								<th>Usuario Cedula</th>
+								<th>Modelo</th>
+								<th>Marca</th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="vehiculo:${vehiculos}">
+								<td th:text="${vehiculo.placa}">Cedula</td>
+								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
+								<td th:text="${vehiculo.usuario.nombre}">Usuario Cedula</td>
+								<td th:text="${vehiculo.modelo}">Modelo</td>
+								<td th:text="${vehiculo.marca}">Marca</td>
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarVehiculo/} + ${vehiculo.placa}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarVehiculo/}+ ${vehiculo.placa}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${vehiculos== null or vehiculos.empty}">
+							<span th:text="#{vehiculo.lista-vacia}"> vacía</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>
