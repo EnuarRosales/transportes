@@ -19,11 +19,10 @@
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
-								<th>Id</th>
-								<th>TipoServicio</th>
+								<th>Tipo Servicio</th>
 								<th>Vehiculo</th>
-								<th>Fecha Inicio Servicio</th>
-								<th>Fecha Termino Servicio</th>
+								<th>Fecha Inicio</th>
+								<th>Fecha Termino</th>
 								<th>Kilometraje Inicio</th>
 								<th>Kilometraje Termino</th>
 								<th>Descripcion</th>
@@ -33,7 +32,6 @@
 							</thead>
 							<tbody>
 							<tr th:each="servicioRealizado:${servicioRealizados}">
-								<td th:text="${servicioRealizado.id}">Id</td>
 								<td th:text="${servicioRealizado.tipoServicio.descripcion}">Tipo Servicio ID</td>
 								<td th:text="${servicioRealizado.vehiculo.placa}">Vehiculo</td>
 								<td th:text="${servicioRealizado.fechaInicioServicio}">Fecha Inicio Servicio</td>
@@ -41,8 +39,6 @@
 								<td th:text="${servicioRealizado.kilometrajeInicio}">Kilometraje Inicio</td>
 								<td th:text="${servicioRealizado.kilometrajeTermino}">Kilometraje Termino</td>
 								<td th:text="${servicioRealizado.descripcion}">Descripcione</td>
-
-
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarServicioRealizado/} + ${servicioRealizado.id}"
 									   class="btn btn-secondary">
@@ -58,7 +54,7 @@
 							</table>
 						</div>
 						<div class="text-center p-2" th:if="${servicioRealizados== null or servicioRealizados.empty}">
-							<span th:text="#{servicioRealizado.lista-vacia}"> vacía</span>
+							<span> La Lista No Contiene Datos</span>
 						</div>
 					</div>
 				</div>

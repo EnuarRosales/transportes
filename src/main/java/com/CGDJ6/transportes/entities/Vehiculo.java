@@ -18,10 +18,6 @@ public class Vehiculo implements Serializable {
     @JoinColumn(name = "tipo_vehiculo_id")
     private  TipoVehiculo tipoVehiculo;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_cedula")
-    private  Usuario usuario;
-
     private  Integer modelo;
 
     private  String marca;

@@ -57,7 +57,7 @@ public class ServicioRealizadoController {
 
     @GetMapping("/eliminarServicioRealizado/{id}")
     public String eliminar(ServicioRealizado servicioRealizado) {
-        servicioRealizadoService.encontrarServicioRealizado(servicioRealizado);
+        servicioRealizadoService.eliminarServicioRealizado(servicioRealizado);
         return "redirect:/ServicioRealizado";
     }
 

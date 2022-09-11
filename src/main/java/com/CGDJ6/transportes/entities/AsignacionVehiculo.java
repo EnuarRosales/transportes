@@ -1,38 +1,29 @@
 package com.CGDJ6.transportes.entities;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
-public class ServicioRealizado implements Serializable {
+public class AsignacionVehiculo implements Serializable {
+
     private  static final  long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "tipo_servicio_id")
-    private TipoServicio tipoServicio;
 
     @ManyToOne
     @JoinColumn(name = "vehiculo_placa")
     private Vehiculo vehiculo;
 
-    private String fechaInicioServicio;
+    @ManyToOne
+    @JoinColumn(name = "usuario_cedula")
+    private  Usuario usuario;
 
-    private  String fechaTerminoServicio;
+    private Date fechaAsignacion;
 
-    private Long kilometrajeInicio;
-
-    private Long kilometrajeTermino;
-
-    private  String descripcion;
-
-
+    private String unidad;
 
 }
