@@ -17,13 +17,11 @@ public class ControlKilometraje implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "vehiculo_placa")
-
     private Vehiculo vehiculo;
 
-    private Date fechaRegistro;
+    private String fechaRegistro;
 
     private  Long  kilometraje;
-
 
 
 }

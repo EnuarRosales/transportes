@@ -19,27 +19,34 @@
 			<a th:href="@{/}" class="navbar-brand" > </a>
 			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 				<span class="navbar-toggler-icon"></span>
+
 			</button>
-
-			<div class="btn-group">
-				<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Agregar Configuracion
-				</button>
-				<div class="dropdown-menu dropdown-menu-right">
-					<button class="dropdown-item" type="button" > <a th:href="@{/TipoVehiculo}"  class="btn btn-ligth btn-block">Tipo Vehiculo</a></button>
-					<button class="dropdown-item" type="button" > <a th:href="@{/TipoUsuario}" class="btn btn-ligth btn-block">Tipo Usuario</a></button>
-					<button class="dropdown-item" type="button" > <a th:href="@{/TipoServicio}"  class="btn btn-ligth btn-block">Tipo Servicio</a></button>
-				</div>
-			</div>
-
-
-
-
 			<div class="collapse navbar-collapse" id="navbarCollapse">
+
+				<div class="btn-group">
+					<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Agregar Configuracion
+					</button>
+
+					<div class="dropdown-menu dropdown-menu-right">
+						<button class="dropdown-item" type="button" > <a th:href="@{/TipoVehiculo}"  class="btn btn-ligth btn-block">Tipo Vehiculo</a></button>
+						<button class="dropdown-item" type="button" > <a th:href="@{/TipoUsuario}" class="btn btn-ligth btn-block">Tipo Usuario</a></button>
+						<button class="dropdown-item" type="button" > <a th:href="@{/TipoServicio}"  class="btn btn-ligth btn-block">Tipo Servicio</a></button>
+					</div>
+				</div>
+
+
+
 				<ul class="navbar-nav">
 					<li class="nav-item px-2">
 						<a th:href="@{/}" class="nav-link active">Empresa</a>
 					</li>
+
+
+
+
+
+
 					<!--
 					<li class="nav-item px-2">
 						<a th:href="@{/TipoUsuario}" class="nav-link active">Tipo Usuario</a>
@@ -58,6 +65,10 @@
 					</li>
 					<li class="nav-item px-2">
 						<a th:href="@{/ServicioRealizado}" class="nav-link active">Servicio Realizado</a>
+					</li>
+
+					<li class="nav-item px-2">
+						<a th:href="@{/ControlKilometraje}" class="nav-link active">Control Kilometraje</a>
 					</li>
 
 
