@@ -22,7 +22,7 @@ public class AsignacionVehiculo implements Serializable {
     @JoinColumn(name = "usuario_cedula")
     private  Usuario usuario;
 
-    private Date fechaAsignacion;
+    private String fechaAsignacion;
 
     private String unidad;
 
