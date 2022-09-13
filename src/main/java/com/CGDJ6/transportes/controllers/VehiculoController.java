@@ -4,6 +4,7 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.services.VehiculoService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,14 +22,14 @@ public class VehiculoController {
     public VehiculoController(VehiculoService vehiculoService) {
         this.vehiculoService = vehiculoService;
     }
-
+/*
     @GetMapping("/Vehiculo")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var vehiculos= vehiculoService.listarVehiculo();
         model.addAttribute("vehiculos", vehiculos);
         return "layaut/vehiculo/Vehiculo";
 
-    }
+    }*/
 
     @GetMapping("/agregarVehiculo")
     public String agregar(Vehiculo vehiculo) {
@@ -58,6 +59,19 @@ public class VehiculoController {
         vehiculoService.eliminarVehiculo(vehiculo);
         return "redirect:/Vehiculo";
     }
+
+
+    @GetMapping("/Vehiculo")
+    public String inicioB(Model model, @Param ("palabraClave") String palabraClave) {
+        var vehiculos= vehiculoService.listarVehiculo( palabraClave);
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("palabraClave", palabraClave);
+        return "layaut/vehiculo/Vehiculo";
+
+    }
+
+
+
 
 
 

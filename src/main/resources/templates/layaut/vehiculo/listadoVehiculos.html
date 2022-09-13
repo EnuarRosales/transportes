@@ -8,6 +8,36 @@
 </head>
 <body>
 <section th:fragment="listadoVehiculos" id="vehiculos">
+
+	<div class="container text-center">
+		<form class="form-inline" th:action="@{/Vehiculo}">
+			<div class="form-group mb-2">
+			<label>Filtrar</label>
+			</div>
+			<div class="form-group mx-sm-3 mb-2">
+				<input type="text" name="palabraClave" class="form-conrol" id="palabraClave" th:value="${palabraClave}" placeholder="Digite el Valor a Buscar" required>
+			</div>
+			<input type="submit" class="btn btn-info mb-2" value="Buscar">
+			&nbsp;&nbsp;
+			<input type="button"><a th:href="@{/Vehiculo}" class="btn btn-secondary mb-2">Limpiar</a></input>
+
+
+
+
+
+			<!--
+			<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="LimpiarCampos()">
+			<button class="dropdown-item" type="button" > <a th:href="@{/Vehiculo}" class="btn btn-ligth btn-block">Vehiculo</a></button>
+			-->
+
+
+
+
+		</form>
+
+
+	</div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -55,6 +85,21 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
 	</section>
+
+
+
 	</body>
+
+<script type="text/javascript">
+				function limpiarCampos(){
+				window.location='/Vehiculo';
+					}
+				</script>
+
+
 	</html>

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IVehiculoService {
 
-    public List<Vehiculo> listarVehiculo();
+    public List<Vehiculo> listarVehiculo(String palabraClave);
     public void guardarVehiculo(Vehiculo vehiculo);
     public void eliminarVehiculo(Vehiculo vehiculo);
     public Vehiculo encontrarVehiculo(Vehiculo vehiculo);
