@@ -4,6 +4,7 @@ import com.CGDJ6.transportes.entities.ServicioRealizado;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.services.ServicioRealizadoService;
 import com.CGDJ6.transportes.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,12 +18,9 @@ import javax.validation.Valid;
 @Controller
 public class ServicioRealizadoController {
 
+    @Autowired
     ServicioRealizadoService servicioRealizadoService;
 
-
-    public ServicioRealizadoController(ServicioRealizadoService servicioRealizadoService) {
-        this.servicioRealizadoService = servicioRealizadoService;
-    }
 
     @GetMapping("/ServicioRealizado")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {

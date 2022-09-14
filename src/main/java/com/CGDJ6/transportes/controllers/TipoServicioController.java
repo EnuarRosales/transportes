@@ -4,6 +4,7 @@ import com.CGDJ6.transportes.entities.TipoServicio;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,8 @@ import javax.validation.Valid;
 @Controller
 public class TipoServicioController {
 
+    @Autowired
     TipoServicioService tipoServicioService;
-
-    public TipoServicioController(TipoServicioService tipoServicioService) {
-        this.tipoServicioService = tipoServicioService;
-    }
 
 
     @GetMapping("/TipoServicio")

@@ -3,6 +3,7 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.services.TipoUsuarioService;
 import com.CGDJ6.transportes.services.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,9 @@ import javax.validation.Valid;
 @Controller
 public class TipoUsuarioController {
 
+    @Autowired
     TipoUsuarioService tipoUsuarioService;
 
-
-    public TipoUsuarioController(TipoUsuarioService tipoUsuarioService) {
-        this.tipoUsuarioService = tipoUsuarioService;
-    }
 
     @GetMapping("/TipoUsuario")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {

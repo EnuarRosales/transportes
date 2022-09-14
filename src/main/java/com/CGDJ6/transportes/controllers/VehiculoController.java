@@ -3,6 +3,7 @@ package com.CGDJ6.transportes.controllers;
 
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.services.VehiculoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,11 +18,10 @@ import javax.validation.Valid;
 @Controller
 public class VehiculoController {
 
+    @Autowired
     VehiculoService vehiculoService;
 
-    public VehiculoController(VehiculoService vehiculoService) {
-        this.vehiculoService = vehiculoService;
-    }
+
 /*
     @GetMapping("/Vehiculo")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {

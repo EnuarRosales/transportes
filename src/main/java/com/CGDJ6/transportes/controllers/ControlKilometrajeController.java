@@ -2,6 +2,7 @@ package com.CGDJ6.transportes.controllers;
 
 import com.CGDJ6.transportes.entities.ControlKilometraje;
 import com.CGDJ6.transportes.services.ControlKilometrajeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -15,12 +16,8 @@ import javax.validation.Valid;
 @Controller
 public class ControlKilometrajeController {
 
+    @Autowired
     ControlKilometrajeService controlKilometrajeService;
-
-
-    public ControlKilometrajeController(ControlKilometrajeService controlKilometrajeService) {
-        this.controlKilometrajeService = controlKilometrajeService;
-    }
 
 
     @GetMapping("/ControlKilometraje")

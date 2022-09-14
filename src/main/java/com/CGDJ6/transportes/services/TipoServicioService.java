@@ -1,9 +1,9 @@
 package com.CGDJ6.transportes.services;
 
-import com.CGDJ6.transportes.entities.ServicioRealizado;
+
 import com.CGDJ6.transportes.entities.TipoServicio;
-import com.CGDJ6.transportes.repositories.ServicioRealizadoRepository;
 import com.CGDJ6.transportes.repositories.TipoServicioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +12,10 @@ import java.util.List;
 @Service
 public class TipoServicioService implements ITipoServicioService {
 
+    @Autowired
     private TipoServicioRepository tipoServicioRepository;
 
 
-    public TipoServicioService(TipoServicioRepository tipoServicioRepository) {
-        this.tipoServicioRepository = tipoServicioRepository;
-    }
 
     @Override
     public List<TipoServicio> listarTipoServicio() {

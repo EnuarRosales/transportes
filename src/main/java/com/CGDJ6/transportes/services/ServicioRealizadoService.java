@@ -1,9 +1,9 @@
 package com.CGDJ6.transportes.services;
 
-import com.CGDJ6.transportes.entities.ControlKilometraje;
+
 import com.CGDJ6.transportes.entities.ServicioRealizado;
-import com.CGDJ6.transportes.repositories.ControlKilometrajeRepository;
 import com.CGDJ6.transportes.repositories.ServicioRealizadoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +12,9 @@ import java.util.List;
 @Service
 public class ServicioRealizadoService implements IServicioRealizadoService {
 
+    @Autowired
     private ServicioRealizadoRepository servicioRealizadoRepository;
 
-
-    public ServicioRealizadoService(ServicioRealizadoRepository servicioRealizadoRepository) {
-        this.servicioRealizadoRepository = servicioRealizadoRepository;
-    }
 
 
     @Override
