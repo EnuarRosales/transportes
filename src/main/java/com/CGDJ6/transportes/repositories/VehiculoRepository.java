@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface VehiculoRepository extends JpaRepository<Vehiculo,String> {
 
-    @Query("SELECT v FROM  Vehiculo v WHERE CONCAT(v.placa,v.marca,v.tipoVehiculo,v.modelo) LIKE %?1%")
+    @Query("SELECT v FROM  Vehiculo v WHERE CONCAT(v.placa,v.marca,v.modelo,v.tipoVehiculo) LIKE %?1%")
     public List<Vehiculo> findAll(String palabraClave);
 
 }

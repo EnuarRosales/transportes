@@ -8,10 +8,31 @@
 <body>
 <header th:replace="layaut/plantilla :: header"></header>
 
-<H2> CONTROL VEHICULOS</H2>
-<!--<section th:replace="layaut/botonesAgregar :: botonesAgregar"></section>
-<section th:replace="layaut/agregarEmpresa :: agregarEmpresa"></section>
-<section th:replace="layaut/listadoEmpresas :: listadoEmpresas"></section> -->
+<main>
+	<div class="px-4 py-5 my-5 text-center">
+		<h1 class="display-5 fw-bold">Sistema para la administracion y gestion del Parque Automoto CGDJ6</h1>
+		<div class="col-log-6 mx-auto">
+			<p class="lead mb-4">Sofware Version 0.1 Diseñado  y Desarrollado POR: </p>
+			<p class="lead mb-4">CP. Rosales Salazar Enuar  </p>
+			<p class="lead mb-4">CP. Arley David Pinchao Cuaqtin </p>
+			<p class="lead mb-4"> CP. Gimenez Lozano Henry </p>
+
+			<!-- OJO QUE ESTO SIRVE MAS ADELANTE PARA EL TEMA DE LA AUTENTICACION
+			<div sec:authorize="!isAuthenticated()">
+				<a th:href="@{/oauth2/authorization/auth0}" class="btn btn-outline-secondary btn-lg px-4">Inicia Sesion </a>
+			</div>
+			<div sec:authorize="!isAuthenticated()">
+				<a th:href="@{/empleado}" class="btn btn-outline-secondary btn-lg px-4">llevame a la aplicacion</a>
+			</div>
+			-->
+
+		</div>
+
+	</div>
+</main>
+
+
+
 <footer th:replace="layaut/plantilla :: footer"></footer>
 
 </body>
