@@ -4,6 +4,7 @@ import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.services.TipoServicioService;
+import com.CGDJ6.transportes.services.TipoUsuarioService;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
 import com.CGDJ6.transportes.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,15 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @Autowired
-    TipoServicioService tipoServicioService;
+    TipoUsuarioService tipoUsuarioService;
 
 
     @GetMapping("/Usuario")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var usuarios= usuarioService.listarUsuario();
+       var usuariosl =tipoUsuarioService.listarTipoUsuario();
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("usuariosl", usuariosl);
         return "layaut/usuario/Usuario";
 
     }

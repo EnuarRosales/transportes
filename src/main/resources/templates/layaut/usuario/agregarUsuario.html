@@ -24,15 +24,22 @@
 
 						<div class="form-group">
 							<label for="cedula" >Cedula</label>
-							<input type="number" class="form-control" name="cedula" required="true">
+							<input type="number" class="form-control" name="cedula" required="true" >
 						</div>
 
 
 							<div class="form-group">
 								<label for="usuario" >Tipo Usuario ID</label>
-								<input type="text" class="form-control" name="usuario" required="true">
-							</div>
+								<select type="number"  class="form-control" name="usuario" required="true">
+									<option selected ></option>
+									<option th:each="usuariosl:${usuariosl}"
+									        th:value="${usuariosl.id}"
+									        th:text="${usuariosl.descripcion}"
 
+									/>
+								</select>
+
+							</div>
 
 							<!--
 
