@@ -14,8 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class VehiculoController {
@@ -42,13 +48,29 @@ public class VehiculoController {
     }
 
     @PostMapping("/guardarVehiculo")
-    public String guardar(@Valid Vehiculo vehiculo, Errors errores) {
+    public String guardar(@Valid Vehiculo vehiculo, @RequestParam ("file") MultipartFile imagen, Errors errores) {
         if(errores.hasErrors()){
             return "modificarVehiculo";
         }
+        if(!imagen.isEmpty()){
+           java.nio.file.Path directorioImagenes = Paths.get("src//main//resources//static//images");
+            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+            try {
+                byte[] bytesImg = imagen.getBytes();
+                Path rutaCompleta= Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
+                Files.write(rutaCompleta,bytesImg);
+                vehiculo.setImagen(imagen.getOriginalFilename());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         vehiculoService.guardarVehiculo(vehiculo);
         return "redirect:/Vehiculo";
     }
+
+
+
 
 
     @GetMapping("/editarVehiculo/{placa}")
@@ -56,6 +78,14 @@ public class VehiculoController {
         vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/modificarVehiculo";
+    }
+
+
+    @GetMapping("/detalleVehiculo/{placa}")
+    public String detalleVehiculo(Vehiculo vehiculo, Model model) {
+        vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
+        model.addAttribute("vehiculo", vehiculo);
+        return "layaut/vehiculo/detalleVehiculo";
     }
 
 

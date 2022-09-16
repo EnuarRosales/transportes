@@ -23,6 +23,8 @@ public class Vehiculo implements Serializable {
 
     private  String marca;
 
+    private  String imagen;
+
 
 
 
