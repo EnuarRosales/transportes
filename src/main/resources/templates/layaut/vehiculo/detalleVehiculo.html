@@ -13,9 +13,7 @@
 				<div class="card-header bg-dark text-white"></div>
 				<div class="card-body">
 					<img class="img-thumbnail rounded float-left"
-					th:src="@{'/images/' +${vehiculo.imagen}}"
-					th:alt="${vehiculo.imagen}"
-					style="max-width:25%;">
+					th:src="@{'/images/'+${vehiculo.imagen}}" th:alt="${vehiculo.imagen}"style="max-width:25%;"/>
 
 					<ul class="list-group">
 						<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.placa}"></li>

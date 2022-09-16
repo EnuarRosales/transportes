@@ -13,15 +13,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 @Controller
 public class VehiculoController {
@@ -31,6 +34,7 @@ public class VehiculoController {
 
     @Autowired
     TipoVehiculoService tipoVehiculoService;
+
 
 
 /*
@@ -47,19 +51,25 @@ public class VehiculoController {
         return "modificarVehiculo";
     }
 
+    /*@Autowired
+    RedirectAttributes flash;*/
+
     @PostMapping("/guardarVehiculo")
-    public String guardar(@Valid Vehiculo vehiculo, @RequestParam ("file") MultipartFile imagen, Errors errores) {
+    public String guardar(@Valid Vehiculo vehiculo, @RequestParam ("file") MultipartFile imagen, Errors errores, RedirectAttributes flash) {
+
+
         if(errores.hasErrors()){
             return "modificarVehiculo";
         }
         if(!imagen.isEmpty()){
-           java.nio.file.Path directorioImagenes = Paths.get("src//main//resources//static//images");
+           Path directorioImagenes = Paths.get("src//main//resources//static/images");
             String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta= Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
                 Files.write(rutaCompleta,bytesImg);
                 vehiculo.setImagen(imagen.getOriginalFilename());
+                flash.addFlashAttribute("info","has subido correctamente ' "+imagen.getOriginalFilename()+"'");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -82,11 +92,27 @@ public class VehiculoController {
 
 
     @GetMapping("/detalleVehiculo/{placa}")
-    public String detalleVehiculo(Vehiculo vehiculo, Model model) {
+    public String detalleVehiculo(@PathVariable(value = "placa") String placa, Map<String,Object> model, RedirectAttributes flash) {
+
+        Vehiculo vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
+        if(vehiculo)
+
+
+        return "layaut/vehiculo/detalleVehiculo";
+    }
+
+    @GetMapping("/detallesVehiculo/{placa}")
+    public String detallesVehiculo(Vehiculo vehiculo, Model model) {
         vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/detalleVehiculo";
     }
+
+
+
+
+
+
 
 
     @GetMapping("/eliminarVehiculo/{placa}")
