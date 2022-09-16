@@ -2,6 +2,8 @@ package com.CGDJ6.transportes.controllers;
 
 
 import com.CGDJ6.transportes.entities.Vehiculo;
+import com.CGDJ6.transportes.services.TipoServicioService;
+import com.CGDJ6.transportes.services.TipoVehiculoService;
 import com.CGDJ6.transportes.services.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -20,6 +22,9 @@ public class VehiculoController {
 
     @Autowired
     VehiculoService vehiculoService;
+
+    @Autowired
+    TipoVehiculoService tipoVehiculoService;
 
 
 /*
@@ -64,6 +69,8 @@ public class VehiculoController {
     @GetMapping("/Vehiculo")
     public String inicioB(Model model, @Param ("palabraClave") String palabraClave) {
         var vehiculos= vehiculoService.listarVehiculo( palabraClave);
+        var tipoVehiculosl =tipoVehiculoService.listarTipoVehiculo();
+        model.addAttribute("tipoVehiculosl", tipoVehiculosl);
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("palabraClave", palabraClave);
         return "layaut/vehiculo/Vehiculo";

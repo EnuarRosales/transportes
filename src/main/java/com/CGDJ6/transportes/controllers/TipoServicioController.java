@@ -22,9 +22,13 @@ public class TipoServicioController {
     TipoServicioService tipoServicioService;
 
 
+
+
+
     @GetMapping("/TipoServicio")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var tipoServicios= tipoServicioService.listarTipoServicio();
+
         model.addAttribute("tipoServicios", tipoServicios);
         return "layaut/tipoServicio/TipoServicio";
 

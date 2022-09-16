@@ -3,6 +3,7 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.ServicioRealizado;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.services.ServicioRealizadoService;
+import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -21,11 +22,16 @@ public class ServicioRealizadoController {
     @Autowired
     ServicioRealizadoService servicioRealizadoService;
 
+    @Autowired
+    TipoServicioService tipoServicioService;
+
 
     @GetMapping("/ServicioRealizado")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
+        var tipoServiciosl= tipoServicioService.listarTipoServicio();
         model.addAttribute("servicioRealizados", servicioRealizados);
+        model.addAttribute("tipoServiciosl", tipoServiciosl);
         return "layaut/servicioRealizado/ServicioRealizado";
 
     }
