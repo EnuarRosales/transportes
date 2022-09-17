@@ -44,9 +44,7 @@ public class VehiculoService implements IVehiculoService{
     }
 
 
-    public void detalleVehiculo(String placa) {
-        return vehiculoRepository.findOne(placa);
-    }
+
 
 
 }

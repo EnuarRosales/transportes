@@ -25,11 +25,13 @@
 								<th>Marca</th>
 								<th></th>
 								<th></th>
+								<th></th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr th:each="vehiculo:${vehiculos}">
-								<td th:text="${vehiculo.placa}">Cedula</td>
+								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
+
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
 								<td th:text="${vehiculo.modelo}">Modelo</td>
 								<td th:text="${vehiculo.marca}">Marca</td>

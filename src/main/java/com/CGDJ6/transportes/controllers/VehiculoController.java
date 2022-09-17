@@ -69,7 +69,7 @@ public class VehiculoController {
                 Path rutaCompleta= Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
                 Files.write(rutaCompleta,bytesImg);
                 vehiculo.setImagen(imagen.getOriginalFilename());
-                flash.addFlashAttribute("info","has subido correctamente ' "+imagen.getOriginalFilename()+"'");
+                flash.addFlashAttribute("success","Vehiculo  Creado Correctamente");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -91,6 +91,7 @@ public class VehiculoController {
     }
 
 
+/*
     @GetMapping("/detalleVehiculo/{placa}")
     public String detalleVehiculo(@PathVariable(value = "placa") String placa, Map<String,Object> model, RedirectAttributes flash) {
 
@@ -100,12 +101,13 @@ public class VehiculoController {
 
         return "layaut/vehiculo/detalleVehiculo";
     }
+    */
 
     @GetMapping("/detallesVehiculo/{placa}")
     public String detallesVehiculo(Vehiculo vehiculo, Model model) {
         vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
         model.addAttribute("vehiculo", vehiculo);
-        return "layaut/vehiculo/detalleVehiculo";
+        return "layaut/vehiculo/VehiculoDetalle";
     }
 
 
@@ -116,8 +118,9 @@ public class VehiculoController {
 
 
     @GetMapping("/eliminarVehiculo/{placa}")
-    public String eliminar(Vehiculo vehiculo) {
+    public String eliminar(Vehiculo vehiculo, RedirectAttributes flash) {
         vehiculoService.eliminarVehiculo(vehiculo);
+        flash.addFlashAttribute("success","Vehiculo Eliminado Correctamente");
         return "redirect:/Vehiculo";
     }
 

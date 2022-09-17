@@ -1,0 +1,62 @@
+<html xmlns:th ="http://www.thymelealf.org"
+				 xmlns:sec="http://www.thymelealf.org/extras/spring-security">
+<head th:replace="layaut/plantilla :: head">
+    <title>inicio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header th:replace="layaut/plantilla :: header"></header>
+<section th:replace="layaut/vehiculo/botonAtrasVehiculo :: botonAtrasVehiculo"></section>
+
+<div class="container py-4">
+	<div class="card bg-light">
+		<div class="card-header"> </div>
+		<div class="card-body">
+		<img th:if="${#strings.length(vehiculo.imagen) > 0}" class="img-thumbnail rounded float-left"
+		     th:src="@{'/images/' +${vehiculo.imagen}}"
+		     th:alt="${vehiculo.imagen}"
+		     style="max-width:50%;"/>
+		<ul class="list-group">
+			<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.placa}"></li>
+			<li class="list-group-item" th:text="'TIPO DEL VEHICULO: ' +${vehiculo.tipoVehiculo.descripcion}"></li>
+			<li class="list-group-item" th:text="'AÑO DEL VEHICULO: ' +${vehiculo.modelo}"></li>
+			<li class="list-group-item" th:text="'MARCA DEL VEHICULO: ' +${vehiculo.marca}"></li>
+			<li class="list-group-item" th:text="'OTRO: ' +${vehiculo.marca}"></li>
+			<li class="list-group-item" th:text="'OTRO: ' +${vehiculo.marca}"></li>
+		</ul>
+
+		</div>
+
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.placa}"></li>
+				<li class="list-group-item" th:text="'TIPO DEL VEHICULO: ' +${vehiculo.tipoVehiculo.descripcion}"></li>
+				<li class="list-group-item" th:text="'AÑO DEL VEHICULO: ' +${vehiculo.modelo}"></li>
+				<li class="list-group-item" th:text="'MARCA DEL VEHICULO: ' +${vehiculo.marca}"></li>
+				<li class="list-group-item" th:text="'OTRO: ' +${vehiculo.marca}"></li>
+				<li class="list-group-item" th:text="'OTRO: ' +${vehiculo.marca}"></li>
+			</ul>
+		</div>
+
+	</div>
+
+
+</div>
+
+
+<footer th:replace="layaut/plantilla :: footer"></footer>
+
+</body>
+</html>
+
+
+
+<!--
+
+<section th:replace="layaut/vehiculo/botonesAgregarVehiculo :: botonesAgregarVehiculo"></section>
+
+<section th:replace="layaut/vehiculo/agregarVehiculo :: agregarVehiculo"></section>
+<section th:replace="layaut/vehiculo/botonesFiltrarVehiculo :: botonesFiltrarVehiculo"></section>
+<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
+-->
