@@ -35,9 +35,15 @@ public class AsignacionVehiculoController {
     @PostMapping("/guardarAsignacionVehiculo")
     public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores) {
         if(errores.hasErrors()){
-            return "modificarAsignacionVehiculo";
+            return "redirect:/AsignacionVehiculo";
         }
-        asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
+        try {
+            asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
+        } catch (Exception e) {
+            return "redirect:/modificarAsignacionVehiculo";
+
+        }
+
 
         return "redirect:/AsignacionVehiculo";
     }
