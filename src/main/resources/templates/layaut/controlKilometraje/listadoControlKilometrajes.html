@@ -22,7 +22,7 @@
 								<th>Vehiculo Placa</th>
 								<th>Fecha Registro</th>
 								<th>Kilometraje</th>
-								<th>Activo</th>
+<!--								<th>Activo</th>-->
 								<th></th>
 								<th></th>
 							</tr>
@@ -32,7 +32,7 @@
 								<td th:text="${controlKilometraje.vehiculo.placa}">Vehiculo</td>
 								<td th:text="${controlKilometraje.fechaRegistro}">fechaRegistro</td>
 								<td th:text="${controlKilometraje.kilometraje}">kilometraje</td>
-								<td th:text="${controlKilometraje.activo}">activo</td>
+<!--								<td th:text="${controlKilometraje.activo}">activo</td>-->
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarControlKilometraje/} + ${controlKilometraje.id}"
 									   class="btn btn-secondary">
