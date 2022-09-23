@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
+
 @Data
 @Entity
 public class Usuario implements Serializable {
@@ -19,6 +20,8 @@ public class Usuario implements Serializable {
     private  String grado;
 
     private  String nombre;
+
+
 
 
 
