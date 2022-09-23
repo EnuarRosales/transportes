@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class TipoUsuario implements Serializable {
     private  static final  long serialVersionUID =1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private  String descripcion;

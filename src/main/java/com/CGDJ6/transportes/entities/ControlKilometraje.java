@@ -12,7 +12,7 @@ import java.util.Date;
 public class ControlKilometraje implements Serializable {
     private  static final  long serialVersionUID =1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -22,6 +22,8 @@ public class ControlKilometraje implements Serializable {
     private String fechaRegistro;
 
     private  Long  kilometraje;
+
+    private boolean activo;
 
 
 }
