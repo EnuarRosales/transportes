@@ -6,7 +6,7 @@
 	<title>Editar Vehiculos</title>
 	<meta charset="UTF-8"/>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <header th:replace="layaut/vehiculo/botonesEditarVehiculo :: botonesEditarVehiculo"></header>
 		<div class="container">
 			<div class="card bg-light">

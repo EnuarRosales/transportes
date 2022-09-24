@@ -6,7 +6,7 @@
 	<title>Agregar Tipo Servicio</title>
 	<meta charset="UTF-8"/>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <section th:fragment="agregarTipoServicio">
 	<div id="agregarTipoServicio" class="modal fade">
 		<div class="modal-dialog modal-lg">

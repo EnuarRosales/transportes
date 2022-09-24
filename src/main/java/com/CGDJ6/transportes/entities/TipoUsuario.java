@@ -14,6 +14,7 @@ public class TipoUsuario implements Serializable {
     private Long id;
 
     private  String descripcion;
+       
 
 
 }

@@ -6,7 +6,7 @@
 	<title>Agregar Vehiculo</title>
 	<meta charset="UTF-8"/>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <section th:fragment="agregarVehiculo">
 	<div id="agregarVehiculo" class="modal fade">
 		<div class="modal-dialog modal-lg">

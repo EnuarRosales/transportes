@@ -6,7 +6,7 @@
 	<title>Editar Empresa</title>
 	<meta charset="UTF-8"/>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <section th:fragment="editarUsuarios">
 	<form th:action="@{/guardarUsuario}" th:object="${usuario}"
 	      method="POST" class="was-validated">

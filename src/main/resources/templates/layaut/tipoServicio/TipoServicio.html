@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <header th:replace="layaut/plantilla :: header"></header>
 <section th:replace="layaut/tipoServicio/botonesAgregarTipoServicio :: botonesAgregarTipoServicio"></section>
 <section th:replace="layaut/tipoServicio/agregarTipoServicio :: agregarTipoServicio"></section>

@@ -4,8 +4,8 @@
     <title>inicio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+</head >
+<body sec:authorize="isAuthenticated()">
 <header th:replace="layaut/plantilla :: header"></header>
 <section th:replace="layaut/tipoVehiculo/botonesAgregarTipoVehiculo :: botonesAgregarTipoVehiculo"></section>
  <section th:replace="layaut/tipoVehiculo/agregarTipoVehiculo :: agregarTipoVehiculo"></section>
