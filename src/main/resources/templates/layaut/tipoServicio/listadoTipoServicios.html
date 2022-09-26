@@ -26,7 +26,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="tipoServicio:${tipoServicios}">
+							<tr th:each="tipoServicio:${tipoServicios}" th:if="${tipoServicio.activo == true}">
 								<td th:text="${tipoServicio.id}">Id</td>
 								<td th:text="${tipoServicio.descripcion}">Descripcion</td>
 								<td>
@@ -35,7 +35,7 @@
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoServicio/}+ ${tipoServicio.id}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarTipoServicioSuave/}+ ${tipoServicio.id}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 

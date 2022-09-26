@@ -26,7 +26,7 @@
 
 							<select type="number"  class="form-control" name="tipoServicio" required="true">
 								<option selected ></option>
-								<option th:each="tipoServiciosl:${tipoServiciosl}"
+								<option th:each="tipoServiciosl:${tipoServiciosl}" th:if="${tipoServiciosl.activo == true}"
 										th:value="${tipoServiciosl.id}"
 										th:text="${tipoServiciosl.descripcion}"
 

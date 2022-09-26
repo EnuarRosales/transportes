@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.controllers;
 
 import com.CGDJ6.transportes.entities.TipoServicio;
+import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
@@ -62,6 +63,13 @@ public class TipoServicioController {
     @GetMapping("/eliminarTipoServicio/{id}")
     public String eliminar(TipoServicio tipoServicio,RedirectAttributes flash) {
         tipoServicioService.eliminarTipoServicio(tipoServicio);
+        flash.addFlashAttribute("success","Tipo Servicio  Eliminado Correctamente");
+        return "redirect:/TipoServicio";
+    }
+
+    @GetMapping("/eliminarTipoServicioSuave/{id}")
+    public String eliminarS(TipoServicio tipoServicio,RedirectAttributes flash) {
+        tipoServicioService.eliminadoSuave(tipoServicio);
         flash.addFlashAttribute("success","Tipo Servicio  Eliminado Correctamente");
         return "redirect:/TipoServicio";
     }

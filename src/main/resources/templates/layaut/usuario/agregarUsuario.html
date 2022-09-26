@@ -32,7 +32,7 @@
 								<label for="usuario" >Tipo Usuario ID</label>
 								<select type="number"  class="form-control" name="usuario" required="true">
 									<option selected ></option>
-									<option th:each="usuariosl:${usuariosl}"
+									<option th:each="usuariosl:${usuariosl}" th:if="${usuariosl.activo == true}"
 									        th:value="${usuariosl.id}"
 									        th:text="${usuariosl.descripcion}"
 
