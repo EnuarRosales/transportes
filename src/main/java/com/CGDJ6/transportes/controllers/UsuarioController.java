@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -44,16 +45,19 @@ public class UsuarioController {
         return "modificarUsuario";
     }
 
+    //sirve para crear Y GURDAR A LA VEZ LOS  usuarios
     @PostMapping("/guardarUsuario")
-    public String guardar(@Valid Usuario usuario, Errors errores) {
+    public String guardar(@Valid Usuario usuario, Errors errores, RedirectAttributes flash) {
         if(errores.hasErrors()){
             return "modificarUsuario";
         }
         usuarioService.guardarUsuario(usuario);
+        flash.addFlashAttribute("success","Usuario  Creado Correctamente");
         return "redirect:/Usuario";
     }
 
 
+//SIRVE PARA ENCONTRAR EL DATO A EDITAR
     @GetMapping("/editarUsuario/{cedula}")
     public String editar(Usuario usuario, Model model) {
         usuario = usuarioService.encontrarUsuario(usuario);
@@ -63,8 +67,9 @@ public class UsuarioController {
 
 
     @GetMapping("/eliminarUsuario/{cedula}")
-    public String eliminar(Usuario usuario) {
+    public String eliminar(Usuario usuario,RedirectAttributes flash) {
         usuarioService.eliminarUsuario(usuario);
+        flash.addFlashAttribute("success","Usuario  Eliminado Correctamente");
         return "redirect:/Usuario";
     }
 

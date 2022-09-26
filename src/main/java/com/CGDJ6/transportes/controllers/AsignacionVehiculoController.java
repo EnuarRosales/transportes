@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -33,20 +34,17 @@ public class AsignacionVehiculoController {
     }
 
     @PostMapping("/guardarAsignacionVehiculo")
-    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores) {
+    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores, RedirectAttributes flash) {
         if(errores.hasErrors()){
             return "redirect:/AsignacionVehiculo";
         }
         try {
             asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
+            flash.addFlashAttribute("success","Vehiculo  Asignado Correctamente");
         } catch (Exception e) {
             return "redirect:/modificarAsignacionVehiculo";
 
-
-
-
         }
-
 
         return "redirect:/AsignacionVehiculo";
     }
@@ -61,8 +59,9 @@ public class AsignacionVehiculoController {
 
 
     @GetMapping("/eliminarAsignacionVehiculo/{id}")
-    public String eliminar(AsignacionVehiculo asignacionVehiculo) {
+    public String eliminar(AsignacionVehiculo asignacionVehiculo,RedirectAttributes flash) {
         asignacionVehiculoService.eliminarAsignacionVehiculo(asignacionVehiculo);
+        flash.addFlashAttribute("success","Vehiculo  Eliminado Correctamente");
         return "redirect:/AsignacionVehiculo";
     }
 

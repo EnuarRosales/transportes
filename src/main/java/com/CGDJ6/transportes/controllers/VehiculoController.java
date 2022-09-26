@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.controllers;
 
 
+import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
@@ -79,6 +80,21 @@ public class VehiculoController {
         return "redirect:/Vehiculo";
     }
 
+    //guarda cuando editamos un vehiculo
+    @PostMapping("/guardarVehiculoEditado")
+    public String guardar(@Valid Vehiculo vehiculo, Errors errores, RedirectAttributes flash) {
+        if(errores.hasErrors()){
+            return "modificarVehiculo";
+        }
+        vehiculoService.guardarVehiculo(vehiculo);
+        flash.addFlashAttribute("success","Vehiculo  Editado Correctamente");
+        return "redirect:/Vehiculo";
+    }
+
+
+
+
+
 
 
 
@@ -109,11 +125,6 @@ public class VehiculoController {
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/VehiculoDetalle";
     }
-
-
-
-
-
 
 
 

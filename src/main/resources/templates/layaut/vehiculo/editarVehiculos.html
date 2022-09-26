@@ -8,7 +8,7 @@
 </head>
 <body sec:authorize="isAuthenticated()">
 <section th:fragment="editarVehiculos">
-	<form th:action="@{/guardarVehiculo}" th:object="${vehiculo}"
+	<form th:action="@{/guardarVehiculoEditado}" th:object="${vehiculo}"
 	      method="POST" class="was-validated">
 		<input type="hidden" name="placaVehiculo" th:field="*{placa}"/>
 		<section th:replace="layaut/vehiculo/botonesEditarVehiculo :: botonesEditarVehiculo"></section>

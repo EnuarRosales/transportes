@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -35,11 +36,12 @@ public class TipoUsuarioController {
     }
 
     @PostMapping("/guardarTipoUsuario")
-    public String guardar(@Valid TipoUsuario tipoUsuario, Errors errores) {
+    public String guardar(@Valid TipoUsuario tipoUsuario, Errors errores, RedirectAttributes flash) {
         if(errores.hasErrors()){
             return "modificarTipoUsuario";
         }
         tipoUsuarioService.guardarTipoUsuario(tipoUsuario);
+        flash.addFlashAttribute("success","Tipo Usuario  Creado Correctamente");
         return "redirect:/TipoUsuario";
     }
 
@@ -54,10 +56,21 @@ public class TipoUsuarioController {
 
 
     @GetMapping("/eliminarTipoUsuario/{id}")
-    public String eliminar(TipoUsuario tipoUsuario) {
+    public String eliminar(TipoUsuario tipoUsuario,RedirectAttributes flash) {
         tipoUsuarioService.eliminarTipoUsuario(tipoUsuario);
+        flash.addFlashAttribute("success","Tipo Usuario  Eliminado Correctamente");
         return "redirect:/TipoUsuario";
     }
+
+    @GetMapping("/eliminarTipoUsuarioSuave/{id}")
+    public String eliminarS(TipoUsuario tipoUsuario,RedirectAttributes flash) {
+        tipoUsuarioService.eliminadoSuaveTipoUsuario(tipoUsuario);
+        flash.addFlashAttribute("success","Tipo Usuario  Eliminado Correctamente");
+        return "redirect:/TipoUsuario";
+    }
+
+
+
 
 
 

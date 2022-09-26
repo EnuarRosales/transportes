@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -40,11 +41,12 @@ public class TipoServicioController {
     }
 
     @PostMapping("/guardarTipoServicio")
-    public String guardar(@Valid TipoServicio tipoServicio, Errors errores) {
+    public String guardar(@Valid TipoServicio tipoServicio, Errors errores, RedirectAttributes flash) {
         if(errores.hasErrors()){
             return "modificarTipoServicio";
         }
         tipoServicioService.guardarTipoServicio(tipoServicio);
+        flash.addFlashAttribute("success","Tipo Servicio  Creado Correctamente");
         return "redirect:/TipoServicio";
     }
 
@@ -58,8 +60,9 @@ public class TipoServicioController {
 
 
     @GetMapping("/eliminarTipoServicio/{id}")
-    public String eliminar(TipoServicio tipoServicio) {
+    public String eliminar(TipoServicio tipoServicio,RedirectAttributes flash) {
         tipoServicioService.eliminarTipoServicio(tipoServicio);
+        flash.addFlashAttribute("success","Tipo Servicio  Eliminado Correctamente");
         return "redirect:/TipoServicio";
     }
 

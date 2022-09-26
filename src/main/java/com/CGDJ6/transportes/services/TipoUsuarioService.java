@@ -37,6 +37,13 @@ public class TipoUsuarioService implements ITipoUsuarioService{
     }
 
 
+    public  void eliminadoSuaveTipoUsuario(TipoUsuario tipoUsuario){
+        tipoUsuarioRepository.findById(tipoUsuario.setActivo(false));
+        tipoUsuarioRepository.
+
+    }
+
+
 
 
 }

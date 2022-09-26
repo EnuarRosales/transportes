@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -34,11 +35,12 @@ public class ControlKilometrajeController {
     }
 
     @PostMapping("/guardarControlKilometraje")
-    public String guardar(@Valid ControlKilometraje controlKilometraje, Errors errores) {
+    public String guardar(@Valid ControlKilometraje controlKilometraje, Errors errores, RedirectAttributes flash) {
         if(errores.hasErrors()){
             return "modificarControlKilometraje";
         }
         controlKilometrajeService.guardarControlKilometraje(controlKilometraje);
+        flash.addFlashAttribute("success","Kilometraje Registrado Correctamente");
         return "redirect:/ControlKilometraje";
     }
 
@@ -52,8 +54,9 @@ public class ControlKilometrajeController {
 
 
     @GetMapping("/eliminarControlKilometraje/{id}")
-    public String eliminar(ControlKilometraje controlKilometraje) {
+    public String eliminar(ControlKilometraje controlKilometraje,RedirectAttributes flash) {
         controlKilometrajeService.eliminarControlKilometraje(controlKilometraje);
+        flash.addFlashAttribute("success","Kilometraje Eliminado Correctamente");
         return "redirect:/ControlKilometraje";
     }
 
