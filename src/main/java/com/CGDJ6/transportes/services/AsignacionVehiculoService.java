@@ -2,6 +2,7 @@ package com.CGDJ6.transportes.services;
 
 import com.CGDJ6.transportes.entities.AsignacionVehiculo;
 import com.CGDJ6.transportes.entities.TipoServicio;
+import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.repositories.AsignacionVehiculoRepository;
 import com.CGDJ6.transportes.repositories.TipoServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class AsignacionVehiculoService implements IAsignacionVehiculoService {
     public AsignacionVehiculo encontrarAsignacionVehiculo(AsignacionVehiculo asignacionVehiculo) {
         return asignacionVehiculoRepository.findById(asignacionVehiculo.getId()).orElse(null);
     }
+
+    @Override
+    public void eliminadoSuave(AsignacionVehiculo asignacionVehiculo) {
+
+    }
+
 
 
 

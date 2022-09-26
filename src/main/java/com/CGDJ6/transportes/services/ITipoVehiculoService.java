@@ -1,5 +1,6 @@
 package com.CGDJ6.transportes.services;
 
+import com.CGDJ6.transportes.entities.TipoServicio;
 import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 
@@ -11,4 +12,9 @@ public interface ITipoVehiculoService {
     public void guardarTipoVehiculo(TipoVehiculo tipoVehiculo);
     public void eliminarTipoVehiculo(TipoVehiculo tipoVehiculo);
     public TipoVehiculo encontrarTipoVehiculo(TipoVehiculo tipoVehiculo);
+    public void eliminadoSuave(TipoVehiculo tipoVehiculo);
+
+
+
+
 }

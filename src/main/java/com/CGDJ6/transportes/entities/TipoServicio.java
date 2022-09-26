@@ -19,19 +19,29 @@ public class TipoServicio /*implements Serializable*/ {
 
     private  String descripcion;
 
-
     @JsonIgnore
     @OneToMany(mappedBy = "tipoServicio")
     private List<ServicioRealizado> servicioRealizado;
+
+    private boolean activo =true;
 
 
     public TipoServicio() {
     }
 
-    public TipoServicio(Long id, String descripcion, List<ServicioRealizado> servicioRealizado) {
+    public TipoServicio(Long id, String descripcion, List<ServicioRealizado> servicioRealizado, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
         this.servicioRealizado = servicioRealizado;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Long getId() {

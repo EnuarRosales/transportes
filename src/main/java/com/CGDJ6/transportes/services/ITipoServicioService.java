@@ -11,4 +11,5 @@ public interface ITipoServicioService {
     public void guardarTipoServicio(TipoServicio tipoServicio);
     public void eliminarTipoServicio(TipoServicio tipoServicio);
     public TipoServicio encontrarTipoServicio(TipoServicio tipoServicio);
+    public void eliminadoSuave(TipoServicio tipoServicio);
 }

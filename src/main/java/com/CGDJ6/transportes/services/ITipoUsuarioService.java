@@ -11,4 +11,9 @@ public interface ITipoUsuarioService {
     public void guardarTipoUsuario(TipoUsuario tipoUsuario);
     public void eliminarTipoUsuario(TipoUsuario tipoUsuario);
     public TipoUsuario encontrarTipoUsuario(TipoUsuario tipoUsuario);
+    public void eliminadoSuave(TipoUsuario tipoUsuario);
+
+
+
+
 }

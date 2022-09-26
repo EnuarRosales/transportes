@@ -20,10 +20,12 @@ public class TipoUsuarioService implements ITipoUsuarioService{
         return (List<TipoUsuario>) tipoUsuarioRepository.findAll();
     }
 
+
     @Override
     public void guardarTipoUsuario(TipoUsuario tipoUsuario) {
         tipoUsuarioRepository.save(tipoUsuario);
     }
+
 
     @Override
     @Transactional
@@ -37,13 +39,25 @@ public class TipoUsuarioService implements ITipoUsuarioService{
     }
 
 
-    public  void eliminadoSuaveTipoUsuario(TipoUsuario tipoUsuario){
-        tipoUsuarioRepository.findById(tipoUsuario.setActivo(false));
-        tipoUsuarioRepository.
+
+
+    @Override
+    public void eliminadoSuave(TipoUsuario tipoUsuario) {
+            tipoUsuario.setActivo(false);
+            tipoUsuario.setDescripcion(tipoUsuarioRepository.findById(tipoUsuario.getId()).orElse(null).getDescripcion());
+            tipoUsuarioRepository.save(tipoUsuario);
+        }
+
+
+
+
+
+
+
+
+
 
     }
 
 
 
-
-}

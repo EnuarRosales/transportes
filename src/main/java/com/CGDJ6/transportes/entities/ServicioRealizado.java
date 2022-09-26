@@ -33,10 +33,12 @@ public class ServicioRealizado /*implements Serializable*/ {
 
     private  String descripcion;
 
+    private boolean activo =true;
+
     public ServicioRealizado() {
     }
 
-    public ServicioRealizado(Long id, TipoServicio tipoServicio, Vehiculo vehiculo, String fechaInicioServicio, String fechaTerminoServicio, Long kilometrajeInicio, Long kilometrajeTermino, String descripcion) {
+    public ServicioRealizado(Long id, TipoServicio tipoServicio, Vehiculo vehiculo, String fechaInicioServicio, String fechaTerminoServicio, Long kilometrajeInicio, Long kilometrajeTermino, String descripcion, boolean activo) {
         this.id = id;
         this.tipoServicio = tipoServicio;
         this.vehiculo = vehiculo;
@@ -45,6 +47,15 @@ public class ServicioRealizado /*implements Serializable*/ {
         this.kilometrajeInicio = kilometrajeInicio;
         this.kilometrajeTermino = kilometrajeTermino;
         this.descripcion = descripcion;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Long getId() {

@@ -37,10 +37,13 @@ public class Vehiculo /*implements Serializable */{
     @OneToMany(mappedBy = "vehiculo")
     private  List<AsignacionVehiculo> asignacionVehiculo;
 
+    private boolean activo =true;
+
+
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, Integer modelo, String marca, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo) {
+    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, Integer modelo, String marca, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, boolean activo) {
         this.placa = placa;
         this.tipoVehiculo = tipoVehiculo;
         this.modelo = modelo;
@@ -49,6 +52,15 @@ public class Vehiculo /*implements Serializable */{
         this.servicioRealizado = servicioRealizado;
         this.controlKilometraje = controlKilometraje;
         this.asignacionVehiculo = asignacionVehiculo;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public String getPlaca() {

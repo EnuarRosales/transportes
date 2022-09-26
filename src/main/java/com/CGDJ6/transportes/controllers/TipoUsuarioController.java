@@ -64,11 +64,10 @@ public class TipoUsuarioController {
 
     @GetMapping("/eliminarTipoUsuarioSuave/{id}")
     public String eliminarS(TipoUsuario tipoUsuario,RedirectAttributes flash) {
-        tipoUsuarioService.eliminadoSuaveTipoUsuario(tipoUsuario);
+        tipoUsuarioService.eliminadoSuave(tipoUsuario);
         flash.addFlashAttribute("success","Tipo Usuario  Eliminado Correctamente");
         return "redirect:/TipoUsuario";
     }
-
 
 
 

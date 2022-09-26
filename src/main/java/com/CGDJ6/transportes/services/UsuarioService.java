@@ -40,7 +40,10 @@ public class UsuarioService implements IUsuarioService{
         return usuarioRepository.findById(usuario.getCedula()).orElse(null);
     }
 
+    @Override
+    public void eliminadoSuave(Usuario usuario) {
 
+    }
 
 
 }

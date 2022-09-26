@@ -21,13 +21,24 @@ public class TipoVehiculo /*implements Serializable*/{
     @OneToMany(mappedBy = "tipoVehiculo")
     private List<Vehiculo> vehiculo;
 
+    private boolean activo =true;
+
     public TipoVehiculo() {
     }
 
-    public TipoVehiculo(Long id, String descripcion, List<Vehiculo> vehiculo) {
+    public TipoVehiculo(Long id, String descripcion, List<Vehiculo> vehiculo, boolean activo) {
         this.id = id;
         this.descripcion = descripcion;
         this.vehiculo = vehiculo;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Long getId() {

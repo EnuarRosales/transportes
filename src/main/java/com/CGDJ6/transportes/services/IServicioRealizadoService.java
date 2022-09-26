@@ -11,4 +11,5 @@ public interface IServicioRealizadoService {
     public void guardarServicioRealizado(ServicioRealizado  servicioRealizado);
     public void eliminarServicioRealizado(ServicioRealizado  servicioRealizado);
     public ServicioRealizado encontrarServicioRealizado (ServicioRealizado  servicioRealizado);
+    public void eliminadoSuave(ServicioRealizado  servicioRealizado);
 }

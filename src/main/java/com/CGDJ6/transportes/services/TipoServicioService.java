@@ -40,8 +40,10 @@ public class TipoServicioService implements ITipoServicioService {
         return tipoServicioRepository.findById(tipoServicio.getId()).orElse(null);
     }
 
+    @Override
+    public void eliminadoSuave(TipoServicio tipoServicio) {
 
-
+    }
 
 
 }

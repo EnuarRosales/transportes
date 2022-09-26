@@ -24,15 +24,26 @@ public class Usuario /*implements Serializable*/ {
 
     private  String nombre;
 
+    private boolean activo =true;
+
 
     public Usuario() {
     }
 
-    public Usuario(Long cedula, TipoUsuario usuario, String grado, String nombre) {
+    public Usuario(Long cedula, TipoUsuario usuario, String grado, String nombre, boolean activo) {
         this.cedula = cedula;
         this.usuario = usuario;
         this.grado = grado;
         this.nombre = nombre;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Long getCedula() {

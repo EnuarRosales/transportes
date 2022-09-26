@@ -11,6 +11,7 @@ public interface IVehiculoService {
     public void guardarVehiculo(Vehiculo vehiculo);
     public void eliminarVehiculo(Vehiculo vehiculo);
     public Vehiculo encontrarVehiculo(Vehiculo vehiculo);
+    public void eliminadoSuave(Vehiculo vehiculo);
 
 
 }

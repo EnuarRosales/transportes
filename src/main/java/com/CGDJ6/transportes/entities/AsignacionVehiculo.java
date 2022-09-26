@@ -26,15 +26,26 @@ public class AsignacionVehiculo /*implements Serializable*/ {
 
     private String unidad;
 
+    private boolean activo =true;
+
     public AsignacionVehiculo() {
     }
 
-    public AsignacionVehiculo(Long id, Vehiculo vehiculo, Usuario usuario, String fechaAsignacion, String unidad) {
+    public AsignacionVehiculo(Long id, Vehiculo vehiculo, Usuario usuario, String fechaAsignacion, String unidad, boolean activo) {
         this.id = id;
         this.vehiculo = vehiculo;
         this.usuario = usuario;
         this.fechaAsignacion = fechaAsignacion;
         this.unidad = unidad;
+        this.activo = activo;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public Long getId() {

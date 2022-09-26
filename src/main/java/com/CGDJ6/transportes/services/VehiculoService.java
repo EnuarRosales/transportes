@@ -43,8 +43,10 @@ public class VehiculoService implements IVehiculoService{
         return vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null);
     }
 
+    @Override
+    public void eliminadoSuave(Vehiculo vehiculo) {
 
-
+    }
 
 
 }

@@ -32,14 +32,15 @@ public class TipoUsuario /*implements Serializable*/ {
         this.usuario = usuario;
     }
 
+
     public boolean isActivo() {
         return activo;
     }
 
     public void setActivo(boolean activo) {
         this.activo = activo;
-
     }
+
 
     public Long getId() {
         return id;

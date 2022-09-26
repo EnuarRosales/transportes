@@ -38,6 +38,10 @@ public class ControlKilometrajeService implements IControlKilometrajeService {
         return controlKilometrajeRepository.findById(controlKilometraje.getId()).orElse(null);
     }
 
+    @Override
+    public void eliminadoSuave(ControlKilometraje controlKilometraje) {
+
+    }
 
 
 }

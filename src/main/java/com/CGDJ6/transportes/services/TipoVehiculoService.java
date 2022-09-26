@@ -39,5 +39,10 @@ public class TipoVehiculoService implements ITipoVehiculoService{
         return tipoVehiculoRepository.findById(tipoVehiculo.getId()).orElse(null);
     }
 
+    @Override
+    public void eliminadoSuave(TipoVehiculo tipoVehiculo) {
+
+    }
+
 
 }

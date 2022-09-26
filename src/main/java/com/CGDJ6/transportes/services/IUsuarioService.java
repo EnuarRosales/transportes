@@ -11,4 +11,6 @@ public interface IUsuarioService {
     public void guardarUsuario(Usuario usuario);
     public void eliminarUsuario(Usuario usuario);
     public Usuario encontrarUsuario(Usuario usuario);
+
+    public void eliminadoSuave(Usuario usuario);
 }
