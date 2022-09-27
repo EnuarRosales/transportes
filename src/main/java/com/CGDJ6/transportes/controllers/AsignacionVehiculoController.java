@@ -34,6 +34,7 @@ public class AsignacionVehiculoController {
         return "modificarAsignacionVehiculo";
     }
 
+
     @PostMapping("/guardarAsignacionVehiculo")
     public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores, BindingResult bindingResult, RedirectAttributes flash) {
 
@@ -42,7 +43,6 @@ public class AsignacionVehiculoController {
             System.out.println("entro el error");
             return "redirect:/AsignacionVehiculo";
         }
-
 
         if(errores.hasErrors()){
             return "redirect:/AsignacionVehiculo";
@@ -57,6 +57,9 @@ public class AsignacionVehiculoController {
 
         return "redirect:/AsignacionVehiculo";
     }
+
+
+
 
 
     @GetMapping("/editarAsignacionVehiculo/{id}")
