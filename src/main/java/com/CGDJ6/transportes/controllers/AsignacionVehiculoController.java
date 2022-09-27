@@ -31,13 +31,27 @@ public class AsignacionVehiculoController {
 
     @GetMapping("/agregarAsignacionVehiculo")
     public String agregar(AsignacionVehiculo asignacionVehiculo) {
+
         return "modificarAsignacionVehiculo";
     }
 
 
-    @PostMapping("/guardarAsignacionVehiculo")
-    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores, BindingResult bindingResult, RedirectAttributes flash) {
 
+    @PostMapping("/guardarAsignacionVehiculo")
+    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo,  RedirectAttributes flash) {
+        System.out.println(asignacionVehiculo.getVehiculo());
+
+        if(asignacionVehiculo.getVehiculo() != null){
+            asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
+            flash.addFlashAttribute("success","Vehiculo  Asignado Correctamente");
+            System.out.println("el vehiculo no exisate");
+            return "redirect:/AsignacionVehiculo";
+        }
+        flash.addFlashAttribute("error","Vehiculo  no esta en la base de datos");
+        //asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
+
+
+/*
         if (bindingResult.hasErrors()) {
             // Aquí se puede hacer cualquier cosa, yo hago una redirección para mostrar los errores en el form
             System.out.println("entro el error");
@@ -53,11 +67,10 @@ public class AsignacionVehiculoController {
         } catch (Exception e) {
             return "redirect:/modificarAsignacionVehiculo";
 
-        }
+        }*/
 
         return "redirect:/AsignacionVehiculo";
     }
-
 
 
 
@@ -83,7 +96,6 @@ public class AsignacionVehiculoController {
         flash.addFlashAttribute("success","Vehiculo  Eliminado Correctamente");
         return "redirect:/AsignacionVehiculo";
     }
-
 
 
 }
