@@ -35,6 +35,7 @@ public class TipoUsuarioService implements ITipoUsuarioService{
 
     @Override
     public TipoUsuario encontrarTipoUsuario(TipoUsuario tipoUsuario) {
+         tipoUsuario.setActivo(false);
         return tipoUsuarioRepository.findById(tipoUsuario.getId()).orElse(null);
     }
 

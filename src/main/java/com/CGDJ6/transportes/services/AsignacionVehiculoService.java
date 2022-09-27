@@ -3,6 +3,7 @@ package com.CGDJ6.transportes.services;
 import com.CGDJ6.transportes.entities.AsignacionVehiculo;
 import com.CGDJ6.transportes.entities.TipoServicio;
 import com.CGDJ6.transportes.entities.TipoUsuario;
+import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.repositories.AsignacionVehiculoRepository;
 import com.CGDJ6.transportes.repositories.TipoServicioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,12 @@ public class AsignacionVehiculoService implements IAsignacionVehiculoService {
 
     @Override
     public void eliminadoSuave(AsignacionVehiculo asignacionVehiculo) {
+        asignacionVehiculo.setActivo(false);
+        asignacionVehiculo.setVehiculo(asignacionVehiculoRepository.findById(asignacionVehiculo.getId()).orElse(null).getVehiculo());
+        asignacionVehiculo.setUsuario(asignacionVehiculoRepository.findById(asignacionVehiculo.getId()).orElse(null).getUsuario());
+        asignacionVehiculo.setFechaAsignacion(asignacionVehiculoRepository.findById(asignacionVehiculo.getId()).orElse(null).getFechaAsignacion());
+        asignacionVehiculo.setUnidad(asignacionVehiculoRepository.findById(asignacionVehiculo.getId()).orElse(null).getUnidad());
+        asignacionVehiculoRepository.save(asignacionVehiculo);
 
     }
 

@@ -73,6 +73,13 @@ public class UsuarioController {
         return "redirect:/Usuario";
     }
 
+    @GetMapping("/eliminarUsuarioSuave/{cedula}")
+    public String eliminarS(Usuario usuario,RedirectAttributes flash) {
+        usuarioService.eliminadoSuave(usuario);
+        flash.addFlashAttribute("success","Usuario  Eliminado Correctamente");
+        return "redirect:/Usuario";
+    }
+
 
 
 }

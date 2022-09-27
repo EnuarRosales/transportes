@@ -1,5 +1,6 @@
 package com.CGDJ6.transportes.controllers;
 
+import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,16 @@ public class TipoVehiculoController {
         flash.addFlashAttribute("success","Tipo Vehiculo  Eliminado Correctamente");
         return "redirect:/TipoVehiculo";
     }
+
+    @GetMapping("/eliminarTipoVehiculoSuave/{id}")
+    public String eliminarS(TipoVehiculo tipoVehiculo,RedirectAttributes flash) {
+        tipoVehiculoService.eliminadoSuave(tipoVehiculo);
+        flash.addFlashAttribute("success","Tipo Vehiculo  Eliminado Correctamente");
+        return "redirect:/TipoVehiculo";
+    }
+
+
+
 
 
 

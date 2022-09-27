@@ -1,5 +1,6 @@
 package com.CGDJ6.transportes.services;
 
+import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.repositories.TipoVehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,13 @@ public class TipoVehiculoService implements ITipoVehiculoService{
 
     @Override
     public void eliminadoSuave(TipoVehiculo tipoVehiculo) {
-
+        tipoVehiculo.setActivo(false);
+        tipoVehiculo.setDescripcion(tipoVehiculoRepository.findById(tipoVehiculo.getId()).orElse(null).getDescripcion());
+        tipoVehiculoRepository.save(tipoVehiculo);
     }
+
+
+
 
 
 }

@@ -28,7 +28,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="usuario:${usuarios}">
+							<tr th:each="usuario:${usuarios}" th:if="${usuario.activo == true}">
 								<td th:text="${usuario.cedula}">Cedula</td>
 								<td th:text="${usuario.usuario.descripcion}">Tipo Usuario ID</td>
 								<td th:text="${usuario.grado}">Grado</td>
@@ -39,7 +39,7 @@
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarUsuario/}+ ${usuario.cedula}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarUsuarioSuave/}+ ${usuario.cedula}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,15 @@ public class AsignacionVehiculoController {
     }
 
     @PostMapping("/guardarAsignacionVehiculo")
-    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores, RedirectAttributes flash) {
+    public String guardar(@Valid AsignacionVehiculo asignacionVehiculo, Errors errores, BindingResult bindingResult, RedirectAttributes flash) {
+
+        if (bindingResult.hasErrors()) {
+            // Aquí se puede hacer cualquier cosa, yo hago una redirección para mostrar los errores en el form
+            System.out.println("entro el error");
+            return "redirect:/AsignacionVehiculo";
+        }
+
+
         if(errores.hasErrors()){
             return "redirect:/AsignacionVehiculo";
         }
@@ -61,6 +70,13 @@ public class AsignacionVehiculoController {
     @GetMapping("/eliminarAsignacionVehiculo/{id}")
     public String eliminar(AsignacionVehiculo asignacionVehiculo,RedirectAttributes flash) {
         asignacionVehiculoService.eliminarAsignacionVehiculo(asignacionVehiculo);
+        flash.addFlashAttribute("success","Vehiculo  Eliminado Correctamente");
+        return "redirect:/AsignacionVehiculo";
+    }
+
+    @GetMapping("/eliminarAsignacionVehiculoSuave/{id}")
+    public String eliminarS(AsignacionVehiculo asignacionVehiculo,RedirectAttributes flash) {
+        asignacionVehiculoService.eliminadoSuave(asignacionVehiculo);
         flash.addFlashAttribute("success","Vehiculo  Eliminado Correctamente");
         return "redirect:/AsignacionVehiculo";
     }

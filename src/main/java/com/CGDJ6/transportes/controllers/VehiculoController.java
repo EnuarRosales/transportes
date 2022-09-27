@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.controllers;
 
 
+import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.services.TipoServicioService;
@@ -146,6 +147,15 @@ public class VehiculoController {
         return "layaut/vehiculo/Vehiculo";
 
     }
+
+    @GetMapping("/eliminarVehiculoSuave/{placa}")
+    public String eliminarS(Vehiculo vehiculo, RedirectAttributes flash) {
+        vehiculoService.eliminadoSuave(vehiculo);
+        flash.addFlashAttribute("success","Vehiculo Eliminado Correctamente");
+        return "redirect:/Vehiculo";
+    }
+
+
 
 
 

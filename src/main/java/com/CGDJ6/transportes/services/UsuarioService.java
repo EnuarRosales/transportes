@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.services;
 
 
+import com.CGDJ6.transportes.entities.TipoVehiculo;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,6 @@ public class UsuarioService implements IUsuarioService{
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-
-
 
     @Override
     public List<Usuario> listarUsuario() {
@@ -42,7 +41,11 @@ public class UsuarioService implements IUsuarioService{
 
     @Override
     public void eliminadoSuave(Usuario usuario) {
-
+        usuario.setActivo(false);
+        usuario.setUsuario(usuarioRepository.findById(usuario.getCedula()).orElse(null).getUsuario());
+        usuario.setGrado(usuarioRepository.findById(usuario.getCedula()).orElse(null).getGrado());
+        usuario.setNombre(usuarioRepository.findById(usuario.getCedula()).orElse(null).getNombre());
+        usuarioRepository.save(usuario);
     }
 
 

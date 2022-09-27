@@ -28,7 +28,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="asignacionVehiculo:${asignacionVehiculos}">
+							<tr th:each="asignacionVehiculo:${asignacionVehiculos}" th:if="${asignacionVehiculo.activo == true}">
 								<td th:text="${asignacionVehiculo.vehiculo.placa}">Vehiculo</td>
 								<td th:text="${asignacionVehiculo.usuario.nombre}">Usuario Cedula</td>
 								<td th:text="${asignacionVehiculo.fechaAsignacion}">Fecha Asignacion</td>
@@ -39,7 +39,7 @@
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarAsignacionVehiculo/}+ ${asignacionVehiculo.id}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarAsignacionVehiculoSuave/}+ ${asignacionVehiculo.id}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 

@@ -29,7 +29,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="vehiculo:${vehiculos}">
+							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true}">
 								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
 
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
@@ -41,7 +41,7 @@
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
-								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarVehiculo/}+ ${vehiculo.placa}" class="btn btn-dark">
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarVehiculoSuave/}+ ${vehiculo.placa}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 
