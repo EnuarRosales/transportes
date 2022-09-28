@@ -21,11 +21,32 @@
 								<h4>Editar</h4>
 							</div>
 							<div class="card-body">
+
+								<!--
 								<div class="form-group">
 									<label for="tipoServicio">Tipo Servicio</label>
 									<input type="text" class="form-control" name="tipoServicio"
 									       required="true" th:field="*{tipoServicio}"/>
 								</div>
+								-->
+
+								<div class="form-group">
+									<label for="tipoServicio" >Tipo Servicio ID</label>
+									<select type="number"  class="form-control" name="tipoServicio" required="true">
+										<option selected ></option>
+										<option th:each="tipoServiciosl:${tipoServiciosl}" th:if="${tipoServiciosl.activo == true}"
+										        th:value="${tipoServiciosl.id}"
+										        th:text="${tipoServiciosl.descripcion}"
+
+										/>
+									</select>
+								</div>
+
+
+
+
+
+
 
 								<div class="form-group">
 									<label for="vehiculo">Vehiculo Placa</label>
@@ -48,13 +69,13 @@
 
 								<div class="form-group">
 									<label for="kilometrajeInicio">Kilometraje Inicio</label>
-									<input type="text" class="form-control" name="kilometrajeInicio"
+									<input type="number" class="form-control" name="kilometrajeInicio"
 									       required="true" th:field="*{kilometrajeInicio}"/>
 								</div>
 
 								<div class="form-group">
 									<label for="kilometrajeTermino">Kilometraje Termino</label>
-									<input type="text" class="form-control" name="kilometrajeTermino"
+									<input type="number" class="form-control" name="kilometrajeTermino"
 									       required="true" th:field="*{kilometrajeTermino}"/>
 								</div>
 

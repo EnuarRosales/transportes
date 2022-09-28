@@ -41,36 +41,23 @@ public class AsignacionVehiculoController {
     public String guardar(@Valid AsignacionVehiculo asignacionVehiculo,  RedirectAttributes flash) {
         System.out.println(asignacionVehiculo.getVehiculo());
 
-        if(asignacionVehiculo.getVehiculo() != null){
+        if(asignacionVehiculo.getVehiculo() != null && asignacionVehiculo.getUsuario() != null){
             asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
             flash.addFlashAttribute("success","Vehiculo  Asignado Correctamente");
             System.out.println("el vehiculo no exisate");
             return "redirect:/AsignacionVehiculo";
         }
-        flash.addFlashAttribute("error","Vehiculo  no esta en la base de datos");
-        //asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
-
-
-/*
-        if (bindingResult.hasErrors()) {
-            // Aquí se puede hacer cualquier cosa, yo hago una redirección para mostrar los errores en el form
-            System.out.println("entro el error");
+        if(asignacionVehiculo.getUsuario() == null){
+            flash.addFlashAttribute("error","Usuario no existe  en la base de datos");
+            System.out.println("el Usuario no exisate");
             return "redirect:/AsignacionVehiculo";
         }
 
-        if(errores.hasErrors()){
-            return "redirect:/AsignacionVehiculo";
-        }
-        try {
-            asignacionVehiculoService.guardarAsignacionVehiculo(asignacionVehiculo);
-            flash.addFlashAttribute("success","Vehiculo  Asignado Correctamente");
-        } catch (Exception e) {
-            return "redirect:/modificarAsignacionVehiculo";
-
-        }*/
-
+        flash.addFlashAttribute("error","Vehiculo  no existe  en la base de datos");
         return "redirect:/AsignacionVehiculo";
     }
+
+
 
 
 

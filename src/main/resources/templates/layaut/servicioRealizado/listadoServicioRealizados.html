@@ -8,8 +8,25 @@
 </head>
 <body sec:authorize="isAuthenticated()">
 <section th:fragment="listadoServicioRealizados" id="servicioRealizados">
+
 	<div class="container-fluid">
 		<div class="row">
+			<!-- inicio boton-->
+			<body sec:authorize="isAuthenticated()">
+			<section th:fragment="botonesAgregarServicioRealizado" class="py-3 mb-3 bg-light">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a href="#" class="btn btn-primary btn-block"
+							   data-toggle="modal" data-target="#agregarServicioRealizado"> <!-- OJOOOOOOOOO-->
+								<i class="fas fa-plus"></i> Agregar Servivicio Realizado
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			</body>
+			<!-- termino boton-->
 			<div class="col-md-12"> <!-- ojo que aca va el tamo-->
 				<div class="card">
 					<div class="card-header">

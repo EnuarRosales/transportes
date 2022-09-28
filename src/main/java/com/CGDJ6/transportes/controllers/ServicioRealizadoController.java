@@ -39,16 +39,20 @@ public class ServicioRealizadoController {
 
     @GetMapping("/agregarServicioRealizado")
     public String agregar(ServicioRealizado servicioRealizado) {
+
         return "modificarServicioRealizado";
     }
 
     @PostMapping("/guardarServicioRealizado")
-    public String guardar(@Valid ServicioRealizado servicioRealizado, Errors errores, RedirectAttributes flash) {
-        if(errores.hasErrors()){
-            return "modificarServicioRealizado";
+    public String guardar(@Valid ServicioRealizado servicioRealizado, RedirectAttributes flash) {
+
+        if(servicioRealizado.getVehiculo() != null){
+            servicioRealizadoService.guardarServicioRealizado(servicioRealizado);
+            flash.addFlashAttribute("success","Mantenimiento  registrado correctamente");
+            System.out.println("el vehiculo no exisate");
+            return "redirect:/ServicioRealizado";
         }
-        servicioRealizadoService.guardarServicioRealizado(servicioRealizado);
-        flash.addFlashAttribute("success","Mantenimiento Registrado Correctamente");
+        flash.addFlashAttribute("error","Vehiculo  no exixte en la base de datos");
         return "redirect:/ServicioRealizado";
     }
 
@@ -56,6 +60,10 @@ public class ServicioRealizadoController {
     @GetMapping("/editarServicioRealizado/{id}")
     public String editar(ServicioRealizado servicioRealizado, Model model) {
         servicioRealizado = servicioRealizadoService.encontrarServicioRealizado(servicioRealizado);
+        var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
+        var tipoServiciosl= tipoServicioService.listarTipoServicio();
+        model.addAttribute("servicioRealizados", servicioRealizados);
+        model.addAttribute("tipoServiciosl", tipoServiciosl);
         model.addAttribute("servicioRealizado", servicioRealizado);
         return "layaut/servicioRealizado/modificarServicioRealizado";
     }
