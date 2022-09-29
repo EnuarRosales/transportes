@@ -59,9 +59,6 @@ public class AsignacionVehiculoController {
 
 
 
-
-
-
     @GetMapping("/editarAsignacionVehiculo/{id}")
     public String editar(AsignacionVehiculo asignacionVehiculo, Model model) {
         asignacionVehiculo = asignacionVehiculoService.encontrarAsignacionVehiculo(asignacionVehiculo);

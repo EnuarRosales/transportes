@@ -145,6 +145,7 @@ public class VehiculoController {
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("palabraClave", palabraClave);
         return "layaut/vehiculo/Vehiculo";
+        //return "layaut/vehiculo/listadoVehiculosTotal";
 
     }
 
