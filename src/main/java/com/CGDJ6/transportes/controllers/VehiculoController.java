@@ -93,13 +93,6 @@ public class VehiculoController {
     }
 
 
-
-
-
-
-
-
-
     @GetMapping("/editarVehiculo/{placa}")
     public String editar(Vehiculo vehiculo, Model model) {
         vehiculo = vehiculoService.encontrarVehiculo(vehiculo);

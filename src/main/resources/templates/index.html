@@ -1,5 +1,6 @@
-<html xmlns:th ="http://www.thymelealf.org"
-				 xmlns:sec="http://www.thymelealf.org/extras/spring-security">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymelealf.org"
+	  xmlns:sec="http://www.thymelealf.org/extras/spring-security">
 <head th:replace="layaut/plantilla :: head">
     <title>inicio</title>
     <meta charset="UTF-8">
@@ -7,77 +8,21 @@
 </head>
 <body>
 <header th:replace="layaut/plantilla :: header"></header>
+<link rel="stylesheet" th:href="@{/app.css}"/>
+<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
 
-<main>
+<main class="contenido-principal contenedor">
 
-	<div class="col-md-3" >
-		<div class="card text-center bg-danger text-white mb-3">
-			<div class="card-body">
-				<h3 th:text="holi"></h3>
-				<h4 class="display-4"></h4>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-md-3" >
-		<div class="card text-center bg-danger text-white mb-3">
-			<div class="card-body">
-				<h3 th:text="holi"></h3>
-				<h4 class="display-4"></h4>
-			</div>
-		</div>
-
-
-		<div class="col-md-3" >
-			<div class="card text-center bg-danger text-white mb-3">
-				<div class="card-body">
-					<h3 th:text="holi"></h3>
-					<h4 class="display-4"></h4>
-				</div>
-			</div>
-		</div>
-
-
+	<div class="contenedor-navegacion">
+		<!-- para centrar la linea -->
+		<nav class="nav-principal">
+			<a class="btnDas" href="#">Vehiculos</a>
+			<a class="btnDas" href="#">Mantenimiento</a>
+			<a class="btnDas" href="#">Cambio de Aceite</a>
+		</nav>
 	</div>
 
 
-
-
-
-<!--
-
-	<div class="px-4 py-5 my-5 text-center">
-		<h1 class="display-5 fw-bold">Sistema para la administracion y gestion del Parque Automoto CGDJ6</h1>
-		<div class="col-log-6 mx-auto">
-			<p class="lead mb-4">Sofware Version 0.1 Diseñado  y Desarrollado POR: </p>
-			<p class="lead mb-4">CP. Rosales Salazar Enuar  </p>
-			<p class="lead mb-4">CP. Arley David Pinchao Cuaqtin </p>
-			<p class="lead mb-4"> CP. Gimenez Lozano Henry </p>
-
-
-
-
-
-
-
-
-
-
-
-			<!-- OJO QUE ESTO SIRVE MAS ADELANTE PARA EL TEMA DE LA AUTENTICACION
-			<div sec:authorize="!isAuthenticated()">
-				<a th:href="@{/oauth2/authorization/auth0}" class="btn btn-outline-secondary btn-lg px-4">Inicia Sesion </a>
-			</div>
-			<div sec:authorize="!isAuthenticated()">
-				<a th:href="@{/empleado}" class="btn btn-outline-secondary btn-lg px-4">llevame a la aplicacion</a>
-			</div>
-
-ojooooooooooooooooooooooooooooooooo
-		</div>
-
-	</div>
-
-	-->
 </main>
 
 
