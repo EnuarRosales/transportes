@@ -4,6 +4,7 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
+import com.CGDJ6.transportes.services.ServicioRealizadoService;
 import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.TipoVehiculoService;
 import com.CGDJ6.transportes.services.VehiculoService;
@@ -36,6 +37,9 @@ public class VehiculoController {
 
     @Autowired
     TipoVehiculoService tipoVehiculoService;
+
+    @Autowired
+    ServicioRealizadoService servicioRealizadoService;
 
 
 
@@ -137,10 +141,29 @@ public class VehiculoController {
         model.addAttribute("tipoVehiculosl", tipoVehiculosl);
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("palabraClave", palabraClave);
+        model.addAttribute("totalVehiculos", vehiculos.size());
+        System.out.println(vehiculos.size());
+
         return "layaut/vehiculo/Vehiculo";
-        //return "layaut/vehiculo/listadoVehiculosTotal";
 
     }
+
+    @GetMapping("/")
+    public String inicioBs(Model model, @Param ("palabraClave") String palabraClave) {
+        var vehiculos= vehiculoService.listarVehiculo( palabraClave);
+        var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
+        var tipoVehiculosl =tipoVehiculoService.listarTipoVehiculo();
+        model.addAttribute("tipoVehiculosl", tipoVehiculosl);
+        model.addAttribute("vehiculos", vehiculos);
+        model.addAttribute("palabraClave", palabraClave);
+        model.addAttribute("totalVehiculos", vehiculos.size());
+        model.addAttribute("totalServicioRealizados", servicioRealizados.size());
+        System.out.println(vehiculos.size());
+        System.out.println(servicioRealizados.size());
+        return "index";
+
+    }
+
 
     @GetMapping("/eliminarVehiculoSuave/{placa}")
     public String eliminarS(Vehiculo vehiculo, RedirectAttributes flash) {

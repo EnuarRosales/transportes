@@ -22,6 +22,7 @@ public class TipoVehiculoController {
     TipoVehiculoService tipoVehiculoService;
 
 
+
     @GetMapping("/TipoVehiculo")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var tipoVehiculos= tipoVehiculoService.listarTipoVehiculo();

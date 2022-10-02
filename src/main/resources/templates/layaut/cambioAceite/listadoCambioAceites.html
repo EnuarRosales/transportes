@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Empleados</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<section th:fragment="listadoCambioAceites" id="cambioAceites">
+	<div class="container">
+		<div class="row" style="width: 1190px;padding-bottom: 170px;">
+			<div class="col-md-11">
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Cambios de Aceite</h4>
+					</div>
+					<div th:if="${cambioAceites!= null and !cambioAceites.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Vehiculo</th>
+								<th>Fecha Cambio</th>
+								<th>Kilometraje Cambio</th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="cambioAceite:${cambioAceites}"  th:if="${cambioAceite.activo == true}">
+								<td th:text="${cambioAceite.vehiculo.placa}">Vehiculo</td>
+								<td th:text="${cambioAceite.fechaCambioAceite}">Fecha Cambio</td>
+								<td th:text="${cambioAceite.kilometrajeCambioAceite}">Kilometraje Cambio</td>
+
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarCambioAceite/} + ${cambioAceite.id}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarCambioAceiteSuave/}+ ${cambioAceite.id}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${cambioAceites== null or cambioAceites.empty}">
+							<span th:text="#{cambioAceite.lista-vacia}"> vacía</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>

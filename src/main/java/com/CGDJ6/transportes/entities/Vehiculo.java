@@ -37,13 +37,19 @@ public class Vehiculo /*implements Serializable */{
     @OneToMany(mappedBy = "vehiculo")
     private  List<AsignacionVehiculo> asignacionVehiculo;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "vehiculo")
+    private List<CambioAceite> cambioAceite;
+
+
+
     private boolean activo =true;
 
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, Integer modelo, String marca, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, boolean activo) {
+    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, Integer modelo, String marca, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
         this.placa = placa;
         this.tipoVehiculo = tipoVehiculo;
         this.modelo = modelo;
@@ -52,7 +58,16 @@ public class Vehiculo /*implements Serializable */{
         this.servicioRealizado = servicioRealizado;
         this.controlKilometraje = controlKilometraje;
         this.asignacionVehiculo = asignacionVehiculo;
+        this.cambioAceite = cambioAceite;
         this.activo = activo;
+    }
+
+    public List<CambioAceite> getCambioAceite() {
+        return cambioAceite;
+    }
+
+    public void setCambioAceite(List<CambioAceite> cambioAceite) {
+        this.cambioAceite = cambioAceite;
     }
 
     public boolean isActivo() {

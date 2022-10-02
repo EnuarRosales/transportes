@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <header th:replace="layaut/plantilla :: header"></header>
-<section th:replace="layaut/movimientoDinero/botonesAgregarMovimientoDinero :: botonesAgregarMovimientoDinero"></section>
-<section th:replace="layaut/movimientoDinero/agregarMovimientoDinero :: agregarMovimientoDinero"></section>
-<section th:replace="layaut/movimientoDinero/listadoMovimientoDinero :: listadoMovimientoDineros"></section>
+<section th:replace="layaut/cambioAceite/botonesAgregarCambioAceite :: botonesAgregarCambioAceite"></section>
+<section th:replace="layaut/cambioAceite/agregarCambioAceite :: agregarCambioAceite"></section>
+<section th:replace="layaut/cambioAceite/listadoCambioAceites :: listadoCambioAceites"></section>
 <footer th:replace="layaut/plantilla :: footer"></footer>
 
 </body>

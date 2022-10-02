@@ -6,9 +6,9 @@
 	<title>Datos de la Persona</title>
 	<meta charset="UTF-8"/>
 </head>
-<body>
+<body sec:authorize="isAuthenticated()">
 <header th:replace="layaut/plantilla :: header"></header>
-<section th:replace="layaut/movimientoDinero/editarMovimientoDinero :: editarMovimientoDinero"></section>
+<section th:replace="layaut/cambioAceite/editarCambioAceites:: editarCambioAceites"></section>
 <footer th:replace="layaut/plantilla :: footer"></footer>
 </body>
 </html>

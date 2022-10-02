@@ -34,15 +34,25 @@ public class ControlKilometrajeController {
         return "modificarControlKilometraje";
     }
 
+
     @PostMapping("/guardarControlKilometraje")
-    public String guardar(@Valid ControlKilometraje controlKilometraje, Errors errores, RedirectAttributes flash) {
-        if(errores.hasErrors()){
-            return "modificarControlKilometraje";
+    public String guardar(@Valid ControlKilometraje controlKilometraje, RedirectAttributes flash) {
+
+        if(controlKilometraje.getVehiculo() != null){
+            controlKilometrajeService.guardarControlKilometraje(controlKilometraje);
+            flash.addFlashAttribute("success","Kilometraje Registrado Correctamente");
+            return "redirect:/ControlKilometraje";
+
         }
-        controlKilometrajeService.guardarControlKilometraje(controlKilometraje);
-        flash.addFlashAttribute("success","Kilometraje Registrado Correctamente");
+
+
+        flash.addFlashAttribute("error","Vehiculo  no existe  en la base de datos");
         return "redirect:/ControlKilometraje";
     }
+
+
+
+
 
 
     @GetMapping("/editarControlKilometraje/{id}")

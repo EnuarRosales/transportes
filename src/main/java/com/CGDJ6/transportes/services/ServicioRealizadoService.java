@@ -2,6 +2,7 @@ package com.CGDJ6.transportes.services;
 
 
 import com.CGDJ6.transportes.entities.ServicioRealizado;
+import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.repositories.ServicioRealizadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,10 @@ public class ServicioRealizadoService implements IServicioRealizadoService {
     @Override
     public void eliminadoSuave(ServicioRealizado servicioRealizado) {
 
+
     }
+
+
 
 
 }

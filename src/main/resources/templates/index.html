@@ -13,15 +13,44 @@
 
 <main class="contenido-principal contenedor">
 
+	<h3>DASHBOARD</h3>
 	<div class="contenedor-navegacion">
 		<!-- para centrar la linea -->
 		<nav class="nav-principal">
-			<a class="btnDas" href="#">Vehiculos</a>
-			<a class="btnDas" href="#">Mantenimiento</a>
-			<a class="btnDas" href="#">Cambio de Aceite</a>
+			<div class="text-producto">
+				<p>Vehiculos</p>
+				<a class="btnDas" th:text="${totalVehiculos}"  th:href="@{/}"><i class="fas fa-car"></i></a>
+			</div>
+
+			<div class="text-producto">
+				<p>Cambio de Aceite</p>
+			<a class="btnDas" th:text="${totalVehiculos}"  th:href="@{/Vehiculo}"><i class="fas fa-fill-drip" > </i>  0</a>
+			</div>
+
+			<div class="text-producto">
+				<p>Seguros Vencidos</p>
+			<a class="btnDas" href="#"><i class="fas fa-ambulance" > </i>   0</a>
+			</div>
+
+			<div class="text-producto">
+				<p>TegnoMec Vencidas</p>
+			<a class="btnDas" href="#"><i class="fas fa-calendar-times" > </i>    0</a>
+			</div>
+
+			<div class="text-producto">
+				<p>Licencias Vencidas</p>
+				<a class="btnDas" href="#"><i class="fas fa-calendar-times" > </i>    0</a>
+			</div>
+
+			<div class="text-producto">
+				<p>Mtt Realizados</p>
+				<a class="btnDas" th:text="${totalServicioRealizados}"  th:href="@{/}"><i class="fas fa-calendar-times" > </i>    0</a>
+			</div>
 		</nav>
+
 	</div>
 
+	<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 
 </main>
 

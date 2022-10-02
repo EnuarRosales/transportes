@@ -68,7 +68,7 @@ img {
     color: #ffff;
     text-transform: uppercase;/*trasnforma el texto en mayusculas*/
     font-weight: 900;
-    padding: 10rem;
+    padding: 4rem;
     transition: background-color .3s ease-out;/*transicion de colores recibe tres parametros*/
     text-align: center;
     border: none;
@@ -262,7 +262,7 @@ background-size: 100%, 120rem;
 
 .text-producto{
     text-align: center;
-    color: #ffff;
+    color: black;
     padding: 2rem;
 
 }

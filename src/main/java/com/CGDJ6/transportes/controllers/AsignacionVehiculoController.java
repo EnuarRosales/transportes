@@ -35,8 +35,6 @@ public class AsignacionVehiculoController {
         return "modificarAsignacionVehiculo";
     }
 
-
-
     @PostMapping("/guardarAsignacionVehiculo")
     public String guardar(@Valid AsignacionVehiculo asignacionVehiculo,  RedirectAttributes flash) {
         System.out.println(asignacionVehiculo.getVehiculo());

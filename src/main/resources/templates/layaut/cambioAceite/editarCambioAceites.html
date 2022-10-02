@@ -7,11 +7,11 @@
 	<meta charset="UTF-8"/>
 </head>
 <body sec:authorize="isAuthenticated()">
-<section th:fragment="editarAsignacionVehiculos">
-	<form th:action="@{/guardarAsignacionVehiculo}" th:object="${asignacionVehiculo}"
+<section th:fragment="editarCambioAceites">
+	<form th:action="@{/guardarCambioAceite}" th:object="${cambioAceite}"
 	      method="POST" class="was-validated">
-		<input type="hidden" name="idAsignacionVehiculo" th:field="*{id}"/>
-		<section th:replace="layaut/asignacionVehiculo/botonesEditarAsignacionVehiculo :: botonesEditarAsignacionVehiculo"></section>
+		<input type="hidden" name="idCambioAceite" th:field="*{id}"/>
+		<section th:replace="layaut/cambioAceite/botonesEditarCambioAceite :: botonesEditarCambioAceite"></section>
 
 		<div id="details">
 			<div class="container">
@@ -23,28 +23,24 @@
 							</div>
 							<div class="card-body">
 								<div class="form-group">
-									<label for="vehiculo">Vehiculo</label>
+									<label for="vehiculo">Dscripcion</label>
 									<input type="text" class="form-control" name="vehiculo"
 									       required="true" th:field="*{vehiculo}"/>
 								</div>
 
+
 								<div class="form-group">
-									<label for="usuario">Usuario Cedula</label>
-									<input type="text" class="form-control" name="usuario"
-										   required="true" th:field="*{usuario}"/>
+									<label for="fechaCambioAceite">Fecha Cambio Aceite</label>
+									<input type="date" class="form-control" name="fechaCambioAceite"
+									       required="true" th:field="*{fechaCambioAceite}"/>
 								</div>
 
 								<div class="form-group">
-									<label for="fechaAsignacion">Fecha signacion</label>
-									<input type="date" class="form-control" name="fechaAsignacion"
-										   required="true" th:field="*{fechaAsignacion}"/>
+									<label for="kilometrajeCambioAceite">Kilometraje Cambio Aceite</label>
+									<input type="number" class="form-control" name="kilometrajeCambioAceite"
+									       required="true" th:field="*{kilometrajeCambioAceite}"/>
 								</div>
 
-								<div class="form-group">
-									<label for="unidad">Unidad</label>
-									<input type="text" class="form-control" name="unidad"
-										   required="true" th:field="*{unidad}"/>
-								</div>
 
 							</div>
 						</div>
