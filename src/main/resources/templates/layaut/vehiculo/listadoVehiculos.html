@@ -20,12 +20,15 @@
 							<thead class="thead-dark">
 							<tr>
 								<th>Placa</th>
-								<th>Tipo Vehiculo ID</th>
+								<th>Tipo Vehiculo</th>
 								<th>Modelo</th>
 								<th>Marca</th>
-								<th></th>
-								<th></th>
-								<th></th>
+								<th>Color</th>
+								<th>Año</th>
+								<th>Exp.Seguro</th>
+								<th>Exp.Tecno.</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -35,6 +38,10 @@
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
 								<td th:text="${vehiculo.modelo}">Modelo</td>
 								<td th:text="${vehiculo.marca}">Marca</td>
+								<td th:text="${vehiculo.color}">color</td>
+								<td th:text="${vehiculo.anoVehiculo}">anoVehiculo</td>
+								<td th:text="${vehiculo.fechaExpiracionSeguro}">Fecha Expiracion Seguro</td>
+								<td th:text="${vehiculo.fechaExpiracionTecnomecanica}">Fecha Expiracion Tecnomecanica</td>
 
 
 								<td>

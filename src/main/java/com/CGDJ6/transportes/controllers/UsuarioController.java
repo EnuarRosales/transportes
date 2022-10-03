@@ -61,6 +61,8 @@ public class UsuarioController {
     @GetMapping("/editarUsuario/{cedula}")
     public String editar(Usuario usuario, Model model) {
         usuario = usuarioService.encontrarUsuario(usuario);
+        var usuariosl =tipoUsuarioService.listarTipoUsuario();
+        model.addAttribute("usuariosl", usuariosl);
         model.addAttribute("usuario", usuario);
         return "layaut/usuario/modificarUsuario";
     }

@@ -19,15 +19,13 @@
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
-								<th>ID</th>
 								<th>Descripcion</th>
-								<th></th>
-								<th></th>
+								<th>Editar</th>
+								<th>Eliminar</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr th:each="tipoServicio:${tipoServicios}" th:if="${tipoServicio.activo == true}">
-								<td th:text="${tipoServicio.id}">Id</td>
 								<td th:text="${tipoServicio.descripcion}">Descripcion</td>
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTipoServicio/} + ${tipoServicio.id}"

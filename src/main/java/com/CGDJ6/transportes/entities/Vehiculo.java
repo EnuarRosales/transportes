@@ -19,9 +19,18 @@ public class Vehiculo /*implements Serializable */{
     @JoinColumn(name = "tipo_vehiculo_id")
     private  TipoVehiculo tipoVehiculo;
 
-    private  Integer modelo;
+    private  String modelo;
 
     private  String marca;
+
+    private  String color;
+
+    private  Integer anoVehiculo;
+
+    private  String fechaExpiracionSeguro;
+
+    private  String fechaExpiracionTecnomecanica;
+
 
     private  String imagen;
 
@@ -41,25 +50,68 @@ public class Vehiculo /*implements Serializable */{
     @OneToMany(mappedBy = "vehiculo")
     private List<CambioAceite> cambioAceite;
 
-
-
     private boolean activo =true;
 
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, Integer modelo, String marca, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
+
+    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String modelo, String marca, String color, Integer anoVehiculo, String fechaExpiracionSeguro, String fechaExpiracionTecnomecanica, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
         this.placa = placa;
         this.tipoVehiculo = tipoVehiculo;
         this.modelo = modelo;
         this.marca = marca;
+        this.color = color;
+        this.anoVehiculo = anoVehiculo;
+        this.fechaExpiracionSeguro = fechaExpiracionSeguro;
+        this.fechaExpiracionTecnomecanica = fechaExpiracionTecnomecanica;
         this.imagen = imagen;
         this.servicioRealizado = servicioRealizado;
         this.controlKilometraje = controlKilometraje;
         this.asignacionVehiculo = asignacionVehiculo;
         this.cambioAceite = cambioAceite;
         this.activo = activo;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public Integer getAnoVehiculo() {
+        return anoVehiculo;
+    }
+
+    public void setAnoVehiculo(Integer anoVehiculo) {
+        this.anoVehiculo = anoVehiculo;
+    }
+
+    public String getFechaExpiracionSeguro() {
+        return fechaExpiracionSeguro;
+    }
+
+    public void setFechaExpiracionSeguro(String fechaExpiracionSeguro) {
+        this.fechaExpiracionSeguro = fechaExpiracionSeguro;
+    }
+
+    public String getFechaExpiracionTecnomecanica() {
+        return fechaExpiracionTecnomecanica;
+    }
+
+    public void setFechaExpiracionTecnomecanica(String fechaExpiracionTecnomecanica) {
+        this.fechaExpiracionTecnomecanica = fechaExpiracionTecnomecanica;
     }
 
     public List<CambioAceite> getCambioAceite() {
@@ -94,13 +146,7 @@ public class Vehiculo /*implements Serializable */{
         this.tipoVehiculo = tipoVehiculo;
     }
 
-    public Integer getModelo() {
-        return modelo;
-    }
 
-    public void setModelo(Integer modelo) {
-        this.modelo = modelo;
-    }
 
     public String getMarca() {
         return marca;

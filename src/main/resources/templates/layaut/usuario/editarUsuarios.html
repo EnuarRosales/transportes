@@ -27,10 +27,18 @@
 									       required="true" th:field="*{cedula}"/>
 								</div>
 
+
 								<div class="form-group">
-									<label for="usuario">Usuario Tipo ID</label>
-									<input type="text" class="form-control" name="usuario"
-										   required="true" th:field="*{usuario}"/>
+									<label for="usuario" >Tipo Usuario ID</label>
+									<select type="number"  class="form-control" name="usuario" required="true">
+										<option selected ></option>
+										<option th:each="usuariosl:${usuariosl}" th:if="${usuariosl.activo == true}"
+												th:value="${usuariosl.id}"
+												th:text="${usuariosl.descripcion}"
+
+										/>
+									</select>
+
 								</div>
 
 								<div class="form-group">
