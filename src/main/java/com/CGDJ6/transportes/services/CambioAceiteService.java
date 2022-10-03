@@ -2,13 +2,10 @@ package com.CGDJ6.transportes.services;
 
 
 import com.CGDJ6.transportes.entities.CambioAceite;
-import com.CGDJ6.transportes.entities.ServicioRealizado;
-import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.repositories.CambioAceiteRepository;
-import com.CGDJ6.transportes.repositories.ServicioRealizadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -40,6 +37,10 @@ public class CambioAceiteService implements ICambioAceite {
         return cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null);
     }
 
+    public Long encontrarVariable(CambioAceite cambioAceite) {
+       return cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getProximoCambioAceite();
+    }
+
     @Override
     public void eliminadoSuave(CambioAceite cambioAceite) {
         cambioAceite.setActivo(false);
@@ -47,6 +48,18 @@ public class CambioAceiteService implements ICambioAceite {
         cambioAceite.setFechaCambioAceite(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getFechaCambioAceite());
         cambioAceite.setKilometrajeCambioAceite(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getKilometrajeCambioAceite());
         cambioAceiteRepository.save(cambioAceite);
+    }
+
+    @Override
+    public void cambioAceiteRealizado(CambioAceite cambioAceite) {
+        cambioAceite.setCambiado(true);
+        cambioAceite.setActivo(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).isActivo());
+        cambioAceite.setVehiculo(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getVehiculo());
+        cambioAceite.setFechaCambioAceite(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getFechaCambioAceite());
+        cambioAceite.setKilometrajeCambioAceite(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getKilometrajeCambioAceite());
+        cambioAceite.setProximoCambioAceite(cambioAceiteRepository.findById(cambioAceite.getId()).orElse(null).getProximoCambioAceite());
+        cambioAceiteRepository.save(cambioAceite);
+
     }
 
 

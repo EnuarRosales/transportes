@@ -16,9 +16,12 @@ public class CambioAceite {
     private  Vehiculo vehiculo;
 
     private String fechaCambioAceite;
-
     private  Integer kilometrajeCambioAceite;
+    private Long proximoCambioAceite;
 
+    private  Long pendientePorConsumir = 5000l;
+
+    private  boolean cambiado= false;
 
     private boolean activo =true;
 
@@ -26,13 +29,39 @@ public class CambioAceite {
     public CambioAceite() {
     }
 
-
-    public CambioAceite(Long id, Vehiculo vehiculo, String fechaCambioAceite, Integer kilometrajeCambioAceite, boolean activo) {
+    public CambioAceite(Long id, Vehiculo vehiculo, String fechaCambioAceite, Integer kilometrajeCambioAceite, Long proximoCambioAceite, Long pendientePorConsumir, boolean cambiado, boolean activo) {
         this.id = id;
         this.vehiculo = vehiculo;
         this.fechaCambioAceite = fechaCambioAceite;
         this.kilometrajeCambioAceite = kilometrajeCambioAceite;
+        this.proximoCambioAceite = proximoCambioAceite;
+        this.pendientePorConsumir = pendientePorConsumir;
+        this.cambiado = cambiado;
         this.activo = activo;
+    }
+
+    public Long getPendientePorConsumir() {
+        return pendientePorConsumir;
+    }
+
+    public void setPendientePorConsumir(Long pendientePorConsumir) {
+        this.pendientePorConsumir = pendientePorConsumir;
+    }
+
+    public boolean isCambiado() {
+        return cambiado;
+    }
+
+    public void setCambiado(boolean cambiado) {
+        this.cambiado = cambiado;
+    }
+
+    public Long getProximoCambioAceite() {
+        return proximoCambioAceite;
+    }
+
+    public void setProximoCambioAceite(Long proximoCambioAceite) {
+        this.proximoCambioAceite = proximoCambioAceite;
     }
 
     public boolean isActivo() {

@@ -10,7 +10,7 @@
 <section th:fragment="listadoCambioAceites" id="cambioAceites">
 	<div class="container">
 		<div class="row" style="width: 1190px;padding-bottom: 170px;">
-			<div class="col-md-11">
+			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
 						<h4>Listado Cambios de Aceite</h4>
@@ -22,15 +22,28 @@
 								<th>Vehiculo</th>
 								<th>Fecha Cambio</th>
 								<th>Kilometraje Cambio</th>
-								<th></th>
-								<th></th>
+								<th>Proximo Cambio</th>
+								<th>Pendiente Por Consumir</th>
+								<th>Cambio</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="cambioAceite:${cambioAceites}"  th:if="${cambioAceite.activo == true}">
+							<tr th:each="cambioAceite:${cambioAceites}"  th:if="${cambioAceite.activo == true && cambioAceite.cambiado == false }">
 								<td th:text="${cambioAceite.vehiculo.placa}">Vehiculo</td>
 								<td th:text="${cambioAceite.fechaCambioAceite}">Fecha Cambio</td>
 								<td th:text="${cambioAceite.kilometrajeCambioAceite}">Kilometraje Cambio</td>
+								<td th:text="${cambioAceite.proximoCambioAceite}">Proximo Cambio</td>
+								<td th:text="${cambioAceite.pendientePorConsumir}">Pendiente Por Consumir</td>
+
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/cambioEstadoCambioAceite/} + ${cambioAceite.id}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Realizado
+									</a>
+								</td>
+
 
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarCambioAceite/} + ${cambioAceite.id}"
@@ -38,11 +51,15 @@
 										<i class="fas fa-angle-double-right"></i> Editar
 									</a>
 								</td>
+
+
 								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarCambioAceiteSuave/}+ ${cambioAceite.id}" class="btn btn-dark">
 									<i class="fas fa-angle-double-right"></i> Eliminar
 								</a>
 
 								</tr>
+
+
 								</tbody>
 							</table>
 						</div>

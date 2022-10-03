@@ -12,4 +12,9 @@ public interface ICambioAceite {
     public void eliminarCambioAceite(CambioAceite  cambioAceite);
     public CambioAceite encontrarCambioAceite(CambioAceite cambioAceite);
     public void eliminadoSuave(CambioAceite  cambioAceite);
+
+    public void cambioAceiteRealizado(CambioAceite  cambioAceite);
+
+
+
 }

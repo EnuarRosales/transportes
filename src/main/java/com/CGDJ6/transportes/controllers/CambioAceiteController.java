@@ -73,6 +73,13 @@ public class CambioAceiteController {
         return "redirect:/CambioAceite";
     }
 
+    @GetMapping("/cambioEstadoCambioAceite/{id}")
+    public String cambio(CambioAceite cambioAceite,RedirectAttributes flash) {
+        cambioAceiteService.cambioAceiteRealizado(cambioAceite);
+        flash.addFlashAttribute("success","Cambio de Aceite Realizado Correctamente");
+        return "redirect:/CambioAceite";
+    }
+
 
 
 }

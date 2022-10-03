@@ -1,6 +1,8 @@
 package com.CGDJ6.transportes.services;
 
+import com.CGDJ6.transportes.entities.CambioAceite;
 import com.CGDJ6.transportes.entities.ControlKilometraje;
+import com.CGDJ6.transportes.repositories.CambioAceiteRepository;
 import com.CGDJ6.transportes.repositories.ControlKilometrajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class ControlKilometrajeService implements IControlKilometrajeService {
 
     @Autowired
     private ControlKilometrajeRepository controlKilometrajeRepository;
+
+    @Autowired
+    private CambioAceiteRepository cambioAceiteRepository;
 
 
     @Override

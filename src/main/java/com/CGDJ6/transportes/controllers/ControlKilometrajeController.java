@@ -1,7 +1,13 @@
 package com.CGDJ6.transportes.controllers;
 
+import com.CGDJ6.transportes.entities.CambioAceite;
 import com.CGDJ6.transportes.entities.ControlKilometraje;
+import com.CGDJ6.transportes.entities.TipoUsuario;
+import com.CGDJ6.transportes.repositories.CambioAceiteRepository;
+import com.CGDJ6.transportes.repositories.UsuarioRepository;
+import com.CGDJ6.transportes.services.CambioAceiteService;
 import com.CGDJ6.transportes.services.ControlKilometrajeService;
+import com.CGDJ6.transportes.services.TipoUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,6 +26,8 @@ public class ControlKilometrajeController {
     @Autowired
     ControlKilometrajeService controlKilometrajeService;
 
+    @Autowired
+    CambioAceiteService cambioAceiteService;
 
     @GetMapping("/ControlKilometraje")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
@@ -36,12 +44,39 @@ public class ControlKilometrajeController {
 
 
     @PostMapping("/guardarControlKilometraje")
-    public String guardar(@Valid ControlKilometraje controlKilometraje, RedirectAttributes flash) {
+    public String guardar(@Valid ControlKilometraje controlKilometraje,RedirectAttributes flash) {
+
+        Long variable = Long.valueOf(0);
+        int variableIndex = 0;
+
+        for (int i =0; i < cambioAceiteService.listarCambioAceite().size();i++){
+            if(cambioAceiteService.listarCambioAceite().get(i).getVehiculo().getPlaca() == controlKilometraje.getVehiculo().getPlaca()){
+               variableIndex = i;
+               variable = cambioAceiteService.listarCambioAceite().get(i).getProximoCambioAceite();
+            }
+
+        }
+        System.out.println(variableIndex+"indice");
+
+        System.out.println(variable+"compare mijho");
 
         if(controlKilometraje.getVehiculo() != null){
+            controlKilometraje.setKilometrajePorConsumir(variable-(controlKilometraje.getKilometrajePorConsumir()+controlKilometraje.getKilometraje()));
+            for (int i =0; i < cambioAceiteService.listarCambioAceite().size();i++){
+                if(cambioAceiteService.listarCambioAceite().get(variableIndex).isCambiado()==false){
+                    cambioAceiteService.listarCambioAceite().get(variableIndex).setPendientePorConsumir(controlKilometraje.getKilometrajePorConsumir());
+                    controlKilometrajeService.guardarControlKilometraje(controlKilometraje);
+                    flash.addFlashAttribute("success","Kilometraje Registrado Correctamente");
+                    return "redirect:/ControlKilometraje";
+                }
+
+            }
+            /*
+            cambioAceiteService.listarCambioAceite().get(variableIndex).setPendientePorConsumir(controlKilometraje.getKilometrajePorConsumir());
+            System.out.println(controlKilometraje.getKilometrajePorConsumir() +" KILOMETRAJE POR CONSUMIR");
             controlKilometrajeService.guardarControlKilometraje(controlKilometraje);
             flash.addFlashAttribute("success","Kilometraje Registrado Correctamente");
-            return "redirect:/ControlKilometraje";
+            return "redirect:/ControlKilometraje";*/
 
         }
 

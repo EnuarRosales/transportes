@@ -24,18 +24,29 @@ public class ControlKilometraje /*implements Serializable*/ {
 
     private  Long  kilometraje;
 
+    private  Long kilometrajePorConsumir =0L;
+
     private boolean activo = true;
 
     public ControlKilometraje() {
 
     }
 
-    public ControlKilometraje(Long id, Vehiculo vehiculo, String fechaRegistro, Long kilometraje, boolean activo) {
+    public ControlKilometraje(Long id, Vehiculo vehiculo, String fechaRegistro, Long kilometraje, Long kilometrajePorConsumir, boolean activo) {
         this.id = id;
         this.vehiculo = vehiculo;
         this.fechaRegistro = fechaRegistro;
         this.kilometraje = kilometraje;
+        this.kilometrajePorConsumir = kilometrajePorConsumir;
         this.activo = activo;
+    }
+
+    public Long getKilometrajePorConsumir() {
+        return kilometrajePorConsumir;
+    }
+
+    public void setKilometrajePorConsumir(Long kilometrajePorConsumir) {
+        this.kilometrajePorConsumir = kilometrajePorConsumir;
     }
 
     public Long getId() {
