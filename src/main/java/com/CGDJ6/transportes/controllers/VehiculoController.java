@@ -121,6 +121,7 @@ public class VehiculoController {
 
     @GetMapping("/detallesVehiculo/{placa}")
     public String detallesVehiculo(Vehiculo vehiculo, Model model) {
+        vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/VehiculoDetalle";
     }
@@ -149,8 +150,24 @@ public class VehiculoController {
 
     }
 
+    @GetMapping("/eliminarVehiculoSuave/{placa}")
+    public String eliminarS(Vehiculo vehiculo, RedirectAttributes flash) {
+        vehiculoService.eliminadoSuave(vehiculo);
+        flash.addFlashAttribute("success","Vehiculo Eliminado Correctamente");
+        return "redirect:/Vehiculo";
+    }
+
+
     @GetMapping("/")
     public String inicioBs(Model model, @Param ("palabraClave") String palabraClave) {
+        int sumatoriaCambioAceite=0;
+        for(int i =0; i< cambioAceiteService.listarCambioAceite().size(); i ++){
+            if(cambioAceiteService.listarCambioAceite().get(i).getPendientePorConsumir() <= 1000){
+                sumatoriaCambioAceite =sumatoriaCambioAceite +1;
+            }
+
+        }
+
         var vehiculos= vehiculoService.listarVehiculo( palabraClave);
         var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
         var tipoVehiculosl =tipoVehiculoService.listarTipoVehiculo();
@@ -158,23 +175,33 @@ public class VehiculoController {
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("palabraClave", palabraClave);
         model.addAttribute("totalVehiculos", vehiculos.size());
+        model.addAttribute("sumatoriaCambioAceite", sumatoriaCambioAceite);
         model.addAttribute("totalServicioRealizados", servicioRealizados.size());
+<<<<<<< HEAD
         var cambioAceites= cambioAceiteService.listarCambioAceite();
         model.addAttribute("cambioAceites", cambioAceites);
         model.addAttribute("listadoCambioAceites", cambioAceites.size());
         System.out.println(vehiculos.size());
         System.out.println(servicioRealizados.size());
+=======
+        System.out.println(sumatoriaCambioAceite);
+
+>>>>>>> a47ce869b471d1471d595b645b40e145b84e4c85
         return "index";
 
     }
 
 
-    @GetMapping("/eliminarVehiculoSuave/{placa}")
-    public String eliminarS(Vehiculo vehiculo, RedirectAttributes flash) {
-        vehiculoService.eliminadoSuave(vehiculo);
-        flash.addFlashAttribute("success","Vehiculo Eliminado Correctamente");
-        return "redirect:/Vehiculo";
+    @GetMapping("/CambioAceiteDas")
+    public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
+        var cambioAceites= cambioAceiteService.listarCambioAceite();
+        model.addAttribute("cambioAceites", cambioAceites);
+        return "index";
+
     }
+
+
+
 
 
 

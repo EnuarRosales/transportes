@@ -24,7 +24,11 @@
 
 			<div class="text-producto">
 				<p>Cambio de Aceite</p>
+<<<<<<< HEAD
 			<a class="btnDas" th:text="${listadoCambioAceites}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+=======
+			<a class="btnDas" th:text="${sumatoriaCambioAceite}"  th:href="@{/CambioAceiteDas}"><i class="fas fa-fill-drip" > </i></a>
+>>>>>>> a47ce869b471d1471d595b645b40e145b84e4c85
 			</div>
 
 			<div class="text-producto">
@@ -49,9 +53,9 @@
 				<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 99+<span class="visually-hidden">unread messages</span> </span>
 			</div>
 		</nav>
-
 	</div>
 
+<<<<<<< HEAD
 	<div id="listadoVehiculos">
 		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 	</div>
@@ -99,6 +103,9 @@
 
 	</script>
 
+=======
+	<section th:replace="layaut/cambioAceite/listadoCambioAceites :: listadoCambioAceites"></section>
+>>>>>>> a47ce869b471d1471d595b645b40e145b84e4c85
 
 </main>
 
