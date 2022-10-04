@@ -177,16 +177,16 @@ public class VehiculoController {
         model.addAttribute("totalVehiculos", vehiculos.size());
         model.addAttribute("sumatoriaCambioAceite", sumatoriaCambioAceite);
         model.addAttribute("totalServicioRealizados", servicioRealizados.size());
-<<<<<<< HEAD
+
         var cambioAceites= cambioAceiteService.listarCambioAceite();
         model.addAttribute("cambioAceites", cambioAceites);
         model.addAttribute("listadoCambioAceites", cambioAceites.size());
         System.out.println(vehiculos.size());
         System.out.println(servicioRealizados.size());
-=======
+
         System.out.println(sumatoriaCambioAceite);
 
->>>>>>> a47ce869b471d1471d595b645b40e145b84e4c85
+
         return "index";
 
     }
