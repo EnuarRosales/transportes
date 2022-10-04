@@ -4,10 +4,7 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
-import com.CGDJ6.transportes.services.ServicioRealizadoService;
-import com.CGDJ6.transportes.services.TipoServicioService;
-import com.CGDJ6.transportes.services.TipoVehiculoService;
-import com.CGDJ6.transportes.services.VehiculoService;
+import com.CGDJ6.transportes.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.repository.query.Param;
@@ -40,6 +37,9 @@ public class VehiculoController {
 
     @Autowired
     ServicioRealizadoService servicioRealizadoService;
+
+    @Autowired
+    CambioAceiteService cambioAceiteService;
 
 
 
@@ -159,6 +159,9 @@ public class VehiculoController {
         model.addAttribute("palabraClave", palabraClave);
         model.addAttribute("totalVehiculos", vehiculos.size());
         model.addAttribute("totalServicioRealizados", servicioRealizados.size());
+        var cambioAceites= cambioAceiteService.listarCambioAceite();
+        model.addAttribute("cambioAceites", cambioAceites);
+        model.addAttribute("listadoCambioAceites", cambioAceites.size());
         System.out.println(vehiculos.size());
         System.out.println(servicioRealizados.size());
         return "index";

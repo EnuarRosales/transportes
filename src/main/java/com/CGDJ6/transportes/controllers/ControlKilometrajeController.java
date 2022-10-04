@@ -33,6 +33,7 @@ public class ControlKilometrajeController {
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var controlKilometrajes= controlKilometrajeService.listarControlKilometraje();
         model.addAttribute("controlKilometrajes", controlKilometrajes);
+        model.addAttribute("TotalControlKilometrajes", controlKilometrajes.size());
         return "layaut/controlKilometraje/ControlKilometraje";
 
     }
