@@ -19,12 +19,17 @@
 		<nav class="nav-principal">
 			<div class="text-producto">
 				<p>Vehiculos</p>
-				<a class="btnDas" th:text="${totalVehiculos}"  th:href="@{/}"><i class="fas fa-car"></i></a>
+				<a class="btnDas" th:text="${totalVehiculos}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-car"></i></a>
 			</div>
 
 			<div class="text-producto">
 				<p>Cambio de Aceite</p>
-			<a class="btnDas" th:text="${totalVehiculos}"  th:href="@{/Vehiculo}"><i class="fas fa-fill-drip" > </i>  0</a>
+			<a class="btnDas" th:text="${listadoCambioAceites}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+			</div>
+
+			<div class="text-producto">
+				<p>Cambio de Aceite</p>
+			<a class="btnDas" th:text="${sumatoriaCambioAceite}"  th:href="@{/CambioAceiteDas}"><i class="fas fa-fill-drip" > </i></a>
 			</div>
 
 			<div class="text-producto">
@@ -49,11 +54,56 @@
 				<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 99+<span class="visually-hidden">unread messages</span> </span>
 			</div>
 		</nav>
-
 	</div>
 
-	<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 
+	<div id="listadoVehiculos">
+		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
+	</div>
+
+	<div id="listadoCambioAceites" style="display:none" >
+		<section th:replace="layaut/cambioAceite/listadoCambioAceites :: listadoCambioAceites"></section>
+	</div>
+
+
+	<script>
+
+<!--	function ocultarTodo() {-->
+<!--  			var x = document.getElementById("listadoVehiculos");-->
+<!--  			if (x.style.display === "none") {-->
+<!--    			x.style.display = "block";-->
+<!--			} else {-->
+<!--    			x.style.display = "none";-->
+<!--  			}-->
+<!--		}-->
+
+		function ocultarTodo() {
+  			var listadoVehiculos = document.getElementById("listadoVehiculos");
+  			var listadoCambioAceites = document.getElementById("listadoCambioAceites");
+    			listadoVehiculos.style.display = "none";
+    			listadoCambioAceites.style.display = "none";
+		}
+
+		function listadoCambioAceites() {
+  			var listadoCambioAceites = document.getElementById("listadoCambioAceites");
+  			if (listadoCambioAceites.style.display === "none") {
+    			listadoCambioAceites.style.display = "block";
+			} else {
+    			listadoCambioAceites.style.display = "none";
+  			}
+		}
+
+		function listadoVehiculos() {
+  			var listadoVehiculos = document.getElementById("listadoVehiculos");
+  			if (listadoVehiculos.style.display === "none") {
+    			listadoVehiculos.style.display = "block";
+			} else {
+    			listadoVehiculos.style.display = "none";
+  			}
+		}
+
+	</script>
+	
 </main>
 
 

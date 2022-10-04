@@ -32,10 +32,18 @@
 
 
 								<div class="form-group">
-									<label for="tipoVehiculo">Tipo Vehiculo ID</label>
-									<input type="text" class="form-control" name="tipoVehiculo"
-										   required="true" th:field="*{tipoVehiculo}"/>
+									<label for="tipoVehiculo" >Tipo Vehiculo ID</label>
+									<select type="number"  class="form-control" name="tipoVehiculo" required="true">
+										<option selected ></option>
+										<option th:each="tipoVehiculosl:${tipoVehiculosl}" th:if="${tipoVehiculosl.activo == true}"
+										        th:value="${tipoVehiculosl.id}"
+										        th:text="${tipoVehiculosl.descripcion}"
+
+										/>
+									</select>
 								</div>
+
+
 
 
 

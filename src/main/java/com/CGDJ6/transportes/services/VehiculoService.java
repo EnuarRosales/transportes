@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.services;
 
 
+import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.repositories.VehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,21 @@ public class VehiculoService implements IVehiculoService{
 
     @Override
     public void eliminadoSuave(Vehiculo vehiculo) {
-
-
+        vehiculo.setActivo(false);
+        vehiculo.setTipoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getTipoVehiculo());
+        vehiculo.setModelo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getModelo());
+        vehiculo.setMarca(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getMarca());
+        vehiculo.setColor(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getColor());
+        vehiculo.setAnoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getAnoVehiculo());
+        vehiculo.setFechaExpiracionSeguro(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionSeguro());
+        vehiculo.setFechaExpiracionTecnomecanica(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionTecnomecanica());
+        vehiculo.setImagen(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getImagen());
+        vehiculoRepository.save(vehiculo);
     }
+
+
+
+
 
 
 }
