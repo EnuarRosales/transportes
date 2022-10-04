@@ -181,10 +181,10 @@ public class VehiculoController {
         var cambioAceites= cambioAceiteService.listarCambioAceite();
         model.addAttribute("cambioAceites", cambioAceites);
         model.addAttribute("listadoCambioAceites", cambioAceites.size());
-        System.out.println(vehiculos.size());
+        System.out.println(vehiculos.size()+"SUMATORIA VEHICULOS");
         System.out.println(servicioRealizados.size());
 
-        System.out.println(sumatoriaCambioAceite);
+        System.out.println(sumatoriaCambioAceite+"SUMATORIA ACEITE");
 
 
         return "index";
