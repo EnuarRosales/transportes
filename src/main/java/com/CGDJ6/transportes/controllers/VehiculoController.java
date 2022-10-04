@@ -100,6 +100,8 @@ public class VehiculoController {
     @GetMapping("/editarVehiculo/{placa}")
     public String editar(Vehiculo vehiculo, Model model) {
         vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
+        var tipoVehiculosl =tipoVehiculoService.listarTipoVehiculo();
+        model.addAttribute("tipoVehiculosl", tipoVehiculosl);
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/modificarVehiculo";
     }
@@ -119,7 +121,6 @@ public class VehiculoController {
 
     @GetMapping("/detallesVehiculo/{placa}")
     public String detallesVehiculo(Vehiculo vehiculo, Model model) {
-        vehiculo = vehiculoService.encontrarVehiculo(vehiculo);
         model.addAttribute("vehiculo", vehiculo);
         return "layaut/vehiculo/VehiculoDetalle";
     }
@@ -171,6 +172,8 @@ public class VehiculoController {
         flash.addFlashAttribute("success","Vehiculo Eliminado Correctamente");
         return "redirect:/Vehiculo";
     }
+
+
 
 
 
