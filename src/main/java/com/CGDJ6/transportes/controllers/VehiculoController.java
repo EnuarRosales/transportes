@@ -1,6 +1,7 @@
 package com.CGDJ6.transportes.controllers;
 
 
+import com.CGDJ6.transportes.entities.CambioAceite;
 import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
@@ -160,12 +161,28 @@ public class VehiculoController {
 
     @GetMapping("/")
     public String inicioBs(Model model, @Param ("palabraClave") String palabraClave) {
-        int sumatoriaCambioAceite=0;
-        for(int i =0; i< cambioAceiteService.listarCambioAceite().size(); i ++){
-            if(cambioAceiteService.listarCambioAceite().get(i).getPendientePorConsumir() <= 1000){
-                sumatoriaCambioAceite =sumatoriaCambioAceite +1;
-            }
+//        int sumatoriaCambioAceite=0;
+//        for(int i =0; i< cambioAceiteService.listarCambioAceite().size(); i ++){
+//            if(cambioAceiteService.listarCambioAceite().get(i).getPendientePorConsumir() <= 1000){
+//                sumatoriaCambioAceite =sumatoriaCambioAceite +1;
+//            }
+//
+//        }
 
+        int sumatoriaCambioAceite=0;
+        for (CambioAceite listarCambioAceite : cambioAceiteService.listarCambioAceite()) {
+//            System.out.println("vehiculos "+ Listar);
+            if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
+                sumatoriaCambioAceite = sumatoriaCambioAceite + 1;
+            }
+        }
+
+        int sumatoriaVehiculos=0;
+        for (Vehiculo listarVehiculo : vehiculoService.listarVehiculos()) {
+            if (listarVehiculo.isActivo()==true ) {
+                System.out.println("vehiculos "+ listarVehiculo);
+                sumatoriaVehiculos = sumatoriaVehiculos + 1;
+            }
         }
 
         var vehiculos= vehiculoService.listarVehiculo( palabraClave);
@@ -177,6 +194,8 @@ public class VehiculoController {
         model.addAttribute("totalVehiculos", vehiculos.size());
         model.addAttribute("sumatoriaCambioAceite", sumatoriaCambioAceite);
         model.addAttribute("totalServicioRealizados", servicioRealizados.size());
+
+        model.addAttribute("sumatoriaVehiculos", sumatoriaVehiculos);
 
         var cambioAceites= cambioAceiteService.listarCambioAceite();
         model.addAttribute("cambioAceites", cambioAceites);
@@ -199,15 +218,6 @@ public class VehiculoController {
         return "index";
 
     }
-
-
-
-
-
-
-
-
-
 
 
 }

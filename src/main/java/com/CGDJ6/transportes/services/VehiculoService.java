@@ -1,7 +1,6 @@
 package com.CGDJ6.transportes.services;
 
 
-import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.repositories.VehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,10 @@ public class VehiculoService implements IVehiculoService{
         return (List<Vehiculo>) vehiculoRepository.findAll();
     }
 
+    @Override
+    public List<Vehiculo> listarVehiculos() {
+        return (List<Vehiculo>) vehiculoRepository.findAll();
+    }
 
     @Override
     public void guardarVehiculo(Vehiculo vehiculo) {

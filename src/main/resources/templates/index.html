@@ -19,12 +19,12 @@
 		<nav class="nav-principal">
 			<div class="text-producto">
 				<p>Vehiculos</p>
-				<a class="btnDas" th:text="${totalVehiculos}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-car"></i></a>
+				<a class="btnDas" th:text="${sumatoriaVehiculos}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-shuttle-van"></i>0</a>
 			</div>
 
 			<div class="text-producto">
 				<p>Cambio de Aceite</p>
-			<a class="btnDas" th:text="${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas" th:text="${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 
@@ -58,7 +58,7 @@
 	</div>
 
 	<div id="listadoCambioAceites" style="display:none" >
-		<section th:replace="layaut/cambioAceite/listadoCambioAceites :: listadoCambioAceites"></section>
+		<section th:replace="layaut/cambioAceite/alertaCambioAceites :: alertaCambioAceites"></section>
 	</div>
 
 
