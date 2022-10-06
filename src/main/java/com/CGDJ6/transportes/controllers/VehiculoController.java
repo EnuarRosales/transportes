@@ -25,6 +25,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.Map;
 
 @Controller
@@ -41,6 +45,9 @@ public class VehiculoController {
 
     @Autowired
     CambioAceiteService cambioAceiteService;
+
+    @Autowired
+    UsuarioService usuarioService;
 
 
 
@@ -63,7 +70,6 @@ public class VehiculoController {
 
     @PostMapping("/guardarVehiculo")
     public String guardar(@Valid Vehiculo vehiculo, @RequestParam ("file") MultipartFile imagen, Errors errores, RedirectAttributes flash) {
-
 
         if(errores.hasErrors()){
             return "modificarVehiculo";
@@ -161,27 +167,55 @@ public class VehiculoController {
 
     @GetMapping("/")
     public String inicioBs(Model model, @Param ("palabraClave") String palabraClave) {
-//        int sumatoriaCambioAceite=0;
-//        for(int i =0; i< cambioAceiteService.listarCambioAceite().size(); i ++){
-//            if(cambioAceiteService.listarCambioAceite().get(i).getPendientePorConsumir() <= 1000){
-//                sumatoriaCambioAceite =sumatoriaCambioAceite +1;
-//            }
-//
-//        }
 
         int sumatoriaCambioAceite=0;
         for (CambioAceite listarCambioAceite : cambioAceiteService.listarCambioAceite()) {
-//            System.out.println("vehiculos "+ Listar);
+
             if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
                 sumatoriaCambioAceite = sumatoriaCambioAceite + 1;
             }
         }
 
         int sumatoriaVehiculos=0;
+        int sumatoriaVehivulosExpiracionSeguro=0;
+        int sumatoriaVehivulosExpiracionTecno=0;
+        int sumatoriaUsuariosExpiracionLicencia=0;
+
+        //OTRO CICLO
+        for(Usuario listarUsuario : usuarioService.listarUsuario()){
+            // La fecha actual
+            Date fechaactual = new Date(System.currentTimeMillis());
+            //cambiando fechas milisegundos para poder operar
+            int milisecondsByDay = 86400000;
+            int diasLicencia = (int) ((listarUsuario.getExpiracioLicenciaConduccion().getTime()-fechaactual.getTime()) / milisecondsByDay);
+
+            //condicion para la alarma
+            if(diasLicencia <=30){
+                sumatoriaUsuariosExpiracionLicencia = sumatoriaUsuariosExpiracionLicencia+1;
+                System.out.println(sumatoriaUsuariosExpiracionLicencia+"licencias");
+            }
+
+
+        }
+
+        //OTRO CICLO
         for (Vehiculo listarVehiculo : vehiculoService.listarVehiculos()) {
             if (listarVehiculo.isActivo()==true ) {
-                System.out.println("vehiculos "+ listarVehiculo);
                 sumatoriaVehiculos = sumatoriaVehiculos + 1;
+                // La fecha actual
+                Date fechaactual = new Date(System.currentTimeMillis());
+                //cambiando fechas milisegundos para poder operar
+                int milisecondsByDay = 86400000;
+                int diasSeguro = (int) ((listarVehiculo.getFechaExpiracionSeguro().getTime()-fechaactual.getTime()) / milisecondsByDay);
+                int diasTecno = (int) ((listarVehiculo.getFechaExpiracionTecnomecanica().getTime()-fechaactual.getTime()) / milisecondsByDay);
+                //condicion para la alarma
+                if(diasSeguro <=30){
+                    sumatoriaVehivulosExpiracionSeguro = sumatoriaVehivulosExpiracionSeguro+1;
+                }
+                if(diasTecno <=30){
+                    sumatoriaVehivulosExpiracionTecno = sumatoriaVehivulosExpiracionTecno+1;
+                    System.out.println(sumatoriaVehivulosExpiracionTecno+"mireeee");
+                }
             }
         }
 
@@ -194,18 +228,13 @@ public class VehiculoController {
         model.addAttribute("totalVehiculos", vehiculos.size());
         model.addAttribute("sumatoriaCambioAceite", sumatoriaCambioAceite);
         model.addAttribute("totalServicioRealizados", servicioRealizados.size());
-
         model.addAttribute("sumatoriaVehiculos", sumatoriaVehiculos);
-
         var cambioAceites= cambioAceiteService.listarCambioAceite();
         model.addAttribute("cambioAceites", cambioAceites);
         model.addAttribute("listadoCambioAceites", cambioAceites.size());
-        System.out.println(vehiculos.size()+"SUMATORIA VEHICULOS");
-        System.out.println(servicioRealizados.size());
-
-        System.out.println(sumatoriaCambioAceite+"SUMATORIA ACEITE");
-
-
+        model.addAttribute("sumatoriaVehivulosExpiracionSeguro", sumatoriaVehivulosExpiracionSeguro);
+        model.addAttribute("sumatoriaVehivulosExpiracionTecno", sumatoriaVehivulosExpiracionTecno);
+        model.addAttribute("sumatoriaUsuariosExpiracionLicencia", sumatoriaUsuariosExpiracionLicencia);
         return "index";
 
     }

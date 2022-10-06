@@ -3,11 +3,13 @@ package com.CGDJ6.transportes.controllers;
 import com.CGDJ6.transportes.entities.CambioAceite;
 import com.CGDJ6.transportes.entities.ControlKilometraje;
 import com.CGDJ6.transportes.entities.TipoUsuario;
+import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.repositories.CambioAceiteRepository;
 import com.CGDJ6.transportes.repositories.UsuarioRepository;
 import com.CGDJ6.transportes.services.CambioAceiteService;
 import com.CGDJ6.transportes.services.ControlKilometrajeService;
 import com.CGDJ6.transportes.services.TipoUsuarioService;
+import com.CGDJ6.transportes.services.VehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -29,6 +31,9 @@ public class ControlKilometrajeController {
     @Autowired
     CambioAceiteService cambioAceiteService;
 
+    @Autowired
+    VehiculoService vehiculoService;
+
     @GetMapping("/ControlKilometraje")
     public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
         var controlKilometrajes= controlKilometrajeService.listarControlKilometraje();
@@ -48,13 +53,27 @@ public class ControlKilometrajeController {
     public String guardar(@Valid ControlKilometraje controlKilometraje,RedirectAttributes flash) {
 
         Long variable = Long.valueOf(0);
+
+
         int variableIndex = 0;
+
+        /*
+                for(Vehiculo listarVehiculo : vehiculoService.listarVehiculos()){
+                    if(listarVehiculo.getPlaca() == controlKilometraje.getVehiculo().getPlaca()){
+                        variableIndex = i;
+                        variable = cambioAceiteService.listarCambioAceite().get(i).getProximoCambioAceite();
+                    }
+                }
+                */
+
+
 
         for (int i =0; i < cambioAceiteService.listarCambioAceite().size();i++){
             if(cambioAceiteService.listarCambioAceite().get(i).getVehiculo().getPlaca() == controlKilometraje.getVehiculo().getPlaca()){
                variableIndex = i;
                variable = cambioAceiteService.listarCambioAceite().get(i).getProximoCambioAceite();
             }
+
 
         }
         System.out.println(variableIndex+"indice");

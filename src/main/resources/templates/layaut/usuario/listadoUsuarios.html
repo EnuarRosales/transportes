@@ -23,6 +23,7 @@
 								<th>Tipo Usuario</th>
 								<th>Grado</th>
 								<th>Nombre</th>
+								<th>Expi.Lice.Cond</th>
 								<th>Editar</th>
 								<th>Eliminar</th>
 							</tr>
@@ -33,6 +34,7 @@
 								<td th:text="${usuario.usuario.descripcion}">Tipo Usuario ID</td>
 								<td th:text="${usuario.grado}">Grado</td>
 								<td th:text="${usuario.nombre}">Nombre</td>
+								<td th:text="${usuario.expiracioLicenciaConduccion}">Expi.Lice.Cond</td>
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarUsuario/} + ${usuario.cedula}"
 									   class="btn btn-secondary">

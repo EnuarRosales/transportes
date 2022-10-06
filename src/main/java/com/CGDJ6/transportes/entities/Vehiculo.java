@@ -4,9 +4,11 @@ package com.CGDJ6.transportes.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Columns;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 //@Data
@@ -27,9 +29,14 @@ public class Vehiculo /*implements Serializable */{
 
     private  Integer anoVehiculo;
 
-    private  String fechaExpiracionSeguro;
 
-    private  String fechaExpiracionTecnomecanica;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date fechaExpiracionSeguro;
+
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private  Date fechaExpiracionTecnomecanica;
 
 
     private  String imagen;
@@ -56,8 +63,7 @@ public class Vehiculo /*implements Serializable */{
     public Vehiculo() {
     }
 
-
-    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String modelo, String marca, String color, Integer anoVehiculo, String fechaExpiracionSeguro, String fechaExpiracionTecnomecanica, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
+    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String modelo, String marca, String color, Integer anoVehiculo, Date fechaExpiracionSeguro, Date fechaExpiracionTecnomecanica, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
         this.placa = placa;
         this.tipoVehiculo = tipoVehiculo;
         this.modelo = modelo;
@@ -98,19 +104,19 @@ public class Vehiculo /*implements Serializable */{
         this.anoVehiculo = anoVehiculo;
     }
 
-    public String getFechaExpiracionSeguro() {
+    public Date getFechaExpiracionSeguro() {
         return fechaExpiracionSeguro;
     }
 
-    public void setFechaExpiracionSeguro(String fechaExpiracionSeguro) {
+    public void setFechaExpiracionSeguro(Date fechaExpiracionSeguro) {
         this.fechaExpiracionSeguro = fechaExpiracionSeguro;
     }
 
-    public String getFechaExpiracionTecnomecanica() {
+    public Date getFechaExpiracionTecnomecanica() {
         return fechaExpiracionTecnomecanica;
     }
 
-    public void setFechaExpiracionTecnomecanica(String fechaExpiracionTecnomecanica) {
+    public void setFechaExpiracionTecnomecanica(Date fechaExpiracionTecnomecanica) {
         this.fechaExpiracionTecnomecanica = fechaExpiracionTecnomecanica;
     }
 

@@ -27,32 +27,32 @@
 				<a class="btnDas" th:text="${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
-
 			<div class="text-producto">
 				<p>Seguros a Vencer</p>
-			<a class="btnDas" href="#"><i class="fas fa-ambulance" > </i>   0</a>
+				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
 				<p>TecnoMec a Vencer</p>
-			<a class="btnDas" href="#"><i class="fas fa-calendar-times" > </i>    0</a>
+				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionTecno}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
 				<p>Licencias a Vencer</p>
-				<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 99+<span class="visually-hidden">unread messages</span> </span>
-				<a class="btnDas" href="#"><i class="fas fa-calendar-times" > </i>    0</a>
+				<a class="btnDas" th:text="${sumatoriaUsuariosExpiracionLicencia}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
 				<p>Mtt Realizados</p>
-				<a class="btnDas" th:text="${totalServicioRealizados}"  th:href="@{/}"><i class="fas fa-calendar-times" > </i>    0</a>
-				<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 99+<span class="visually-hidden">unread messages</span> </span>
+				<a class="btnDas" th:text="${totalServicioRealizados}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
+
+
 		</nav>
 	</div>
 
 
+	
 	<div id="listadoVehiculos">
 		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 	</div>
