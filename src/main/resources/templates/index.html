@@ -29,7 +29,7 @@
 
 			<div class="text-producto">
 				<p>Seguros a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
@@ -52,7 +52,7 @@
 	</div>
 
 
-	
+
 	<div id="listadoVehiculos">
 		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 	</div>
@@ -60,7 +60,6 @@
 	<div id="listadoCambioAceites" style="display:none" >
 		<section th:replace="layaut/cambioAceite/alertaCambioAceites :: alertaCambioAceites"></section>
 	</div>
-
 
 
 

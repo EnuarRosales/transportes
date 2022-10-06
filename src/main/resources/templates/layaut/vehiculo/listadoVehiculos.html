@@ -32,7 +32,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true}">
+							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true && diasSeguro <=30}">
 								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
 
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
