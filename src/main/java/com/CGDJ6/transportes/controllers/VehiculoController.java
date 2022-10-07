@@ -75,8 +75,9 @@ public class VehiculoController {
             return "modificarVehiculo";
         }
         if(!imagen.isEmpty()){
-           Path directorioImagenes = Paths.get("src//main//resources//static/images");
-            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+           //Path directorioImagenes = Paths.get("src//main//resources//static/images");
+            //String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+            String rutaAbsoluta = "C://Users//User//OneDrive - Universidad Nacional Abierta y a Distancia//TRANSPORTES";
             try {
                 byte[] bytesImg = imagen.getBytes();
                 Path rutaCompleta= Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
