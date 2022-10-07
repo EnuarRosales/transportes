@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Vehiculos</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<section th:fragment="alertalistadoVehiculos" id="alertalistadoVehiculos">
+	<div class="container">
+		<div class="row" style="width: 1190px;padding-bottom: 170px;">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Vehiculos</h4>
+					</div>
+					<div th:if="${vehiculos!= null and !vehiculos.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Placa</th>
+								<th>Tipo Vehiculo</th>
+								<th>Modelo</th>
+								<th>Marca</th>
+								<th>Color</th>
+								<th>Año</th>
+								<th>Exp.Seguro</th>
+								<th>Exp.Tecno.</th>
+								<th>Editar</th>
+								<th>Eliminar</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true && diasSeguro <=30}">
+								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
+
+								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
+								<td th:text="${vehiculo.modelo}">Modelo</td>
+								<td th:text="${vehiculo.marca}">Marca</td>
+								<td th:text="${vehiculo.color}">color</td>
+								<td th:text="${vehiculo.anoVehiculo}">anoVehiculo</td>
+								<td th:text="${vehiculo.fechaExpiracionSeguro}">Fecha Expiracion Seguro</td>
+								<td th:text="${vehiculo.fechaExpiracionTecnomecanica}">Fecha Expiracion Tecnomecanica</td>
+
+
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarVehiculo/} + ${vehiculo.placa}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarVehiculoSuave/}+ ${vehiculo.placa}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${vehiculos== null or vehiculos.empty}">
+							<span > Lista Vacía</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>

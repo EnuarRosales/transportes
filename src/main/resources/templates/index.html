@@ -29,7 +29,7 @@
 
 			<div class="text-producto">
 				<p>Seguros a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
@@ -57,10 +57,14 @@
 		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 	</div>
 
+
 	<div id="listadoCambioAceites" style="display:none" >
 		<section th:replace="layaut/cambioAceite/alertaCambioAceites :: alertaCambioAceites"></section>
 	</div>
 
+	<div id="alertalistadoVehiculos" style="display:none" >
+	<section th:replace="layaut/vehiculo/alertalistadoVehiculos :: alertalistadoVehiculos"></section>
+	</div>
 
 
 	<script>
@@ -96,6 +100,15 @@
     			listadoVehiculos.style.display = "block";
 			} else {
     			listadoVehiculos.style.display = "none";
+  			}
+		}
+
+		function alertalistadoVehiculos() {
+  			var alertalistadoVehiculos = document.getElementById("alertalistadoVehiculos");
+  			if (alertalistadoVehiculos.style.display === "none") {
+    			alertalistadoVehiculos.style.display = "block";
+			} else {
+    			alertalistadoVehiculos.style.display = "none";
   			}
 		}
 

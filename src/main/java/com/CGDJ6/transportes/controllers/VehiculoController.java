@@ -171,8 +171,8 @@ public class VehiculoController {
 
         int sumatoriaCambioAceite=0;
         for (CambioAceite listarCambioAceite : cambioAceiteService.listarCambioAceite()) {
+               if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
 
-            if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
                 sumatoriaCambioAceite = sumatoriaCambioAceite + 1;
             }
         }
@@ -200,7 +200,10 @@ public class VehiculoController {
         }
 
         //OTRO CICLO
+        int index =0;
         for (Vehiculo listarVehiculo : vehiculoService.listarVehiculos()) {
+            index = index;
+
             if (listarVehiculo.isActivo()==true ) {
                 sumatoriaVehiculos = sumatoriaVehiculos + 1;
                 // La fecha actual
@@ -211,7 +214,10 @@ public class VehiculoController {
                 int diasTecno = (int) ((listarVehiculo.getFechaExpiracionTecnomecanica().getTime()-fechaactual.getTime()) / milisecondsByDay);
                 //condicion para la alarma
                 if(diasSeguro <=30){
+                    System.out.println(index+"indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                    vehiculoService.listarVehiculos().get(index).setColor("seguro vencido");
                     sumatoriaVehivulosExpiracionSeguro = sumatoriaVehivulosExpiracionSeguro+1;
+
                 }
                 if(diasTecno <=30){
                     sumatoriaVehivulosExpiracionTecno = sumatoriaVehivulosExpiracionTecno+1;
