@@ -19,8 +19,9 @@
 		<nav class="nav-principal">
 			<div class="text-producto">
 				<p>Total Vehiculos</p>
-				<a class="btnDas" th:text="${sumatoriaVehiculos}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-shuttle-van"></i>0</a>
+				<a class="btnDas" th:text="${sumatoriaVehiculos}" th:href="@{/Vehiculo}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-shuttle-van"></i>0</a>
 			</div>
+
 
 			<div class="text-producto">
 				<p>Cambio Aceite Proximos</p>
