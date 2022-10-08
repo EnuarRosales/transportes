@@ -3,17 +3,17 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<title>Seguros a vencer</title>
+	<title>Tecnomecanicas a Vencer</title>
 	<meta charset="UTF-8"/>
 </head>
 <body sec:authorize="isAuthenticated()">
-<section th:fragment="alertalistadoVehiculos" id="alertalistadoVehiculos">
+<section th:fragment="alertaTencolistadoVehiculos" id="alertaTencolistadoVehiculos">
 	<div class="container">
 		<div class="row" style="width: 1190px;padding-bottom: 170px;">
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<h4>Seguros a vencer</h4>
+						<h4>Tecnomecanicas a Vencer</h4>
 					</div>
 					<div th:if="${vehiculos!= null and !vehiculos.empty}">
 						<table class="table table-stryped">
@@ -33,7 +33,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true && vehiculo.seguroVigente == false}">
+							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true && vehiculo.tecnomecanicaVigente == false}">
 								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
 
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>

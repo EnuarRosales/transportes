@@ -34,7 +34,7 @@
 
 			<div class="text-producto">
 				<p>TecnoMec a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionTecno}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionTecno}" onclick="ocultarTodo(),alertaTencolistadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
@@ -66,6 +66,10 @@
 	<section th:replace="layaut/vehiculo/alertalistadoVehiculos :: alertalistadoVehiculos"></section>
 	</div>
 
+	<div id="alertaTencolistadoVehiculos" style="display:none" >
+	<section th:replace="layaut/vehiculo/alertaTencolistadoVehiculos :: alertaTencolistadoVehiculos"></section>
+	</div>
+
 
 	<script>
 
@@ -81,8 +85,13 @@
 		function ocultarTodo() {
   			var listadoVehiculos = document.getElementById("listadoVehiculos");
   			var listadoCambioAceites = document.getElementById("listadoCambioAceites");
+  			var alertalistadoVehiculos = document.getElementById("alertalistadoVehiculos");
+  			var alertaTencolistadoVehiculos = document.getElementById("alertaTencolistadoVehiculos");
     			listadoVehiculos.style.display = "none";
     			listadoCambioAceites.style.display = "none";
+    			alertalistadoVehiculos.style.display = "none";
+    			alertaTencolistadoVehiculos.style.display = "none";
+
 		}
 
 		function listadoCambioAceites() {
@@ -109,6 +118,15 @@
     			alertalistadoVehiculos.style.display = "block";
 			} else {
     			alertalistadoVehiculos.style.display = "none";
+  			}
+		}
+
+		function alertaTencolistadoVehiculos() {
+  			var alertaTencolistadoVehiculos = document.getElementById("alertaTencolistadoVehiculos");
+  			if (alertaTencolistadoVehiculos.style.display === "none") {
+    			alertaTencolistadoVehiculos.style.display = "block";
+			} else {
+    			alertaTencolistadoVehiculos.style.display = "none";
   			}
 		}
 

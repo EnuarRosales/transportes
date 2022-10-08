@@ -59,11 +59,16 @@ public class Vehiculo /*implements Serializable */{
 
     private boolean activo =true;
 
+    private boolean seguroVigente =true;
+
+    private boolean tecnomecanicaVigente =true;
+
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String modelo, String marca, String color, Integer anoVehiculo, Date fechaExpiracionSeguro, Date fechaExpiracionTecnomecanica, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo) {
+
+    public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String modelo, String marca, String color, Integer anoVehiculo, Date fechaExpiracionSeguro, Date fechaExpiracionTecnomecanica, String imagen, List<ServicioRealizado> servicioRealizado, List<ControlKilometraje> controlKilometraje, List<AsignacionVehiculo> asignacionVehiculo, List<CambioAceite> cambioAceite, boolean activo, boolean seguroVigente, boolean tecnomecanicaVigente) {
         this.placa = placa;
         this.tipoVehiculo = tipoVehiculo;
         this.modelo = modelo;
@@ -78,6 +83,24 @@ public class Vehiculo /*implements Serializable */{
         this.asignacionVehiculo = asignacionVehiculo;
         this.cambioAceite = cambioAceite;
         this.activo = activo;
+        this.seguroVigente = seguroVigente;
+        this.tecnomecanicaVigente = tecnomecanicaVigente;
+    }
+
+    public boolean isSeguroVigente() {
+        return seguroVigente;
+    }
+
+    public void setSeguroVigente(boolean seguroVigente) {
+        this.seguroVigente = seguroVigente;
+    }
+
+    public boolean isTecnomecanicaVigente() {
+        return tecnomecanicaVigente;
+    }
+
+    public void setTecnomecanicaVigente(boolean tecnomecanicaVigente) {
+        this.tecnomecanicaVigente = tecnomecanicaVigente;
     }
 
     public String getModelo() {

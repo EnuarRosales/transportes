@@ -200,9 +200,9 @@ public class VehiculoController {
         }
 
         //OTRO CICLO
-        int index =0;
+        int index =-1;
         for (Vehiculo listarVehiculo : vehiculoService.listarVehiculos()) {
-            index = index;
+            index++;
 
             if (listarVehiculo.isActivo()==true ) {
                 sumatoriaVehiculos = sumatoriaVehiculos + 1;
@@ -215,11 +215,12 @@ public class VehiculoController {
                 //condicion para la alarma
                 if(diasSeguro <=30){
                     System.out.println(index+"indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                    vehiculoService.listarVehiculos().get(index).setColor("seguro vencido");
+                    vehiculoService.listarVehiculos().get(index).setSeguroVigente(false);
                     sumatoriaVehivulosExpiracionSeguro = sumatoriaVehivulosExpiracionSeguro+1;
 
                 }
                 if(diasTecno <=30){
+                    vehiculoService.listarVehiculos().get(index).setTecnomecanicaVigente(false);
                     sumatoriaVehivulosExpiracionTecno = sumatoriaVehivulosExpiracionTecno+1;
                     System.out.println(sumatoriaVehivulosExpiracionTecno+"mireeee");
                 }
