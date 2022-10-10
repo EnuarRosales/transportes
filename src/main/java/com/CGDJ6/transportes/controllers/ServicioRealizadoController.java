@@ -7,6 +7,7 @@ import com.CGDJ6.transportes.services.TipoServicioService;
 import com.CGDJ6.transportes.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,11 +29,15 @@ public class ServicioRealizadoController {
 
 
     @GetMapping("/ServicioRealizado")
-    public String inicio(Model model, @AuthenticationPrincipal SecurityProperties.User user) {
+    public String inicioB(Model model, @Param("palabraClave") String palabraClave) {
+        var servicioRealizado= servicioRealizadoService.listarServicioRealizados(palabraClave);
         var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
         var tipoServiciosl= tipoServicioService.listarTipoServicio();
         model.addAttribute("servicioRealizados", servicioRealizados);
         model.addAttribute("tipoServiciosl", tipoServiciosl);
+        model.addAttribute("servicioRealizado", servicioRealizado);
+        model.addAttribute("palabraClave", palabraClave);
+
         return "layaut/servicioRealizado/ServicioRealizado";
 
     }

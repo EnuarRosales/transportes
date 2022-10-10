@@ -3,6 +3,7 @@ package com.CGDJ6.transportes.services;
 
 import com.CGDJ6.transportes.entities.ServicioRealizado;
 import com.CGDJ6.transportes.entities.Usuario;
+import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.repositories.ServicioRealizadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,14 @@ public class ServicioRealizadoService implements IServicioRealizadoService {
 
     @Override
     public List<ServicioRealizado> listarServicioRealizado() {
+        return (List<ServicioRealizado>) servicioRealizadoRepository.findAll();
+    }
+
+    @Override
+    public List<ServicioRealizado> listarServicioRealizados(String palabraClave) {
+        if (palabraClave != null) {
+            return servicioRealizadoRepository.findAll(palabraClave);
+        }
         return (List<ServicioRealizado>) servicioRealizadoRepository.findAll();
     }
 

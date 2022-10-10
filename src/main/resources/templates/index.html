@@ -9,7 +9,6 @@
 <body>
 <header th:replace="layaut/plantilla :: header"></header>
 <link rel="stylesheet" th:href="@{/app.css}"/>
-<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
 
 <main class="contenido-principal contenedor">
 
@@ -19,7 +18,7 @@
 		<nav class="nav-principal">
 			<div class="text-producto">
 				<p>Total Vehiculos</p>
-				<a class="btnDas" th:text="${sumatoriaVehiculos}" th:href="@{/Vehiculo}" onclick="ocultarTodo(),listadoVehiculos()"><i class="fas fa-shuttle-van"></i>0</a>
+				<a class="btnDas" th:text="${sumatoriaVehiculos}" th:href="@{/Vehiculo}"><i class="fas fa-shuttle-van"></i>0</a>
 			</div>
 
 
@@ -45,17 +44,13 @@
 
 			<div class="text-producto">
 				<p>Mtt Realizados</p>
-				<a class="btnDas" th:text="${totalServicioRealizados}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas" th:text="${totalServicioRealizados}" th:href="@{/ServicioRealizado}" ><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
 
+
+
 		</nav>
-	</div>
-
-
-
-	<div id="listadoVehiculos">
-		<section th:replace="layaut/vehiculo/listadoVehiculos :: listadoVehiculos"></section>
 	</div>
 
 
@@ -84,11 +79,11 @@
 <!--		}-->
 <!--
 		function ocultarTodo() {
-  			var listadoVehiculos = document.getElementById("listadoVehiculos");
+  			<!--var listadoVehiculos = document.getElementById("listadoVehiculos");-->
   			var listadoCambioAceites = document.getElementById("listadoCambioAceites");
   			var alertalistadoVehiculos = document.getElementById("alertalistadoVehiculos");
   			var alertaTencolistadoVehiculos = document.getElementById("alertaTencolistadoVehiculos");
-    			listadoVehiculos.style.display = "none";
+    			<!--listadoVehiculos.style.display = "none";-->
     			listadoCambioAceites.style.display = "none";
     			alertalistadoVehiculos.style.display = "none";
     			alertaTencolistadoVehiculos.style.display = "none";

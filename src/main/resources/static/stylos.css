@@ -1,0 +1,36 @@
+
+/*con esto no tendremos probema con el padding a esto se  le domina box model*/
+
+
+
+
+
+
+.btnDas{
+    background-color: #8cbc00;
+    display: block; /*nos da todo el ancho disponible*/
+    color: black;
+    text-transform: uppercase;/*trasnforma el texto en mayusculas*/
+    font-weight: 900;
+    padding: 4rem;
+    transition: background-color .3s ease-out;/*transicion de colores recibe tres parametros*/
+    text-align: center;
+    border: none;
+    font-size: 3rem;
+    text-decoration: none;
+}
+
+
+
+.btn:hover{
+    background-color: #658504;
+    cursor: pointer;
+}
+
+.btnDas:hover{
+    background-color: #658504;
+    cursor: pointer;
+}
+
+
+

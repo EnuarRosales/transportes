@@ -47,7 +47,7 @@ a {
 .contenedor{
     max-width: 120rem;
     margin: 0 auto;
-    
+
 }
 
 img {
@@ -93,7 +93,7 @@ img {
     cursor: pointer;
 }
 
-/*utilidades*/ 
+/*utilidades*/
 .text-center{
     text-align: center;
 }
@@ -106,9 +106,9 @@ img {
 
 
 .nombre-sitio {
-    margin-top: 5rem;    
+    margin-top: 5rem;
     text-align: center;/*centra el texto*/
-   
+
 }
 .nombre-sitio span{
     color: #037bc0; /*color conbinado del titulo*/
@@ -183,7 +183,7 @@ background-size: 100%, 120rem;
 .texto-nosotros{
     grid-column: 2/3;
     color: #e1e1e1;
-    
+
 }
 
 /*listado de productos*/
@@ -204,7 +204,7 @@ background-size: 100%, 120rem;
     grid-column-start: 1;
     grid-column-end: 7;
     display: grid;
-    grid-template-columns: 3fr 1fr;/* posicionan mejor la primer imagen*/ 
+    grid-template-columns: 3fr 1fr;/* posicionan mejor la primer imagen*/
 
 }
 
@@ -219,7 +219,7 @@ background-size: 100%, 120rem;
 /*continuamos poscisionando las imagenes en el GRID  seleccionamos la imagne 2 y le decimo que vaya desde la poscicion 1 a la posicion 4*/
 .producto:nth-child(2){
     grid-column-start: 1;
-    grid-column-end: 4; 
+    grid-column-end: 4;
 }
 .producto:nth-child(2) img{
     height: 30rem;
@@ -229,7 +229,7 @@ background-size: 100%, 120rem;
 
 .producto:nth-child(3){
     grid-column-start: 4;
-    grid-column-end: 7; 
+    grid-column-end: 7;
 }
 .producto:nth-child(3) img{
     height: 30rem;
@@ -239,7 +239,7 @@ background-size: 100%, 120rem;
 
 .producto:nth-child(4){
     grid-column-start: 1;
-    grid-column-end: 3; 
+    grid-column-end: 3;
 }
 .producto:nth-child(4) img{
     height: 30rem;
@@ -248,7 +248,7 @@ background-size: 100%, 120rem;
 }
 .producto:nth-child(5){
     grid-column-start: 3;
-    grid-column-end: 5; 
+    grid-column-end: 5;
 }
 .producto:nth-child(5) img{
     height: 30rem;
@@ -257,7 +257,7 @@ background-size: 100%, 120rem;
 }
 .producto:nth-child(6){
     grid-column-start: 5;
-    grid-column-end: 7; 
+    grid-column-end: 7;
 }.producto:nth-child(6) img{
     height: 30rem;
     width: 100%;
@@ -277,10 +277,10 @@ background-size: 100%, 120rem;
 }
 
 .text-producto h3{
-    margin: 0;    
+    margin: 0;
 }
 .text-producto p{
-    margin: 0 0 .5rem 0;    
+    margin: 0 0 .5rem 0;
 }
 
 .text-producto .precio {
@@ -291,7 +291,7 @@ background-size: 100%, 120rem;
 /*footer*/
 
 .site-footer{
-    border-top: 0.1rem solid #e1e1e1; 
+    border-top: 0.1rem solid #e1e1e1;
     margin: 5rem;
     padding: 5rem;
 
@@ -306,7 +306,7 @@ background-size: 100%, 120rem;
 
 }
 
-.footer-menu a{    
+.footer-menu a{
     display: block; /*cada enlace tomara el total del ancho disponible*/
 }
 
@@ -321,9 +321,9 @@ background-size: 100%, 120rem;
 .contenido-nosotros{
     display: grid;
     grid-template-columns: 1fr 2fr;
-    column-gap: 4rem;    
+    column-gap: 4rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));/**con sta liena volvemos responsive el sitio cuadndo llegue al tamaño de 25rem esta se descuelga*/
-    
+
 
 }
 
@@ -332,7 +332,7 @@ background-size: 100%, 120rem;
     flex-direction: column;/*las cualoes son estas*/
     justify-content: center;
 
-    
+
 }
 
 /*blog*/
@@ -354,7 +354,7 @@ border: none; /*para que no nos maque el borde que se miraba feo*/
 .entrada-meta{
     display: flex;
     justify-content: space-between;/*coloca a los extremos*/
-    
+
 }
 .entrada-meta p{
     font-weight: bold;/*ojo dependiendo de la fuente que hayamos sleccionado negrita*/
