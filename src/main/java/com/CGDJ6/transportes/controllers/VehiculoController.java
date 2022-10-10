@@ -77,7 +77,8 @@ public class VehiculoController {
         if(!imagen.isEmpty()){
            //Path directorioImagenes = Paths.get("src//main//resources//static/images");
             //String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-            String rutaAbsoluta = "C://Users//enuaros//Downloads//IMAGENES_TRANSPORTES";
+            String rutaAbsoluta = "https://nyjhbwglsioynilgbwwx.supabase.co//storage//v1//object//public//tranportescgdj6//imagenes";
+
 
             try {
                 byte[] bytesImg = imagen.getBytes();

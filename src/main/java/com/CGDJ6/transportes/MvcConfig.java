@@ -10,8 +10,11 @@ public class MvcConfig  implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry  registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
-        registry.addResourceHandler("/images/**")
-        .addResourceLocations("file:C:/Users//enuaros/Downloads/IMAGENES_TRANSPORTES/");
+        registry.addResourceHandler("/images/**").addResourceLocations("https//nyjhbwglsioynilgbwwx.supabase.co/storage/v1/object/public/tranportescgdj6/imagenes/");
+
+
+
+
 
     }
 }
