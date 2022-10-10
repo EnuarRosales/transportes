@@ -11,6 +11,7 @@ public class MvcConfig  implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry  registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
         registry.addResourceHandler("/images/**")
-        .addResourceLocations("file:C:/Users/User/OneDrive - Universidad Nacional Abierta y a Distancia/TRANSPORTES");
+        .addResourceLocations("file:C:/Users//enuaros/Downloads/IMAGENES_TRANSPORTES/");
+
     }
 }
