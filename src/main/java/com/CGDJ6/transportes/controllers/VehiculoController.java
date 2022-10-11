@@ -6,6 +6,8 @@ import com.CGDJ6.transportes.entities.TipoUsuario;
 import com.CGDJ6.transportes.entities.Usuario;
 import com.CGDJ6.transportes.entities.Vehiculo;
 import com.CGDJ6.transportes.services.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.repository.query.Param;
@@ -30,10 +32,12 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class VehiculoController {
 
+    private  final Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     VehiculoService vehiculoService;
 
@@ -75,22 +79,18 @@ public class VehiculoController {
             return "modificarVehiculo";
         }
         if(!imagen.isEmpty()){
-           //Path directorioImagenes = Paths.get("src//main//resources//static/images");
-            //String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-<<<<<<< HEAD
-            String rutaAbsoluta = "nyjhbwglsioynilgbwwx.supabase.co//storage//v1//object//public//tranportescgdj6//imagenes";
-=======
-            String rutaAbsoluta = "https://nyjhbwglsioynilgbwwx.supabase.co//storage//v1//object//public//tranportescgdj6//imagenes";
 
+           String uniqueFilename = UUID.randomUUID().toString()+"_"+imagen.getOriginalFilename();
+           Path directorioImagenes = Paths.get("images").resolve(uniqueFilename);
+           Path rutaAbsoluta = directorioImagenes.toAbsolutePath();
 
->>>>>>> 61ee8c3a34bea5e63f190295dbf814a70be65561
+           log.info("directorioImagenes: "+ directorioImagenes);
+            log.info("rutaAbsolutas: "+ rutaAbsoluta);
+
             try {
 
-
-                byte[] bytesImg = imagen.getBytes();
-                Path rutaCompleta= Paths.get(rutaAbsoluta + "//" + imagen.getOriginalFilename());
-                Files.write(rutaCompleta,bytesImg);
-                vehiculo.setImagen(imagen.getOriginalFilename());
+                Files.copy(imagen.getInputStream(), rutaAbsoluta);
+                vehiculo.setImagen(uniqueFilename);
                 flash.addFlashAttribute("success","Vehiculo  Creado Correctamente");
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -251,6 +251,7 @@ public class VehiculoController {
         model.addAttribute("sumatoriaVehivulosExpiracionSeguro", sumatoriaVehivulosExpiracionSeguro);
         model.addAttribute("sumatoriaVehivulosExpiracionTecno", sumatoriaVehivulosExpiracionTecno);
         model.addAttribute("sumatoriaUsuariosExpiracionLicencia", sumatoriaUsuariosExpiracionLicencia);
+
 
         return "index";
 
