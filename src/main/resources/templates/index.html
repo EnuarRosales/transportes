@@ -18,33 +18,34 @@
 		<nav class="nav-principal">
 			<div class="text-producto">
 				<p>Total Vehiculos</p>
-				<a class="btnDas" th:text="${sumatoriaVehiculos}" th:href="@{/Vehiculo}"><i class="fas fa-shuttle-van"></i>0</a>
+				<a class="btnDas fas fa-shuttle-van" th:text="${' '} + ${sumatoriaVehiculos}" th:href="@{/Vehiculo}"><i class=""></i>0</a>
 			</div>
 
 
 			<div class="text-producto">
-				<p>Cambio Aceite Proximos</p>
-				<a class="btnDas" th:text="${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<p>Cambio Aceite</p>
+				<a class="btnDas fa-solid fa-oil-can" th:text="${' '} + ${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()">  0</a>
 			</div>
 
 			<div class="text-producto">
-				<p>Seguros a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<p>Seguros</p><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" th:text="${vencidoDiasSeguro}"></span>
+				<a class="btnDas fa-solid fa-shield-halved" th:text="${' '} + ${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()">  <i class="" > </i>  0</a>
+
 			</div>
 
 			<div class="text-producto">
-				<p>TecnoMec a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaVehivulosExpiracionTecno}" onclick="ocultarTodo(),alertaTencolistadoVehiculos()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<p>Tecnomecanica</p>
+				<a class="btnDas fa-solid fa-warehouse" th:text="${' '} +  ${sumatoriaVehivulosExpiracionTecno}" onclick="ocultarTodo(),alertaTencolistadoVehiculos()"><i class="" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
-				<p>Licencias a Vencer</p>
-				<a class="btnDas" th:text="${sumatoriaUsuariosExpiracionLicencia}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="fas fa-fill-drip" > </i>  0</a>
+				<p>Licencias</p>
+				<a class="btnDas fa-solid fa-id-card" th:text="${' '} +  ${sumatoriaUsuariosExpiracionLicencia}" onclick="ocultarTodo(),listadoCambioAceites()"><i class="" > </i>  0</a>
 			</div>
 
 			<div class="text-producto">
 				<p>Mtt Realizados</p>
-				<a class="btnDas" th:text="${totalServicioRealizados}" th:href="@{/ServicioRealizado}" ><i class="fas fa-fill-drip" > </i>  0</a>
+				<a class="btnDas fa-solid fa-wrench" th:text="${' '} +  ${totalServicioRealizados}" th:href="@{/ServicioRealizado}" ><i class="" > </i>  0</a>
 			</div>
 
 

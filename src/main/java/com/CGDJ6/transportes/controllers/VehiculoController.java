@@ -265,7 +265,7 @@ public class VehiculoController {
         model.addAttribute("sumatoriaVehivulosExpiracionTecno", sumatoriaVehivulosExpiracionTecno);
         model.addAttribute("sumatoriaUsuariosExpiracionLicencia", sumatoriaUsuariosExpiracionLicencia);
         model.addAttribute("fechaFuturo",fechaFuturo);
-//        model.addAttribute("vencidoDiasSeguro",vencidoDiasSeguro);
+        model.addAttribute("vencidoDiasSeguro",vencidoDiasSeguro);
         //System.out.println("menor a 0 "+vencidoDiasSeguro);
 
         return "index";
