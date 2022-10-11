@@ -17,4 +17,7 @@ public interface IVehiculoService {
     public void eliminadoSuave(Vehiculo vehiculo);
 
 
+    void cambioEstadoSeguroF(Vehiculo vehiculo);
+
+    void cambioEstadoSeguroT(Vehiculo vehiculo);
 }

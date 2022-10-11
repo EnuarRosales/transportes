@@ -61,7 +61,46 @@ public class VehiculoService implements IVehiculoService{
         vehiculoRepository.save(vehiculo);
     }
 
+    @Override
 
+    public void cambioEstadoSeguroF(Vehiculo vehiculo) {
+        vehiculo.setSeguroVigente(false);
+        vehiculo.setTipoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getTipoVehiculo());
+        vehiculo.setModelo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getModelo());
+        vehiculo.setMarca(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getMarca());
+        vehiculo.setColor(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getColor());
+        vehiculo.setAnoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getAnoVehiculo());
+        vehiculo.setFechaExpiracionSeguro(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionSeguro());
+        vehiculo.setFechaExpiracionTecnomecanica(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionTecnomecanica());
+        vehiculo.setImagen(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getImagen());
+        vehiculo.setServicioRealizado(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getServicioRealizado());
+        vehiculo.setControlKilometraje(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getControlKilometraje());
+        vehiculo.setAsignacionVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getAsignacionVehiculo());
+        vehiculo.setCambioAceite(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getCambioAceite());
+        vehiculo.setActivo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).isActivo());
+        vehiculo.setTecnomecanicaVigente(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).isTecnomecanicaVigente());
+        vehiculoRepository.save(vehiculo);
+    }
+
+    @Override
+    public void cambioEstadoSeguroT(Vehiculo vehiculo) {
+        vehiculo.setSeguroVigente(true);
+        vehiculo.setTipoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getTipoVehiculo());
+        vehiculo.setModelo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getModelo());
+        vehiculo.setMarca(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getMarca());
+        vehiculo.setColor(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getColor());
+        vehiculo.setAnoVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getAnoVehiculo());
+        vehiculo.setFechaExpiracionSeguro(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionSeguro());
+        vehiculo.setFechaExpiracionTecnomecanica(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getFechaExpiracionTecnomecanica());
+        vehiculo.setImagen(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getImagen());
+        vehiculo.setServicioRealizado(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getServicioRealizado());
+        vehiculo.setControlKilometraje(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getControlKilometraje());
+        vehiculo.setAsignacionVehiculo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getAsignacionVehiculo());
+        vehiculo.setCambioAceite(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getCambioAceite());
+        vehiculo.setActivo(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).isActivo());
+        vehiculo.setTecnomecanicaVigente(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).isTecnomecanicaVigente());
+        vehiculoRepository.save(vehiculo);
+    }
 
 
 

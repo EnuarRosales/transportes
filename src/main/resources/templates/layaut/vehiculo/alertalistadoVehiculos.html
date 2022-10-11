@@ -33,7 +33,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo == true && vehiculo.seguroVigente == false}">
+							<tr th:each="vehiculo:${vehiculos}" th:if="${vehiculo.activo==true && fechaFuturo >= #calendars.format(vehiculo.fechaExpiracionSeguro, 'yyyy-MM-dd')}">
 								<td><a class="btn btn-light" th:href="@{/detallesVehiculo/} + ${vehiculo.placa}" th:text="${vehiculo.placa}"></a></td>
 
 								<td th:text="${vehiculo.tipoVehiculo.descripcion}">Tipo Vehiculo ID</td>
@@ -41,8 +41,8 @@
 								<td th:text="${vehiculo.marca}">Marca</td>
 
 								<td th:text="${vehiculo.anoVehiculo}">anoVehiculo</td>
-								<td th:text="${vehiculo.fechaExpiracionSeguro}">Fecha Expiracion Seguro</td>
-								<td th:text="${vehiculo.fechaExpiracionTecnomecanica}">Fecha Expiracion Tecnomecanica</td>
+								<td th:text="${vehiculo.fechaExpiracionSeguro}" th:style="${vehiculo.seguroVigente == false} ? 'color : red;' : 'color: orange;'" >Fecha Expiracion Seguro</td>
+
 
 
 

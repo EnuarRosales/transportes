@@ -27,12 +27,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class VehiculoController {
@@ -179,7 +179,7 @@ public class VehiculoController {
 
         int sumatoriaCambioAceite=0;
         for (CambioAceite listarCambioAceite : cambioAceiteService.listarCambioAceite()) {
-               if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
+            if (listarCambioAceite.getPendientePorConsumir() <= 1000 ) {
 
                 sumatoriaCambioAceite = sumatoriaCambioAceite + 1;
             }
@@ -209,6 +209,7 @@ public class VehiculoController {
 
         //OTRO CICLO
         int index =-1;
+        int vencidoDiasSeguro=0;
         for (Vehiculo listarVehiculo : vehiculoService.listarVehiculos()) {
             index++;
 
@@ -221,19 +222,31 @@ public class VehiculoController {
                 int diasSeguro = (int) ((listarVehiculo.getFechaExpiracionSeguro().getTime()-fechaactual.getTime()) / milisecondsByDay);
                 int diasTecno = (int) ((listarVehiculo.getFechaExpiracionTecnomecanica().getTime()-fechaactual.getTime()) / milisecondsByDay);
                 //condicion para la alarma
-                if(diasSeguro <=30){
-                    System.out.println(index+"indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-                    vehiculoService.listarVehiculos().get(index).setSeguroVigente(false);
+                if(diasSeguro <=30) {
+                    //System.out.println(sumatoriaVehivulosExpiracionSeguro +"indexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
                     sumatoriaVehivulosExpiracionSeguro = sumatoriaVehivulosExpiracionSeguro+1;
-
+                    vehiculoService.cambioEstadoSeguroT(listarVehiculo);
+                    //                   vehiculoService.guardarVehiculo(listarVehiculo);
+                    if (diasSeguro < 0){
+                        vencidoDiasSeguro=vencidoDiasSeguro+1;
+                        vehiculoService.cambioEstadoSeguroF(listarVehiculo);
+                    }
                 }
                 if(diasTecno <=30){
-                    vehiculoService.listarVehiculos().get(index).setTecnomecanicaVigente(false);
+
                     sumatoriaVehivulosExpiracionTecno = sumatoriaVehivulosExpiracionTecno+1;
-                    System.out.println(sumatoriaVehivulosExpiracionTecno+"mireeee");
+                    //System.out.println(sumatoriaVehivulosExpiracionTecno+"mireeee");
                 }
             }
         }
+
+
+        String fechaFuturo;
+        DateFormat formateador= new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendario= new GregorianCalendar();
+        calendario.add(Calendar.DATE,30);
+        fechaFuturo = formateador.format(calendario.getTime());
+        //System.out.println(fechaFuturo);
 
         var vehiculos= vehiculoService.listarVehiculo( palabraClave);
         var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
@@ -251,7 +264,9 @@ public class VehiculoController {
         model.addAttribute("sumatoriaVehivulosExpiracionSeguro", sumatoriaVehivulosExpiracionSeguro);
         model.addAttribute("sumatoriaVehivulosExpiracionTecno", sumatoriaVehivulosExpiracionTecno);
         model.addAttribute("sumatoriaUsuariosExpiracionLicencia", sumatoriaUsuariosExpiracionLicencia);
-
+        model.addAttribute("fechaFuturo",fechaFuturo);
+//        model.addAttribute("vencidoDiasSeguro",vencidoDiasSeguro);
+        //System.out.println("menor a 0 "+vencidoDiasSeguro);
 
         return "index";
 
