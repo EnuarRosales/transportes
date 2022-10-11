@@ -1,13 +1,10 @@
 package com.CGDJ6.transportes.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 
 
 
@@ -32,18 +29,30 @@ public class Usuario /*implements Serializable*/ {
 
     private boolean activo =true;
 
+    private  boolean licenciaConduccionVigente= true;
+
 
     public Usuario() {
     }
 
 
-    public Usuario(Long cedula, TipoUsuario usuario, String grado, String nombre, Date expiracioLicenciaConduccion, boolean activo) {
+    public Usuario(Long cedula, TipoUsuario usuario, String grado, String nombre, Date expiracioLicenciaConduccion, boolean activo, boolean licenciaConduccionVigente) {
         this.cedula = cedula;
         this.usuario = usuario;
         this.grado = grado;
         this.nombre = nombre;
         this.expiracioLicenciaConduccion = expiracioLicenciaConduccion;
         this.activo = activo;
+        this.licenciaConduccionVigente = licenciaConduccionVigente;
+    }
+
+
+    public boolean isLicenciaConduccionVigente() {
+        return licenciaConduccionVigente;
+    }
+
+    public void setLicenciaConduccionVigente(boolean licenciaConduccionVigente) {
+        this.licenciaConduccionVigente = licenciaConduccionVigente;
     }
 
     public Date getExpiracioLicenciaConduccion() {

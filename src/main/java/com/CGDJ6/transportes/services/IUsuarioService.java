@@ -13,4 +13,8 @@ public interface IUsuarioService {
     public Usuario encontrarUsuario(Usuario usuario);
 
     public void eliminadoSuave(Usuario usuario);
+
+    public void cambioEstadoLicencia(Usuario usuario);
+
+
 }

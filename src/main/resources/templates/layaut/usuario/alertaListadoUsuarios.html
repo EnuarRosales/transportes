@@ -7,7 +7,7 @@
 	<meta charset="UTF-8"/>
 </head>
 <body sec:authorize="isAuthenticated()">
-<section th:fragment="listadoUsuarios" id="usuarios">
+<section th:fragment="alertaListadoUsuarios" id="alertaListadoUsuarios">
 	<div class="container">
 		<div class="row" style="width: 1190px;padding-bottom: 170px;">
 			<div class="col-md-12">
@@ -15,7 +15,7 @@
 					<div class="card-header">
 						<h4>Listado Usuarios</h4>
 					</div>
-					<div th:if="${usuarios!= null and !usuarios.empty}">
+					<div th:if="${usuariosL!= null and !usuariosL.empty}">
 						<table class="table table-stryped">
 							<thead class="thead-dark">
 							<tr>
@@ -29,12 +29,12 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr th:each="usuario:${usuarios}" th:if="${usuario.activo == true}">
+							<tr th:each="usuario:${usuariosL}" th:if="${usuario.activo == true &&  fechaFuturo >= #calendars.format(usuario.expiracioLicenciaConduccion, 'yyyy-MM-dd')}">
 								<td th:text="${usuario.cedula}">Cedula</td>
 								<td th:text="${usuario.usuario.descripcion}">Tipo Usuario ID</td>
 								<td th:text="${usuario.grado}">Grado</td>
 								<td th:text="${usuario.nombre}">Nombre</td>
-								<td th:text="${usuario.expiracioLicenciaConduccion}">Expi.Lice.Cond</td>
+								<td th:text="${usuario.expiracioLicenciaConduccion}" th:style="${usuario.licenciaConduccionVigente == false} ? 'color : red;' : 'color: green;'">Expi.Lice.Cond</td>
 								<td>
 									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarUsuario/} + ${usuario.cedula}"
 									   class="btn btn-secondary">
@@ -49,8 +49,8 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="text-center p-2" th:if="${usuarios== null or usuarios.empty}">
-							<span>Lista vacía</span>
+						<div class="text-center p-2" th:if="${usuariosL== null or usuariosL.empty}">
+							<span>Lista vacía enuar </span>
 						</div>
 					</div>
 				</div>

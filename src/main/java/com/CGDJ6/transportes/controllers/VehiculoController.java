@@ -190,7 +190,10 @@ public class VehiculoController {
         int sumatoriaVehivulosExpiracionTecno=0;
         int sumatoriaUsuariosExpiracionLicencia=0;
 
-        //OTRO CICLO
+
+
+        //OTRO CICLO  CONRLADOR PARA LAS LICENCIAS
+        int vencidoDiasLicencia=0;
         for(Usuario listarUsuario : usuarioService.listarUsuario()){
             // La fecha actual
             Date fechaactual = new Date(System.currentTimeMillis());
@@ -200,10 +203,16 @@ public class VehiculoController {
 
             //condicion para la alarma
             if(diasLicencia <=30){
+                //usuarioService.listarUsuario();
                 sumatoriaUsuariosExpiracionLicencia = sumatoriaUsuariosExpiracionLicencia+1;
                 System.out.println(sumatoriaUsuariosExpiracionLicencia+"licencias");
-            }
+                if(diasLicencia < 0){
+                    vencidoDiasLicencia++;
+                    usuarioService.cambioEstadoLicencia(listarUsuario);
+                    System.out.println(vencidoDiasLicencia+"licencias vencidas");
+                }
 
+            }
 
         }
 
@@ -240,7 +249,6 @@ public class VehiculoController {
             }
         }
 
-
         String fechaFuturo;
         DateFormat formateador= new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendario= new GregorianCalendar();
@@ -251,6 +259,8 @@ public class VehiculoController {
         var vehiculos= vehiculoService.listarVehiculo( palabraClave);
         var servicioRealizados= servicioRealizadoService.listarServicioRealizado();
         var tipoVehiculosl =tipoVehiculoService.listarTipoVehiculo();
+        var usuariosL =usuarioService.listarUsuario();
+        model.addAttribute("usuariosL", usuariosL);
         model.addAttribute("tipoVehiculosl", tipoVehiculosl);
         model.addAttribute("vehiculos", vehiculos);
         model.addAttribute("palabraClave", palabraClave);
@@ -267,7 +277,6 @@ public class VehiculoController {
         model.addAttribute("fechaFuturo",fechaFuturo);
         model.addAttribute("vencidoDiasSeguro",vencidoDiasSeguro);
         //System.out.println("menor a 0 "+vencidoDiasSeguro);
-
         return "index";
 
     }

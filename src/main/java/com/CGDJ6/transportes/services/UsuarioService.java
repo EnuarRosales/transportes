@@ -45,8 +45,24 @@ public class UsuarioService implements IUsuarioService{
         usuario.setUsuario(usuarioRepository.findById(usuario.getCedula()).orElse(null).getUsuario());
         usuario.setGrado(usuarioRepository.findById(usuario.getCedula()).orElse(null).getGrado());
         usuario.setNombre(usuarioRepository.findById(usuario.getCedula()).orElse(null).getNombre());
+        usuario.setExpiracioLicenciaConduccion(usuarioRepository.findById(usuario.getCedula()).orElse(null).getExpiracioLicenciaConduccion());
+        usuario.setActivo(usuarioRepository.findById(usuario.getCedula()).orElse(null).isActivo());
         usuarioRepository.save(usuario);
     }
+
+    @Override
+    public void cambioEstadoLicencia(Usuario usuario) {
+        usuario.setLicenciaConduccionVigente(false);
+        usuario.setUsuario(usuarioRepository.findById(usuario.getCedula()).orElse(null).getUsuario());
+        usuario.setGrado(usuarioRepository.findById(usuario.getCedula()).orElse(null).getGrado());
+        usuario.setNombre(usuarioRepository.findById(usuario.getCedula()).orElse(null).getNombre());
+        usuario.setExpiracioLicenciaConduccion(usuarioRepository.findById(usuario.getCedula()).orElse(null).getExpiracioLicenciaConduccion());
+        usuario.setActivo(usuarioRepository.findById(usuario.getCedula()).orElse(null).isActivo());
+        usuarioRepository.save(usuario);
+
+    }
+
+
 
 
 }
