@@ -10,8 +10,16 @@ public class MvcConfig  implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry  registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
+<<<<<<< HEAD
         registry.addResourceHandler("/images/**")
         .addResourceLocations("file:/nyjhbwglsioynilgbwwx.supabase.co/storage/v1/object/public/tranportescgdj6/imagenes/");
+=======
+        registry.addResourceHandler("/images/**").addResourceLocations("https//nyjhbwglsioynilgbwwx.supabase.co/storage/v1/object/public/tranportescgdj6/imagenes/");
+
+
+
+
+>>>>>>> 61ee8c3a34bea5e63f190295dbf814a70be65561
 
     }
 }

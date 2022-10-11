@@ -77,7 +77,13 @@ public class VehiculoController {
         if(!imagen.isEmpty()){
            //Path directorioImagenes = Paths.get("src//main//resources//static/images");
             //String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+<<<<<<< HEAD
             String rutaAbsoluta = "nyjhbwglsioynilgbwwx.supabase.co//storage//v1//object//public//tranportescgdj6//imagenes";
+=======
+            String rutaAbsoluta = "https://nyjhbwglsioynilgbwwx.supabase.co//storage//v1//object//public//tranportescgdj6//imagenes";
+
+
+>>>>>>> 61ee8c3a34bea5e63f190295dbf814a70be65561
             try {
 
 
@@ -245,7 +251,6 @@ public class VehiculoController {
         model.addAttribute("sumatoriaVehivulosExpiracionSeguro", sumatoriaVehivulosExpiracionSeguro);
         model.addAttribute("sumatoriaVehivulosExpiracionTecno", sumatoriaVehivulosExpiracionTecno);
         model.addAttribute("sumatoriaUsuariosExpiracionLicencia", sumatoriaUsuariosExpiracionLicencia);
-
 
         return "index";
 
