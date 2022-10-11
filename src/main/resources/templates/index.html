@@ -13,7 +13,7 @@
 <main class="contenido-principal contenedor">
 
 	<h3>DASHBOARD</h3>
-	<div class="contenedor-navegacion">
+	<div class="contenedor-navegacion row justify-content-center">
 		<!-- para centrar la linea -->
 		<nav class="nav-principal">
 			<div class="text-producto">
@@ -47,24 +47,27 @@
 				<a class="btnDas" th:text="${totalServicioRealizados}" th:href="@{/ServicioRealizado}" ><i class="fas fa-fill-drip" > </i>  0</a>
 			</div>
 
-
-
-
+			
 		</nav>
+
+		<!--	estados para cargar en Script .js		-->
+
+		<div id="listadoCambioAceites" style="display:none" >
+			<section th:replace="layaut/cambioAceite/alertaCambioAceites :: alertaCambioAceites"></section>
+		</div>
+
+		<div id="alertalistadoVehiculos" style="display:none" >
+			<section th:replace="layaut/vehiculo/alertalistadoVehiculos :: alertalistadoVehiculos"></section>
+		</div>
+
+		<div id="alertaTencolistadoVehiculos" style="display:none" >
+			<section th:replace="layaut/vehiculo/alertaTencolistadoVehiculos :: alertaTencolistadoVehiculos"></section>
+		</div>
+
 	</div>
 
 
-	<div id="listadoCambioAceites" style="display:none" >
-		<section th:replace="layaut/cambioAceite/alertaCambioAceites :: alertaCambioAceites"></section>
-	</div>
 
-	<div id="alertalistadoVehiculos" style="display:none" >
-	<section th:replace="layaut/vehiculo/alertalistadoVehiculos :: alertalistadoVehiculos"></section>
-	</div>
-
-	<div id="alertaTencolistadoVehiculos" style="display:none" >
-	<section th:replace="layaut/vehiculo/alertaTencolistadoVehiculos :: alertaTencolistadoVehiculos"></section>
-	</div>
 
 
 	<script>
