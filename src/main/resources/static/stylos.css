@@ -7,7 +7,7 @@
 
 
 .btnDas{
-    background-color: #8cbc00;
+    background-color: #white;
     display: block; /*nos da todo el ancho disponible*/
     color: black;
     text-transform: uppercase;/*trasnforma el texto en mayusculas*/
@@ -28,7 +28,7 @@
 }
 
 .btnDas:hover{
-    background-color: #658504;
+    background-color: #800080;
     cursor: pointer;
 }
 

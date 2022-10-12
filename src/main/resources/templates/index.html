@@ -10,7 +10,7 @@
 <header th:replace="layaut/plantilla :: header"></header>
 <link rel="stylesheet" th:href="@{/app.css}"/>
 
-<main class="contenido-principal contenedor">
+<main class="contenido-principal contenedor row justify-content-center">
 
 	<h3>DASHBOARD</h3>
 	<div class="contenedor-navegacion row justify-content-center">
@@ -27,8 +27,14 @@
 				<a class="btnDas fa-solid fa-oil-can" th:text="${' '} + ${sumatoriaCambioAceite}" onclick="ocultarTodo(),listadoCambioAceites()">  0</a>
 			</div>
 
+<!--			<div class="text-producto">-->
+<!--				<p>SOAT</p><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" th:text="${vencidoDiasSeguro}"></span>-->
+<!--				<a class="btnDas fa-solid fa-shield-halved" th:text="${' '} + ${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()">  <i class="" > </i>  0</a>-->
+
+<!--			</div>-->
+
 			<div class="text-producto">
-				<p>Seguros</p><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" th:text="${vencidoDiasSeguro}"></span>
+				<p>SOAT</p><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"  th:text="${vencidoDiasSeguro>0} ? ${vencidoDiasSeguro} : ' '" th:style="${vencidoDiasSeguro>0} ? 'background-color : red;' : 'transparent: 100%;'" ></span>
 				<a class="btnDas fa-solid fa-shield-halved" th:text="${' '} + ${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()">  <i class="" > </i>  0</a>
 
 			</div>
