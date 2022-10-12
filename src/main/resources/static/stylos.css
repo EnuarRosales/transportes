@@ -70,9 +70,19 @@ h3 {
 
 
 
-.btn:hover{
+/*.btn:hover{
     background-color: #658504;
     cursor: pointer;
+}*/
+
+/*.btn-block:hover{
+background-color: #80008099;
+    cursor: pointer;
+
+}*/
+
+.dropdown-item:hover{
+background-color: #80008099;
 }
 
 .btnDas:hover{
