@@ -305,6 +305,10 @@ background-size: 100%, 120rem;
 background-color: #800080;
 }
 
+.head-purpura{
+background-color: #800080;
+}
+
 .grid-footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

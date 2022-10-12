@@ -5,10 +5,12 @@
     <title>inicio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
-<header th:replace="layaut/plantilla :: header"></header>
 <link rel="stylesheet" th:href="@{/app.css}"/>
+<header th:replace="layaut/plantilla :: header"></header>
+
 
 <main class="contenido-principal contenedor row justify-content-center">
 
@@ -34,7 +36,7 @@
 <!--			</div>-->
 
 			<div class="text-producto">
-				<p>SOAT</p><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"  th:text="${vencidoDiasSeguro>0} ? ${vencidoDiasSeguro} : ' '" th:style="${vencidoDiasSeguro>0} ? 'background-color : red;' : 'transparent: 100%;'" ></span>
+				<p>SOAT</p><span class="position-absolute top-50 start-50 translate-middle badge rounded-pill"  th:text="${vencidoDiasSeguro>0} ? ${vencidoDiasSeguro} : ' '" th:style="${vencidoDiasSeguro>0} ? 'background-color : red;' : 'transparent: 100%;'" ></span>
 				<a class="btnDas fa-solid fa-shield-halved" th:text="${' '} + ${sumatoriaVehivulosExpiracionSeguro}" onclick="ocultarTodo(),alertalistadoVehiculos()">  <i class="" > </i>  0</a>
 
 			</div>

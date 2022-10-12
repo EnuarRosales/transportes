@@ -1,8 +1,87 @@
 
 /*con esto no tendremos probema con el padding a esto se  le domina box model*/
 
+.nombre-sitio {
+    margin-top: 5rem;
+    text-align: center;/*centra el texto*/
+
+}
+.nombre-sitio span{
+    color: #037bc0; /*color conbinado del titulo*/
+}
+
+.contenedor-navegacion{
+    border-top: 0.1rem solid #e1e1e1; /*linea hasta loes extremos*/
+}
 
 
+.nav-principal{
+    /*border-top: 1px solid #e1e1e1;/*manera resumida*/
+    /*margin: 20px 0;*/ /*manera resumida*/
+    padding: 2rem 0;
+    display: flex; /*ojo que para aplicar esta propiedad se le tiene que realizar al pdre directo es decir e
+    estamps tratando de destrobuir los enlaces es por esto que se le realiza a .nav-principal*/
+    justify-content: space-around;
+}
+
+.hero{
+    background-image: url(../img/principal.jpg);/*imagen relativa la poscioon del archivo es decir toca salir i entrar*/
+    background-repeat: no-repeat;/*con esto no repetimos la imgane ya que pord defecto lo hace*/
+    background-size: cover; /*alarga la imagen a lo ancho de la pantalla*/
+    background-position: center center;
+    height: 55rem;
+}
+
+/*CATEGORIAS*/
+.categorias {
+    padding-top: 5rem;/*SEPARACION ENTRE*/
+}
+
+.categorias h2{
+    text-align: center;
+
+}
+
+.categorias a{
+    text-align: center;
+    display: block;
+    padding: 2rem;
+    font-size: 50rem;/*tamaño de letra*/
+}
+
+.categorias a:hover{ /*color de botones*/
+    background-color: #037bc0;
+    color: #ffff;
+    border-bottom-right-radius: 1rem;
+}
+
+
+.listado-categorias{
+    display: grid;/*bastante pioderoso para los grid es decir distribuirlos en pantalla*/
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;/*separacion entre imagenes*/
+}
+
+/*BLOQUE NOSOTROS*/
+.sobre-nosotros{
+background-image: linear-gradient(to right, transparent 50%, #037bc0 50%, #037bc0 100%), url(../img/nosotros.jpg);
+background-position: left center;
+padding: 10rem 0;
+background-repeat: no-repeat;
+background-size: 100%, 120rem;
+
+}
+.sobre-nosotros-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 8rem;
+}
+
+.texto-nosotros{
+    grid-column: 2/3;
+    color: #e1e1e1;
+
+}
 
 
 
