@@ -32,58 +32,27 @@
     height: 55rem;
 }
 
-/*CATEGORIAS*/
-.categorias {
-    padding-top: 5rem;/*SEPARACION ENTRE*/
+* GOLABALES
+SELECTORES GLOVALES ES DECIR APLICA A TODOS LOS SELECTORES QUE SE COLOQUEN */
+
+h1,h2,h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 5rem 0; /*elimina todos los maegesnes de los heddings*/
 }
 
-.categorias h2{
-    text-align: center;
+h1 {
+    font-size: 5rem;
 
 }
-
-.categorias a{
-    text-align: center;
-    display: block;
-    padding: 2rem;
-    font-size: 50rem;/*tamaño de letra*/
-}
-
-.categorias a:hover{ /*color de botones*/
-    background-color: #037bc0;
-    color: #ffff;
-    border-bottom-right-radius: 1rem;
-}
-
-
-.listado-categorias{
-    display: grid;/*bastante pioderoso para los grid es decir distribuirlos en pantalla*/
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;/*separacion entre imagenes*/
-}
-
-/*BLOQUE NOSOTROS*/
-.sobre-nosotros{
-background-image: linear-gradient(to right, transparent 50%, #037bc0 50%, #037bc0 100%), url(../img/nosotros.jpg);
-background-position: left center;
-padding: 10rem 0;
-background-repeat: no-repeat;
-background-size: 100%, 120rem;
-
-}
-.sobre-nosotros-grid{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    column-gap: 8rem;
-}
-
-.texto-nosotros{
-    grid-column: 2/3;
-    color: #e1e1e1;
+h2 {
+    font-size: 4rem;
 
 }
 
+h3 {
+    font-size: 3rem;
 
+}
 
 .btnDas{
     background-color: #white;
@@ -107,8 +76,95 @@ background-size: 100%, 120rem;
 }
 
 .btnDas:hover{
-    background-color: #800080;
+    background-color: #80008099;
     cursor: pointer;
+
+}
+
+/*utilidades*/
+.text-center{
+    text-align: center;
+}
+
+.max-width-30{
+    max-width: 30rem;
+}
+
+/*header y navegacion*/
+
+
+.nombre-sitio {
+    margin-top: 5rem;
+    text-align: center;/*centra el texto*/
+
+}
+.nombre-sitio span{
+    color: #037bc0; /*color conbinado del titulo*/
+}
+
+.contenedor-navegacion{
+    border-top: 0.1rem solid #e1e1e1; /*linea hasta loes extremos*/
+}
+
+
+.nav-principal{
+    /*border-top: 1px solid #e1e1e1;/*manera resumida*/
+    /*margin: 20px 0;*/ /*manera resumida*/
+    padding: 2rem 0;
+    display: flex; /*ojo que para aplicar esta propiedad se le tiene que realizar al pdre directo es decir e
+    estamps tratando de destrobuir los enlaces es por esto que se le realiza a .nav-principal*/
+    justify-content: space-around;
+}
+
+.hero{
+    background-image: url(../img/principal.jpg);/*imagen relativa la poscioon del archivo es decir toca salir i entrar*/
+    background-repeat: no-repeat;/*con esto no repetimos la imgane ya que pord defecto lo hace*/
+    background-size: cover; /*alarga la imagen a lo ancho de la pantalla*/
+    background-position: center center;
+    height: 55rem;
+}
+
+.contenido-principal{
+    padding-top: 5rem;
+}
+
+.text-producto{
+    text-align: center;
+    color: black;
+    padding: 2rem;
+
+}
+
+.text-producto h3{
+    margin: 0;
+}
+.text-producto p{
+    margin: 0 0 .5rem 0;
+}
+
+.text-producto .precio {
+    font-size: 2.8rem;
+    font-weight: 900;
+}
+
+/*footer*/
+
+.site-footer{
+    border-top: 0.1rem solid #e1e1e1;
+    margin: 5rem;
+    padding: 5rem;
+
+}
+.site-footer h3{
+    margin-bottom: 2rem;
+}
+
+.foot-purpura{
+background-color: #800080;
+}
+
+.head-purpura{
+background-color: #800080;
 }
 
 
