@@ -31,6 +31,7 @@ public class VehiculoService implements IVehiculoService{
 
     @Override
     public void guardarVehiculo(Vehiculo vehiculo) {
+        vehiculo.setImagen(vehiculoRepository.findById(vehiculo.getPlaca()).orElse(null).getImagen());
         vehiculoRepository.save(vehiculo);
 
     }
