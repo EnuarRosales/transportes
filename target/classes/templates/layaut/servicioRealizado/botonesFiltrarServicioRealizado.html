@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Botones Agregar</title>
+    <meta charset="UTF-8">
+</head>
+<body sec:authorize="isAuthenticated()">
+<section th:fragment="botonesFiltrarServicioRealizado">
+
+    <div class="container text-center">
+        <form class="form-inline" th:action="@{/ServicioRealizado}">
+            <div class="form-group mb-2">
+                <label>Filtrar</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="palabraClave" class="form-conrol" id="palabraClave" th:value="${palabraClave}" placeholder="Digite el Valor a Buscar" required>
+            </div>
+            <input type="submit" class="btn btn-info mb-2" value="Buscar">
+            &nbsp;&nbsp;
+            <a th:href="@{/ServicioRealizado}" class="btn btn-secondary mb-2">Limpiar</a>
+        </form>
+    </div>
+
+</section>
+</body>
+</html>

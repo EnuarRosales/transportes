@@ -1,0 +1,439 @@
+
+/*con esto no tendremos probema con el padding a esto se  le domina box model*/
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;/* 1REM = 10PX esto es una perrada para poder trabajar con REM ya que esto es lo mas recomendable*/
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;;
+    font-size: 1.6rem;
+    line-height: 2; /*interlineado*/
+}
+
+/* GOLABALES
+SELECTORES GLOVALES ES DECIR APLICA A TODOS LOS SELECTORES QUE SE COLOQUEN */
+
+h1,h2,h3 {
+    font-family: 'Playfair Display', serif;
+    margin: 0 0 5rem 0; /*elimina todos los maegesnes de los heddings*/
+}
+
+h1 {
+    font-size: 5rem;
+
+}
+h2 {
+    font-size: 4rem;
+
+}
+
+h3 {
+    font-size: 3rem;
+
+}
+
+input {
+    text-transform: uppercase;/*trasnforma el texto en mayusculas*/
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+
+}
+
+img {
+    max-width: 100%;/*perrad se crean imagenes responsibles*/
+    display: block;
+}
+
+.btn{
+    background-color: #8cbc00;
+    display: block; /*nos da todo el ancho disponible*/
+    color: #ffff;
+    text-transform: uppercase;/*trasnforma el texto en mayusculas*/
+    font-weight: 900;
+    padding: 1rem;
+    transition: background-color .3s ease-out;/*transicion de colores recibe tres parametros*/
+    text-align: center;
+    border: none;
+}
+
+.btnDas{
+    background-color: #white;
+    display: block; /*nos da todo el ancho disponible*/
+    color: black;
+    text-transform: uppercase;/*trasnforma el texto en mayusculas*/
+    font-weight: 900;
+    padding: 4rem;
+    transition: background-color .3s ease-out;/*transicion de colores recibe tres parametros*/
+    text-align: center;
+    border: none;
+    font-size: 3rem;
+    text-decoration: none;
+}
+
+
+
+.btn:hover{
+    background-color: #658504;
+    cursor: pointer;
+}
+
+.btnDas:hover{
+    background-color: #80008099;
+    cursor: pointer;
+
+}
+
+/*utilidades*/
+.text-center{
+    text-align: center;
+}
+
+.max-width-30{
+    max-width: 30rem;
+}
+
+/*header y navegacion*/
+
+
+.nombre-sitio {
+    margin-top: 5rem;
+    text-align: center;/*centra el texto*/
+
+}
+.nombre-sitio span{
+    color: #037bc0; /*color conbinado del titulo*/
+}
+
+.contenedor-navegacion{
+    border-top: 0.1rem solid #e1e1e1; /*linea hasta loes extremos*/
+}
+
+
+.nav-principal{
+    /*border-top: 1px solid #e1e1e1;/*manera resumida*/
+    /*margin: 20px 0;*/ /*manera resumida*/
+    padding: 2rem 0;
+    display: flex; /*ojo que para aplicar esta propiedad se le tiene que realizar al pdre directo es decir e
+    estamps tratando de destrobuir los enlaces es por esto que se le realiza a .nav-principal*/
+    justify-content: space-around;
+}
+
+.hero{
+    background-image: url(../img/principal.jpg);/*imagen relativa la poscioon del archivo es decir toca salir i entrar*/
+    background-repeat: no-repeat;/*con esto no repetimos la imgane ya que pord defecto lo hace*/
+    background-size: cover; /*alarga la imagen a lo ancho de la pantalla*/
+    background-position: center center;
+    height: 55rem;
+}
+
+/*CATEGORIAS*/
+.categorias {
+    padding-top: 5rem;/*SEPARACION ENTRE*/
+}
+
+.categorias h2{
+    text-align: center;
+
+}
+
+.categorias a{
+    text-align: center;
+    display: block;
+    padding: 2rem;
+    font-size: 50rem;/*tamaño de letra*/
+}
+
+.categorias a:hover{ /*color de botones*/
+    background-color: #037bc0;
+    color: #ffff;
+    border-bottom-right-radius: 1rem;
+}
+
+.listado-categorias{
+    display: grid;/*bastante pioderoso para los grid es decir distribuirlos en pantalla*/
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;/*separacion entre imagenes*/
+}
+
+/*BLOQUE NOSOTROS*/
+.sobre-nosotros{
+background-image: linear-gradient(to right, transparent 50%, #037bc0 50%, #037bc0 100%), url(../img/nosotros.jpg);
+background-position: left center;
+padding: 10rem 0;
+background-repeat: no-repeat;
+background-size: 100%, 120rem;
+
+}
+.sobre-nosotros-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 8rem;
+}
+
+.texto-nosotros{
+    grid-column: 2/3;
+    color: #e1e1e1;
+
+}
+
+/*listado de productos*/
+
+.contenido-principal{
+    padding-top: 5rem;
+}
+
+/*aca se hace el GRID*/
+.listado-productos{
+
+   display: grid; /*se crea el grid*/
+   grid-template-columns: repeat(6, 1fr);/*aca se se crean 5 columnas con el mismo tamaño ojo siembre va haber una linea de mas a la que hayas definido*/
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+.producto:nth-child(1){ /*muy util aca seleccionamos la primer imagen*/
+    grid-column-start: 1;
+    grid-column-end: 7;
+    display: grid;
+    grid-template-columns: 3fr 1fr;/* posicionan mejor la primer imagen*/
+
+}
+
+/*bastante importante quita espacios y proporciona el espacio correcto de la imagen */
+.producto:nth-child(1) img{
+    height: 43rem;
+    width: 100%;/*ojo aca la altura la que se quiera pero el ancho debe de ser del 100%*/
+    object-fit: cover;
+}
+
+
+/*continuamos poscisionando las imagenes en el GRID  seleccionamos la imagne 2 y le decimo que vaya desde la poscicion 1 a la posicion 4*/
+.producto:nth-child(2){
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.producto:nth-child(2) img{
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.producto:nth-child(3){
+    grid-column-start: 4;
+    grid-column-end: 7;
+}
+.producto:nth-child(3) img{
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.producto:nth-child(4){
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.producto:nth-child(4) img{
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+.producto:nth-child(5){
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+.producto:nth-child(5) img{
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+.producto:nth-child(6){
+    grid-column-start: 5;
+    grid-column-end: 7;
+}.producto:nth-child(6) img{
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.producto{
+    background-color: #037bc0;
+}
+
+.text-producto{
+    text-align: center;
+    color: black;
+    padding: 2rem;
+
+}
+
+.text-producto h3{
+    margin: 0;
+}
+.text-producto p{
+    margin: 0 0 .5rem 0;
+}
+
+.text-producto .precio {
+    font-size: 2.8rem;
+    font-weight: 900;
+}
+
+/*footer*/
+
+.site-footer{
+    border-top: 0.1rem solid #e1e1e1;
+    margin: 5rem;
+    padding: 5rem;
+
+}
+.site-footer h3{
+    margin-bottom: 2rem;
+}
+
+.foot-purpura{
+background-color: #800080;
+}
+
+.head-purpura{
+background-color: #800080;
+}
+
+.grid-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.footer-menu a{
+    display: block; /*cada enlace tomara el total del ancho disponible*/
+}
+
+.derechos{
+    text-align: center;
+    margin-top: 7rem;
+}
+
+
+/*nosotros*/
+
+.contenido-nosotros{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));/**con sta liena volvemos responsive el sitio cuadndo llegue al tamaño de 25rem esta se descuelga*/
+
+
+}
+
+.informacion-nosotros{
+    display: flex; /*cuando creamo esto podemos acceder a sus propiedades*/
+    flex-direction: column;/*las cualoes son estas*/
+    justify-content: center;
+
+
+}
+
+/*blog*/
+.contenedor-blog{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 4rem; /*4rem en todlos los lados*/
+}
+
+.entrada{
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 4rem;
+    margin-bottom: 2rem;
+}
+.entrada:last-of-type{/*con esra lo que hace es irce hasta la ultima entrada y aplicar los siguientes cambios*/
+border: none; /*para que no nos maque el borde que se miraba feo*/
+}
+
+.entrada-meta{
+    display: flex;
+    justify-content: space-between;/*coloca a los extremos*/
+
+}
+.entrada-meta p{
+    font-weight: bold;/*ojo dependiendo de la fuente que hayamos sleccionado negrita*/
+
+}
+
+.entrada-meta span{
+
+    color: #037bc0;
+}
+
+ /*entraa blog*/
+
+ .contenido-entrada-blog{
+    width: 60rem;
+   margin: 0 auto;
+ }
+
+ /*galeria*/
+ .galeria{
+    list-style: none;/*quitar puntyo*/
+    padding: 0;
+    margin: 0;/*quitamos padding y marggin para quedarnos solo con las imagenes*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem; /*margen en todos los lados*/
+}
+.galeria img{
+    height: 40rem;
+    width: 40rem;
+    object-fit: cover;/*estp es magico las distribuye sin importar o ajustado su tamaño*/
+}
+
+/*formulario*/
+.formulario{
+    max-width: 60rem;
+    margin: 0 auto;
+}
+.formulario fieldset{
+    border: 1px solid black;
+    margin-bottom: 2rem;
+}
+.formulario legend {
+    background-color: #005485;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 1rem;
+    margin-bottom: 4rem;
+
+}
+
+.campo{
+    display: flex;/*alienamos de derecha a izquierda*/
+    margin-bottom: 2rem; /*espacio hacia abajo*/
+
+}
+
+.campo label{
+    flex-basis: 10rem;/*obligamos a que sea 10 ojo es un propiedad de flex*/
+}
+/*ojo que  se le aplico a todo con la condicion not */
+.campo input:not([type="radio"]),
+.campo textarea,
+.campo select{
+    flex: 1;
+    border: 1px solid #e1e1e1;
+    padding: 1rem;
+}
+
+

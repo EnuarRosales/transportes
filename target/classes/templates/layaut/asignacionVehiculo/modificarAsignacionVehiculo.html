@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layaut/plantilla :: head">
+	<title>Datos de la Persona</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<header th:replace="layaut/plantilla :: header"></header>
+<section th:replace="layaut/asignacionVehiculo/editarAsignacionVehiculos :: editarAsignacionVehiculos"></section>
+<footer th:replace="layaut/plantilla :: footer"></footer>
+</body>
+</html>
+
+
+
+<!--
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Datos de la Persona</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<header th:replace="layaut/plantilla :: header"></header>
+<h2>Datos de la Empresa</h2>
+<a th:href="@{/}">Regresar</a>
+<br/>
+<form th:action="@{/guardar}" method="post" th:object="${empresa}">
+	<br/>
+	<label for="nombre">Nombre:</label>
+	<input type="text" name="nombre" th:field="*{nombre}"/>
+	<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Dato Obligatorio</span>
+
+	<br/>
+	<label for="direccion">Direccion:</label>
+	<input type="text" name="direccion" th:field="*{direccion}"/>
+	<span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Dato Obligatorio</span>
+
+	<br/>
+	<label for="telefono">Telefono:</label>
+	<input type="tel" name="telefono" th:field="*{telefono}"/>
+	<span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Dato Obligatorio</span>
+	<br/>
+	<label for="NIT">NIT:</label>
+	<input type="text" name="NIT" th:field="*{NIT}"/>
+	<span th:if="${#fields.hasErrors('NIT')}" th:errors="*{NIT}">Dato Obligatorio</span>
+
+
+	<br/>
+	<input type="submit" name="guardar" value="Guardar"/>
+</form>
+<footer th:replace="layaut/plantilla :: footer"></footer>
+</body>
+</html>
+
+-->

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Empleados</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<section th:fragment="listadoAsignacionVehiculos" id="asignacionVehiculos">
+	<div class="container">
+		<div class="row" style="width: 1190px;padding-bottom: 170px;">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Asignacion Vehiculos</h4>
+					</div>
+					<div th:if="${asignacionVehiculos!= null and !asignacionVehiculos.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Vehiculo</th>
+								<th>Usuario Cedula</th>
+								<th>Fecha Asignacion</th>
+								<th>Unidad</th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="asignacionVehiculo:${asignacionVehiculos}" th:if="${asignacionVehiculo.activo == true}">
+								<td th:text="${asignacionVehiculo.vehiculo.placa}">Vehiculo</td>
+								<td th:text="${asignacionVehiculo.usuario.nombre}">Usuario Cedula</td>
+								<td th:text="${asignacionVehiculo.fechaAsignacion}">Fecha Asignacion</td>
+								<td th:text="${asignacionVehiculo.unidad}">Unidad</td>
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarAsignacionVehiculo/} + ${asignacionVehiculo.id}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarAsignacionVehiculoSuave/}+ ${asignacionVehiculo.id}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${asignacionVehiculos== null or asignacionVehiculos.empty}">
+							<span > Lista Vacía</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>

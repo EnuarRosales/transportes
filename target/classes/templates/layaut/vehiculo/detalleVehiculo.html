@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Editar Vehiculos</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<header th:replace="layaut/vehiculo/botonesEditarVehiculo :: botonesEditarVehiculo"></header>
+		<div class="container">
+			<div class="card bg-light">
+				<div class="card-header bg-dark text-white"></div>
+				<div class="card-body">
+
+					<img class="img-thumbnail rounded float-left"
+					     th:src="@{'/images/' +${vehiculo.imagen}}"
+					     th:alt="${vehiculo.imagen}"
+					     style="max-width:25%;">
+
+					<ul class="list-group">
+						<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.placa}"></li>
+						<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.tipoVehiculo}"></li>
+						<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.modelo}"></li>
+						<li class="list-group-item" th:text="'PLACA DEL VEHICULO: ' +${vehiculo.marca}"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Editar Cliente</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="editarCliente">
+            <form th:action="@{/guardar}" th:object="${empresa}"
+                method="POST" class="was-validated">
+               <input type="hidden" name="idEmpresa" th:field="*{id}"/>
+                <section th:replace="layaut/botonesEditar :: botonesEditar"></section>
+            </form>
+        </section>
+    </body>
+</html>
+-->

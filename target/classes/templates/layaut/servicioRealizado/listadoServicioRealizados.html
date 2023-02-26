@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<title>Listado Empleados</title>
+	<meta charset="UTF-8"/>
+</head>
+<body sec:authorize="isAuthenticated()">
+<section th:fragment="listadoServicioRealizados" id="servicioRealizado">
+
+	<div class="container">
+		<div class="row" style="width: 1190px;padding-bottom: 170px;">
+			<!-- inicio boton
+			<body sec:authorize="isAuthenticated()">
+			<section th:fragment="botonesAgregarServicioRealizado" class="py-3 mb-3 bg-light">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12" sec:authorize="hasRole('ROLE_ADMIN')">
+							<a href="#" class="btn btn-primary btn-block"
+							   data-toggle="modal" data-target="#agregarServicioRealizado">
+								<i class="fas fa-plus"></i> Agregar Servivicio Realizado
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			</body> -->
+			<!-- termino boton-->
+			<div class="col-md-12"> <!-- ojo que aca va el tamo-->
+				<div class="card">
+					<div class="card-header">
+						<h4>Listado Servicios Realizados</h4>
+					</div>
+					<div th:if="${servicioRealizado!= null and !servicioRealizado.empty}">
+						<table class="table table-stryped">
+							<thead class="thead-dark">
+							<tr>
+								<th>Tipo Servicio</th>
+								<th>Vehiculo</th>
+								<th>Fecha Inicio</th>
+								<th>Fecha Termino</th>
+								<th>KLM</th>
+								<!--<th>Kilometraje Termino</th>-->
+								<th>Descripcion Del Mantenimiento Realizado</th>
+								<th></th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="servicioRealizado:${servicioRealizado}">
+								<td th:text="${servicioRealizado.tipoServicio.descripcion}">Tipo Servicio ID</td>
+								<td th:text="${servicioRealizado.vehiculo.placa}">Vehiculo</td>
+								<td th:text="${servicioRealizado.fechaInicioServicio}">Fecha Inicio Servicio</td>
+								<td th:text="${servicioRealizado.fechaTerminoServicio}">Fecha Termino Servicio</td>
+								<td th:text="${servicioRealizado.kilometrajeInicio}">Kilometraje Inicio</td>
+								<!--<td th:text="${servicioRealizado.kilometrajeTermino}">Kilometraje Termino</td> -->
+								<td th:text="${servicioRealizado.descripcion}">Descripcione</td>
+								<td>
+									<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarServicioRealizado/} + ${servicioRealizado.id}"
+									   class="btn btn-secondary">
+										<i class="fas fa-angle-double-right"></i> Editar
+									</a>
+								</td>
+								<td sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="@{/eliminarServicioRealizado/}+ ${servicioRealizado.id}" class="btn btn-dark">
+									<i class="fas fa-angle-double-right"></i> Eliminar
+								</a>
+
+								</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text-center p-2" th:if="${servicioRealizado== null or servicioRealizado.empty}">
+							<span> La Lista No Contiene Datos</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</body>
+	</html>
