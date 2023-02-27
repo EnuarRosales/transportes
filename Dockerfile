@@ -1,10 +1,8 @@
 #
 # Build stage
 #
-FROM maven:3.8.2-jdk-11 AS build
-
+FROM amazoncorretto:ll-alpine-jdk
 MAINTAINER ENUAR
-
-COPY target/transportes-0.0.1-SNAPSHOT.jar transportes.jar
+COPY target/0.0.1-SNAPSHOT.jar transportes.jar
 ENTRYPOINT ["java","-jar","/transportes.jar"]
 
